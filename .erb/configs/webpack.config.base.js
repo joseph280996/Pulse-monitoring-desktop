@@ -2,9 +2,9 @@
  * Base webpack config used across other specific configs
  */
 
-import path from 'path';
-import webpack from 'webpack';
-import { dependencies as externals } from '../../src/package.json';
+import path from 'path'
+import webpack from 'webpack'
+import { dependencies as externals } from '../../src/package.json'
 
 export default {
   externals: [...Object.keys(externals || {})],
@@ -41,6 +41,7 @@ export default {
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
+      SECRET: 'ulsemonitoring',
     }),
   ],
-};
+}
