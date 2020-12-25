@@ -1,25 +1,33 @@
 import React, { ReactElement } from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
+import {
+  Redirect,
+  Route,
+  Switch,
+  useRouteMatch,
+  withRouter,
+} from 'react-router-dom'
 import SignIn from './SignIn'
 import ForgotPass from './ForgotPass'
 import ChangeUsername from './ChangeUsername'
 
-const authRoutes = [
+const getAuthRoutes = (path: string) => [
   {
-    route: '/auth/signin',
+    route: `${path}/signin`,
     Component: SignIn,
   },
   {
-    route: '/auth/forgotpass',
+    route: `${path}/forgotpass`,
     Component: ForgotPass,
   },
   {
-    route: '/auth/changeusername',
+    route: `${path}/changeusername`,
     Component: ChangeUsername,
   },
 ]
 
 function AuthPage(): ReactElement {
+  const { path } = useRouteMatch()
+  const authRoutes = getAuthRoutes(path)
   return (
     <Switch>
       {authRoutes.map(({ route, Component }) => (

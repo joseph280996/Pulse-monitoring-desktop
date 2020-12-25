@@ -10,8 +10,8 @@ function Routes(): ReactElement {
     <Switch>
       {routes.map(({ route, Component, isPrivate, isExact }) => {
         const RouteComponent: RouteComponentType = isPrivate
-          ? Route
-          : PrivateRoute
+          ? PrivateRoute
+          : Route
         return (
           <RouteComponent
             key={route}

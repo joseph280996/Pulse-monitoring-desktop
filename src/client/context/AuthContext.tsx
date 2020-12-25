@@ -8,7 +8,6 @@ const AuthContext = createContext<authTypes.AuthContextValues>({
     password: '',
     isSignedIn: false,
   },
-  setAuth: null,
 })
 
 export const AuthProvider: FC = ({ children }) => {
