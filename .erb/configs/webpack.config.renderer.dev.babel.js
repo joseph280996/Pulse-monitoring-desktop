@@ -208,12 +208,6 @@ export default merge(baseConfig, {
           manifest: require(manifest),
           sourceType: 'var',
         }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      Popper: ['popper.js', 'default'],
-    }),
     new webpack.NoEmitOnErrorsPlugin(),
 
     /**
@@ -230,7 +224,6 @@ export default merge(baseConfig, {
      */
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      SECRET: 'pulsemonitoring',
     }),
 
     new webpack.LoaderOptionsPlugin({

@@ -41,7 +41,6 @@ export default {
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'production',
-      SECRET: 'pulsemonitoring',
     }),
   ],
 }
