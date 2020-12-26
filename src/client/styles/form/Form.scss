@@ -1,0 +1,8 @@
+@mixin Form {
+  .Form {
+    &-container {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
