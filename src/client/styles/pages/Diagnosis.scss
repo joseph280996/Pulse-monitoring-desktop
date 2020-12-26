@@ -1,0 +1,9 @@
+@mixin Diagnosis {
+  .Diagnosis {
+    &-toolbar {
+      &Container {
+        display: inline;
+      }
+    }
+  }
+}
