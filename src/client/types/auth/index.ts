@@ -1,8 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-
-interface ObjectKeys {
-  [key: string]: unknown
-}
+import { ObjectKeys } from '../types'
 
 export interface BasicAuthType extends ObjectKeys {
   username: string

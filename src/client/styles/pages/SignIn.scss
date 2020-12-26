@@ -1,0 +1,10 @@
+@import '../utils/center.scss';
+
+@mixin SignIn {
+  .SignIn {
+    &-container {
+      @include verticalAndHorizontalCenter;
+      height: 100%;
+    }
+  }
+}

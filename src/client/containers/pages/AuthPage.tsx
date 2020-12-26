@@ -1,11 +1,5 @@
 import React, { ReactElement } from 'react'
-import {
-  Redirect,
-  Route,
-  Switch,
-  useRouteMatch,
-  withRouter,
-} from 'react-router-dom'
+import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom'
 import SignIn from './SignIn'
 import ForgotPass from './ForgotPass'
 import ChangeUsername from './ChangeUsername'

@@ -4,6 +4,8 @@ module.exports = {
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 'off',
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
+    '@typescript-eslint/no-use-before-define': 1,
+    'no-use-before-define': 1,
   },
   parserOptions: {
     ecmaVersion: 2020,

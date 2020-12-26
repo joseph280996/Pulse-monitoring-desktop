@@ -17,7 +17,7 @@ function Routes(): ReactElement {
             key={route}
             path={route}
             isExact={isExact}
-            render={() => <Component />}
+            component={Component}
           />
         )
       })}

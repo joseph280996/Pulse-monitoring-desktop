@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, ReactNode } from 'react'
 
 export * as authTypes from './auth'
 export * as formTypes from './form'
@@ -7,6 +7,8 @@ export interface Route extends RouteProps {
   isExact?: boolean | null | undefined
 }
 export interface RouteProps {
-  Component: () => ReactElement
+  Component?: ReactNode
+  component?: ReactNode
+  render?: () => ReactElement
   route: string
 }

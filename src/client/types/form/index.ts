@@ -1,10 +1,12 @@
-import { ChangeEvent, ReactElement } from 'react'
+import { ChangeEvent } from 'react'
 import { FormikConfig, FormikValues } from 'formik'
 import { SchemaOf } from 'yup'
 import { AuthType } from '../auth'
+import { FieldsComponent, Field } from './Fields'
+
+export * from './Button'
 
 type OnSubmitType = (formValues: FormikValues) => void
-type FieldsComponent = (...any: any[]) => ReactElement
 
 export type FormProps = {
   FieldsComponent: FieldsComponent
@@ -13,19 +15,18 @@ export type FormProps = {
   validationSchema: SchemaOf<AuthType>
 }
 
-interface Field {
-  type: string
-  name: string
-  disabled?: boolean
-  error?: boolean
-  value?: unknown
-  required?: boolean
-}
-
 export interface TextFieldProps extends Field {
   onChange?: (e: ChangeEvent<unknown>) => void
   onBlur?: (e: unknown) => void
   placeholder: string
   helperText?: string
   label: string
+}
+
+export interface FieldConfig {
+  FieldComponent?: (param: TextFieldProps) => JSX.Element
+  label: string
+  type: string
+  name: string
+  placeholder: string
 }

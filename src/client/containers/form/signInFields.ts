@@ -1,9 +1,5 @@
 import TextField from '../../components/form/TextField'
-import { TextFieldProps } from '../../types/form'
-
-interface FieldConfig extends TextFieldProps {
-  FieldComponent?: (param: TextFieldProps) => JSX.Element
-}
+import { FieldConfig } from '../../types/form'
 
 const signInFields: FieldConfig[] = [
   {

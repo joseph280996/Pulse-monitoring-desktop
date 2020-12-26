@@ -15,12 +15,12 @@ function TextField({
   required = false,
 }: formTypes.TextFieldProps) {
   return (
-    <div className="Form-textFieldContainer">
-      <label className="Form-textFieldLabel" htmlFor={name}>
+    <div className="TextField-container">
+      <label className="TextField-label" htmlFor={name}>
         {`${label}:`}
       </label>
       <input
-        className="Form-textField"
+        className="TextField-input"
         required={required}
         name={name}
         type={type}
@@ -30,7 +30,7 @@ function TextField({
         placeholder={placeholder}
         disabled={disabled}
       />
-      {error && <div className="Form-textFieldHelper">{helperText}</div>}
+      {error && <div className="TextField-helper">{helperText}</div>}
     </div>
   )
 }

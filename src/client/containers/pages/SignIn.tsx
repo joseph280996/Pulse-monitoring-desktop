@@ -1,47 +1,40 @@
+import React, { ReactElement, useState } from 'react'
 import { useFormik } from 'formik'
-import React, { ReactElement } from 'react'
-import TextField from '../../components/form/TextField'
+import { Redirect } from 'react-router-dom'
 import { useAuthState } from '../../context/AuthContext'
 import { authTypes } from '../../types'
-import fields from '../form/signInFields'
+import SignInComponent from '../../components/pages/SignIn'
 
 function SignIn(): ReactElement {
   const { auth, setAuth } = useAuthState()
-  const { values, handleBlur, handleChange, handleSubmit } = useFormik<
-    authTypes.BasicAuthType
-  >({
+  const [submitting, setSubmitting] = useState(false)
+  const { setStatus, ...restFormikProps } = useFormik<authTypes.BasicAuthType>({
     initialValues: {
       username: '',
       password: '',
     },
     onSubmit: (formValues: authTypes.BasicAuthType) => {
+      setSubmitting(true)
       if (
         setAuth &&
         auth.username === formValues.username &&
         auth.password === formValues.password
       ) {
         setAuth({ ...auth, isSignedIn: true })
+        setSubmitting(false)
+      } else {
+        setStatus('Wrong username or password. Please try again.')
+        setSubmitting(false)
       }
     },
   })
+  if (auth.isSignedIn) return <Redirect to="/" />
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>SignIn</div>
-        <div>
-          {fields.map((field) => (
-            <div key={field.name}>
-              <TextField
-                {...field}
-                value={values[field.name]}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </div>
-          ))}
-        </div>
-      </form>
-    </div>
+    <SignInComponent
+      {...restFormikProps}
+      setStatus={setStatus}
+      submitting={submitting}
+    />
   )
 }
 
