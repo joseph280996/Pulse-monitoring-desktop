@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button, Spinner } from 'react-bootstrap'
 import classnames from 'classnames'
-import { formTypes } from '../../types'
+import { ButtonProps } from '../../../types'
 
 function SubmitButton({
   text,
   className,
   wrapperClassName,
   disabled,
-}: formTypes.ButtonProps) {
+}: ButtonProps) {
   return (
     <div className={classnames(wrapperClassName, 'Button-container')}>
       <Button

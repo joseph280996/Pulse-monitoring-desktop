@@ -1,14 +1,9 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
-import { FormikConfig, FormikProps } from 'formik'
 import SubmitButton from '../form/SubmitButton'
 import TextField from '../form/TextField'
 import fields from '../../containers/form/signInFields'
-import { authTypes } from '../../types'
-
-interface SignInComponentProps extends FormikProps<authTypes.BasicAuthType> {
-  submitting: boolean
-}
+import { SignInComponentProps } from '../../../types'
 
 function SignInComponent({
   handleSubmit,

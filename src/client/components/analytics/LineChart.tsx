@@ -5,15 +5,18 @@ import {
   XYPlotProps,
   LineMarkSeriesPoint,
   Hint,
+  LineMarkSeriesProps,
 } from 'react-vis'
-import MockData from '../../mock/MockChartData'
 import {
   deleteAttributeFromArrayElement,
-  deleteItemAtIndex,
   modifyItem,
 } from '../../utils/arrayItemManipulation'
 
-function LineChart({ width, height }: XYPlotProps) {
+function LineChart({
+  width,
+  height,
+  data: MockData,
+}: XYPlotProps & LineMarkSeriesProps) {
   const [previousVisitedIndex, setIndex] = useState<number>(0)
   const [data, setData] = useState(MockData)
   const [tooltipCoordinate, setTooltipCoordinate] = useState<

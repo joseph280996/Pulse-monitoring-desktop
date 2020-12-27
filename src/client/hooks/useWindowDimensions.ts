@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { hookTypes } from '../types'
+import { WindowDimension } from '../../types'
 
 function getWindowDimensions(offset: number) {
   const { innerWidth: width, innerHeight: height } = window
@@ -10,9 +10,9 @@ function getWindowDimensions(offset: number) {
 }
 
 export default (offset: number) => {
-  const [windowDimensions, setWindowDimensions] = useState<
-    hookTypes.WindowDimension
-  >(getWindowDimensions(offset))
+  const [windowDimensions, setWindowDimensions] = useState<WindowDimension>(
+    getWindowDimensions(offset),
+  )
 
   useEffect(() => {
     function handleResize() {

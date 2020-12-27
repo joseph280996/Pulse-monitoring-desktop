@@ -1,4 +1,4 @@
-import { ObjectKeys } from '../types/types'
+import { ObjectKeys } from '../../types/types'
 
 export const modifyItem = (data: any[], index: number, newData: ObjectKeys) => [
   ...data.slice(0, index),
@@ -11,7 +11,7 @@ export const deleteItemAtIndex = (data: any[], index: number) => {
 }
 
 export const deleteAttributeFromArrayElement = (
-  data: any[],
+  data: any,
   index: number,
   key: string,
 ) => {

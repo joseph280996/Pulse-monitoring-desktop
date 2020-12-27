@@ -1,5 +1,5 @@
 import TextField from '../../components/form/TextField'
-import { FieldConfig } from '../../types/form'
+import { FieldConfig } from '../../../types/form'
 
 const signInFields: FieldConfig[] = [
   {
