@@ -1,5 +1,5 @@
 import React from 'react'
-import { formTypes } from '../../types'
+import { TextFieldProps } from '../../../types'
 
 function TextField({
   type,
@@ -13,7 +13,7 @@ function TextField({
   error = false,
   disabled = false,
   required = false,
-}: formTypes.TextFieldProps) {
+}: TextFieldProps) {
   return (
     <div className="TextField-container">
       <label className="TextField-label" htmlFor={name}>
