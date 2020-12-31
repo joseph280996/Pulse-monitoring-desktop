@@ -15,23 +15,22 @@ function SignInComponent({
 }: SignInComponentProps) {
   return (
     <div className="SignIn-container Form-container">
-      <Form onSubmit={handleSubmit}>
-        <div>
-          <h2>Sign In</h2>
+      <Form className="Form" onSubmit={handleSubmit}>
+        <div className="SignIn-title">
+          <h2 className="SignIn-titleText">Sign In</h2>
         </div>
-        <div>
+        <div className="SignIn-fields">
           {fields.map((field) => (
-            <div key={field.name}>
-              <TextField
-                {...field}
-                value={values[field.name]}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </div>
+            <TextField
+              key={field.name}
+              {...field}
+              value={values[field.name]}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
           ))}
         </div>
-        <div>
+        <div className="SignIn-buttonWrapper">
           <SubmitButton
             text="Sign In"
             disabled={submitting || Boolean(status)}

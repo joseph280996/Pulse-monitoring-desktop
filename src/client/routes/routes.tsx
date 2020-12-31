@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import routes from './routesConfig'
 import PrivateRoute from '../components/PrivateRoute'
 
@@ -25,4 +25,4 @@ function Routes(): ReactElement {
   )
 }
 
-export default Routes
+export default withRouter(Routes)

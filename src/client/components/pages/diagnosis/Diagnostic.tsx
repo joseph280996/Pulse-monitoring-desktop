@@ -11,6 +11,8 @@ function Diagnostic({
   data,
   width,
   height,
+  onStart,
+  onStop,
 }: DiagnosisComponentProps) {
   return (
     <>
@@ -19,11 +21,19 @@ function Diagnostic({
         <LineChart data={data} width={width} height={height - 50} />
       </div>
       <div className="Diagnosis-toolbarContainer">
-        <Button type="button" className="Diagnosis-toolbarButton">
-          <FontAwesomeIcon icon={faStop} />
-        </Button>
-        <Button type="button" className="Diagnosis-toolbarButton">
+        <Button
+          type="button"
+          onClick={onStart}
+          className="Diagnosis-toolbarButton"
+        >
           <FontAwesomeIcon icon={faPlay} />
+        </Button>
+        <Button
+          type="button"
+          onClick={onStop}
+          className="Diagnosis-toolbarButton"
+        >
+          <FontAwesomeIcon icon={faStop} />
         </Button>
       </div>
     </>
