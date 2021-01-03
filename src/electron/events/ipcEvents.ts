@@ -1,18 +1,24 @@
 import { ipcMain } from 'electron'
-import Timer from '../../utils/Timer'
 import { DIAGNOSTIC_MODE } from '../../variables'
 
+let sendingSensorValuesInterval: NodeJS.Timeout
+
 ipcMain.on('sensorValues', (event, arg) => {
-  if (arg === DIAGNOSTIC_MODE.START) {
-    try {
-      Timer(0, 20, (err, value: number | string) => {
-        if (err) {
-          throw Error(err.message)
+  switch (arg) {
+    case DIAGNOSTIC_MODE.START:
+      sendingSensorValuesInterval = setInterval(() => {
+        try {
+          event.sender.send('sensorValues-reply', Math.random())
+        } catch (err) {
+          console.log(err)
         }
-        event.sender.send('sensorValues-reply', value)
-      })
-    } catch (err) {
-      console.log(err)
-    }
+      }, 500)
+      break
+    case DIAGNOSTIC_MODE.STOP:
+      if (sendingSensorValuesInterval)
+        clearInterval(sendingSensorValuesInterval)
+      break
+    default:
+      break
   }
 })

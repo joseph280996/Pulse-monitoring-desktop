@@ -14,7 +14,7 @@ import path from 'path'
 import { app, BrowserWindow, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
-import MenuBuilder from './menu'
+import MenuBuilder from './electron/menus/menu'
 import './electron/events/ipcEvents'
 
 export default class AppUpdater {

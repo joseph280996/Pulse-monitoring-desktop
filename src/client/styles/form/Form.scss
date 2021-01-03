@@ -1,8 +1,23 @@
 @mixin Form {
   .Form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 50px 40px;
+    min-height: 800px;
+    min-width: 400px;
     &-container {
+      min-height: 500px;
       display: flex;
       justify-content: center;
+    }
+    &-title {
+      margin-bottom: 40px;
+    }
+    &-fields {
+      & > * {
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
     }
   }
 }

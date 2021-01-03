@@ -16,10 +16,10 @@ function SignInComponent({
   return (
     <div className="SignIn-container Form-container">
       <Form className="Form" onSubmit={handleSubmit}>
-        <div className="SignIn-title">
+        <div className="Form-title">
           <h2 className="SignIn-titleText">Sign In</h2>
         </div>
-        <div className="SignIn-fields">
+        <div className="Form-fields">
           {fields.map((field) => (
             <TextField
               key={field.name}
@@ -30,7 +30,7 @@ function SignInComponent({
             />
           ))}
         </div>
-        <div className="SignIn-buttonWrapper">
+        <div className="Form-buttonWrapper">
           <SubmitButton
             text="Sign In"
             disabled={submitting || Boolean(status)}

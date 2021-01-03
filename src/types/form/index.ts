@@ -20,12 +20,12 @@ export interface TextFieldProps extends Field {
   onBlur?: (e: unknown) => void
   placeholder: string
   helperText?: string
-  label: string
+  label?: string
 }
 
 export interface FieldConfig {
   FieldComponent?: (param: TextFieldProps) => JSX.Element
-  label: string
+  label?: string
   type: string
   name: string
   placeholder: string

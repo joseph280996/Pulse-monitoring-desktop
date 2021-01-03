@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom'
-import SignIn from './SignIn'
-import ForgotPass from './ForgotPass'
-import ChangeUsername from './ChangeUsername'
+import SignIn from '../containers/pages/SignIn'
+import ForgotPass from '../containers/pages/ForgotPass'
+import ChangeUsername from '../containers/pages/ChangeUsername'
 
 const getAuthRoutes = (path: string) => [
   {
