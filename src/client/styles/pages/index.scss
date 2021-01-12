@@ -1,4 +1,7 @@
 @import './SignIn.scss';
 @include SignIn;
 
+@import './404.scss';
+@include NotFound;
+
 @import './diagnosis/index.scss';

@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { AuthProvider } from './AuthContext'
-import { SensorValueProvider } from './SensorDataContext'
 
-const Context = ({ children }) => {
-  return [AuthProvider, SensorValueProvider].reduce(
+const contexts = [AuthProvider]
+
+const Context = ({ children }: PropsWithChildren<void>) => {
+  return contexts.reduce(
     (component, Provider) => <Provider>{component}</Provider>,
     children,
   )

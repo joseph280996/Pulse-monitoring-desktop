@@ -1,8 +1,8 @@
-import Diagnosis from '../containers/pages/Diagnosis'
+import Diagnosis from '../containers/pages/diagnosis/Diagnosis'
 import AuthPage from './AuthRoutes'
 import { Route } from '../../types'
 import NotFoundPage from '../components/pages/404'
-import PostDiagnosis from '../components/pages/PostDiagnosis'
+import PostDiagnosis from '../containers/pages/diagnosis/PostDiagnosis'
 
 const routesConfig: Route[] = [
   {

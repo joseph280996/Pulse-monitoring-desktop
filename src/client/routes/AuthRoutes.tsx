@@ -1,10 +1,12 @@
 import React, { ReactElement } from 'react'
-import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom'
-import SignIn from '../containers/pages/SignIn'
-import ForgotPass from '../containers/pages/ForgotPass'
-import ChangeUsername from '../containers/pages/ChangeUsername'
+import { Redirect, useRouteMatch } from 'react-router-dom'
+import SignIn from '../containers/pages/auth/SignIn'
+import ForgotPass from '../containers/pages/auth/ForgotPass'
+import ChangeUsername from '../containers/pages/auth/ChangeUsername'
+import Routes from './routes'
+import { Route } from '../../types'
 
-const getAuthRoutes = (path: string) => [
+const getAuthRoutes = (path: string): Route[] => [
   {
     route: `${path}/signin`,
     Component: SignIn,
@@ -23,12 +25,9 @@ function AuthPage(): ReactElement {
   const { path } = useRouteMatch()
   const authRoutes = getAuthRoutes(path)
   return (
-    <Switch>
-      {authRoutes.map(({ route, Component }) => (
-        <Route path={route} key={route} component={Component} />
-      ))}
+    <Routes routes={authRoutes}>
       <Redirect to="/auth/signin" />
-    </Switch>
+    </Routes>
   )
 }
 

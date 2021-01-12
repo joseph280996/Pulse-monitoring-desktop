@@ -1,9 +1,9 @@
 import React, { ReactElement, useState } from 'react'
 import { useFormik } from 'formik'
 import { Redirect } from 'react-router-dom'
-import { useAuthState } from '../../context/AuthContext'
-import { BasicAuthType } from '../../../types'
-import SignInComponent from '../../components/pages/SignIn'
+import { useAuthState } from '../../../context/AuthContext'
+import { BasicAuthType } from '../../../../types'
+import SignInComponent from '../../../components/pages/SignIn'
 
 function SignIn(): ReactElement {
   const { auth, setAuth } = useAuthState()

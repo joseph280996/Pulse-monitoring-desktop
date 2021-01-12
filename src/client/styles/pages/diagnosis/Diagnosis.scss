@@ -1,8 +1,36 @@
 @mixin Diagnosis {
   .Diagnosis {
+    height: 100%;
     &-toolbar {
       &Container {
-        display: inline;
+        float: bottom;
+        display: flex;
+        justify-content: center;
+        & > * {
+          display: inline;
+        }
+      }
+    }
+  }
+  &-button {
+    & > .Icon {
+      &-recording {
+        svg {
+          color: red;
+        }
+      }
+      &-stop {
+        svg {
+          color: red;
+        }
+      }
+    }
+    & > &Text {
+      &Stop {
+        color: black;
+      }
+      &Recording {
+        color: black;
       }
     }
   }

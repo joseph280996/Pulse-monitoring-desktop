@@ -2,9 +2,29 @@
 
 @mixin SignIn {
   .SignIn {
-    &-container {
-      @include verticalAndHorizontalCenter;
+    &-page {
       height: 100%;
+      justify-content: flex-end;
+      @include verticalCenter;
+    }
+    &-welcome {
+      text-align: center;
+    }
+    &-container {
+      width: 50%;
+      height: 100%;
+      & .Form {
+        border: 2px solid #e8e8e8;
+        margin-top: 50%;
+        min-height: 500px;
+        &-container {
+          max-width: 500px;
+          min-height: 100px;
+        }
+      }
+    }
+    &-field {
+      font-size: 60px;
     }
     &-titleText {
       text-align: center;
