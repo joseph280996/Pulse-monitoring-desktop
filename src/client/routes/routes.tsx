@@ -1,26 +1,36 @@
-import React, { ReactElement } from 'react'
+import React, { FC, PropsWithChildren, ReactElement } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import routes from './routesConfig'
+
+import { Route as RouteType } from '../../types'
 import PrivateRoute from '../components/PrivateRoute'
 
 type RouteComponentType = typeof Route | ((param: any) => ReactElement)
+type RoutesProps = {
+  routes: RouteType[]
+}
 
-function Routes(): ReactElement {
+const Routes: FC<RoutesProps> = ({
+  routes,
+  children,
+}: PropsWithChildren<RoutesProps>) => {
   return (
     <Switch>
-      {routes.map(({ route, Component, isPrivate, isExact }) => {
-        const RouteComponent: RouteComponentType = isPrivate
-          ? PrivateRoute
-          : Route
-        return (
-          <RouteComponent
-            key={route}
-            path={route}
-            isExact={isExact}
-            component={Component}
-          />
-        )
-      })}
+      {routes.map(
+        ({ route, Component, isPrivate = false, isExact = false }) => {
+          const RouteComponent: RouteComponentType = isPrivate
+            ? PrivateRoute
+            : Route
+          return (
+            <RouteComponent
+              key={route}
+              path={route}
+              exact={isExact}
+              component={Component}
+            />
+          )
+        },
+      )}
+      {children}
     </Switch>
   )
 }

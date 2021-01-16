@@ -1,7 +1,9 @@
-import Diagnosis from '../containers/pages/Diagnosis'
-import AuthPage from '../containers/pages/AuthPage'
+import Diagnosis from '../containers/pages/diagnosis/Diagnosis'
+import AuthPage from './AuthRoutes'
 import { Route } from '../../types'
-import NotFoundPage from '../containers/pages/404'
+import NotFoundPage from '../components/pages/404'
+import PostDiagnosis from '../containers/pages/diagnosis/PostDiagnosis'
+import Finish from '../containers/pages/Finish'
 
 const routesConfig: Route[] = [
   {
@@ -11,7 +13,16 @@ const routesConfig: Route[] = [
   {
     route: '/',
     isPrivate: true,
+    isExact: true,
     Component: Diagnosis,
+  },
+  {
+    route: '/postdiagnosis',
+    Component: PostDiagnosis,
+  },
+  {
+    route: '/finish',
+    Component: Finish,
   },
   {
     route: '*',

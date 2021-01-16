@@ -13,12 +13,15 @@ function TextField({
   error = false,
   disabled = false,
   required = false,
+  className,
 }: TextFieldProps) {
   return (
-    <div className="TextField-container">
-      <label className="TextField-label" htmlFor={name}>
-        {`${label}:`}
-      </label>
+    <div className={`TextField-container ${className}`}>
+      {label && (
+        <label className="TextField-label" htmlFor={name}>
+          {`${label}:`}
+        </label>
+      )}
       <input
         className="TextField-input"
         required={required}

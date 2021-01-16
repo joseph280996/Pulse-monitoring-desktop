@@ -1,5 +1,7 @@
 @import './SignIn.scss';
 @include SignIn;
 
-@import './Diagnosis.scss';
-@include Diagnosis;
+@import './404.scss';
+@include NotFound;
+
+@import './diagnosis/index.scss';

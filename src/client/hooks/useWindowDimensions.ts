@@ -9,6 +9,10 @@ function getWindowDimensions(offset: number) {
   }
 }
 
+/**
+ * @param offset offset desired from the actual screen size
+ * @returns screen width and height
+ */
 export default (offset: number) => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimension>(
     getWindowDimensions(offset),

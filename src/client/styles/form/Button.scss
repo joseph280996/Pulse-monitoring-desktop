@@ -1,0 +1,12 @@
+@mixin Button {
+  .Button {
+    &-primary {
+      border: 1px solid #ced4da;
+      background-color: $primary;
+      &:hover {
+        border: 1px solid #ced4da;
+        background-color: $primary-hover;
+      }
+    }
+  }
+}

@@ -1,8 +1,3 @@
+export * from './diagnosis'
 export * from './mode'
-
-export type DiagnosisComponentProps = {
-  isFinished: boolean
-  data: any[]
-  width: number
-  height: number
-}
+export * from './postDiagnosis'

@@ -9,4 +9,5 @@ export interface Field {
   error?: boolean
   value: string | number | readonly string[] | undefined
   required?: boolean
+  className?: string
 }

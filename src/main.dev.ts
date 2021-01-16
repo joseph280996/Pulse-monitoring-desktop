@@ -14,7 +14,7 @@ import path from 'path'
 import { app, BrowserWindow, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
-import MenuBuilder from './menu'
+import MenuBuilder from './electron/menus/menu'
 import './electron/events/ipcEvents'
 
 export default class AppUpdater {
@@ -70,14 +70,15 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    fullscreen: true,
+    width: 1024,
+    height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,
     },
   })
 
-  mainWindow.loadURL(`file://${__dirname}/client/index.html`)
+  mainWindow.loadURL(`file://${__dirname}/client/public/index.html`)
 
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
