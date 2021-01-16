@@ -1,9 +1,9 @@
 import React from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import SubmitButton from '../form/SubmitButton'
 import TextField from '../form/TextField'
-import fields from '../../containers/form/signInFields'
+import fields from '../../containers/pages/auth/signInFields'
 import { SignInComponentProps } from '../../../types'
 import backgroundImage from '../../public/assets/images/Chinese-Traditional-Medicine-Feature-image.jpg'
 
@@ -17,7 +17,7 @@ function SignInComponent({
 }: SignInComponentProps) {
   return (
     <div
-      className="SignIn-page"
+      className="SignIn"
       style={{
         background: `url(${backgroundImage}) 0 0 / cover no-repeat`,
       }}
@@ -41,12 +41,13 @@ function SignInComponent({
               ))}
             </div>
             <div className="SignIn-otherOption">
-              <Link to="/forgotpass">
-                <Button type="button">Forgot password</Button>
+              <Link className="SignIn-link" to="/forgotpass">
+                Forgot password
               </Link>
             </div>
             <div className="Form-buttonWrapper">
               <SubmitButton
+                className="Button-primary"
                 text="Sign In"
                 disabled={submitting || Boolean(status)}
               />

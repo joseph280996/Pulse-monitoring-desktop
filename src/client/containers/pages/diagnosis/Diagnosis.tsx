@@ -10,7 +10,7 @@ function Diagnosis(): ReactElement {
   const [isFinished, setIsFinished] = useState<boolean>(false)
   const { height, width } = useWindowDimensions(20)
   const [displayData, recordedData] = useIPCListener(
-    'sensorValues',
+    'sensorValues-reply',
     shouldStartRecord,
   )
 
@@ -23,7 +23,6 @@ function Diagnosis(): ReactElement {
     setStartRecord(true)
   }
   const onStopHandler = () => {
-    // ipcRenderer.send('db-write', recordedData)
     ipcRenderer.send('sensorValues', DIAGNOSTIC_MODE.STOP)
     setIsFinished(true)
   }

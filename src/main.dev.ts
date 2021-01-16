@@ -42,7 +42,7 @@ if (
 const installExtensions = async () => {
   const installer = require('electron-devtools-installer')
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS
-  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
+  const extensions = ['REACT_DEVELOPER_TOOLS']
 
   return installer
     .default(
@@ -70,7 +70,8 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    fullscreen: true,
+    width: 1024,
+    height: 728,
     icon: getAssetPath('icon.png'),
     webPreferences: {
       nodeIntegration: true,

@@ -10,7 +10,7 @@ function SubmitButton({
   disabled,
 }: ButtonProps) {
   return (
-    <div className={classnames(wrapperClassName, 'Button-container')}>
+    <div className={classnames(wrapperClassName, 'SubmitButton-container')}>
       <Button
         className={classnames(className, 'Button')}
         type="submit"

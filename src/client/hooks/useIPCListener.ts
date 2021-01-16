@@ -14,18 +14,16 @@ const useIPCListener = (channel: string, shouldStartRecord: boolean) => {
   const [data, setData] = useState<LineMarkSeriesPoint[]>([])
   const [recordedData, setRecordedData] = useState<RecordedData[]>([])
   useEffect(() => {
-    ipcRenderer.on('sensorValues-reply', (_event, arg) => {
+    ipcRenderer.on(channel, (_event, arg) => {
+      const currentTime = moment()
       setData((prevData) => {
         if (prevData.length > 100)
-          return [...prevData.slice(1), { x: moment().valueOf(), y: arg }]
-        return [...prevData, { x: moment().valueOf(), y: arg }]
+          return [...prevData.slice(1), { x: currentTime.valueOf(), y: arg }]
+        return [...prevData, { x: currentTime.valueOf(), y: arg }]
       })
       if (shouldStartRecord) {
         setRecordedData((prevRecorded) => {
-          return [
-            ...prevRecorded,
-            { time: moment().format('YYYY-MM-DD HH:mm:ss'), value: arg },
-          ]
+          return [...prevRecorded, { time: currentTime.valueOf(), value: arg }]
         })
       }
     })

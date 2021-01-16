@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react'
 import { FormikConfig, FormikValues } from 'formik'
-import { SchemaOf } from 'yup'
+import { AnySchema, SchemaOf, StringSchema } from 'yup'
+import { ValidateOptions } from 'yup/lib/types'
 import { AuthType } from '../auth'
 import { FieldsComponent, Field } from './Fields'
 
@@ -29,4 +30,6 @@ export interface FieldConfig {
   type: string
   name: string
   placeholder: string
+  required: boolean
+  validate: AnySchema
 }

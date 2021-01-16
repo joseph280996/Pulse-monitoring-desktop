@@ -1,3 +1,5 @@
+import { MouseEventHandler } from 'react'
+
 export interface LineChartProps {
   data: any
   width: number
@@ -5,6 +7,6 @@ export interface LineChartProps {
 }
 
 export type RecordedData = {
-  time: string
+  time: number | string
   value: number | string
 }
