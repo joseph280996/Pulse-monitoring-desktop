@@ -1,6 +1,6 @@
 import Diagnosis from '../containers/pages/diagnosis/Diagnosis'
 import AuthPage from './AuthRoutes'
-import { Route } from '../../types'
+import { Route } from '../../common/types'
 import NotFoundPage from '../components/pages/404'
 import PostDiagnosis from '../containers/pages/diagnosis/PostDiagnosis'
 import Finish from '../containers/pages/Finish'

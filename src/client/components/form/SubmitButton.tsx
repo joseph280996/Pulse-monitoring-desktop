@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Spinner } from 'react-bootstrap'
 import classnames from 'classnames'
-import { ButtonProps } from '../../../types'
+import { ButtonProps } from '../../../common/types'
 
 function SubmitButton({
   text,

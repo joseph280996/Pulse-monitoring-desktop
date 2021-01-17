@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faRedoAlt } from '@fortawesome/free-solid-svg-icons'
-import { RedoOrContinueProps } from '../../../../types'
+import { RedoOrContinueProps } from '../../../../common/types'
 
 function RedoOrContinue({ recordedData, onReset }: RedoOrContinueProps) {
   return (

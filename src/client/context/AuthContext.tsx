@@ -1,6 +1,6 @@
 import React, { useState, createContext, FC, useContext } from 'react'
 import PropTypes from 'prop-types'
-import { AuthContextValues, AuthType } from '../../types'
+import { AuthContextValues, AuthType } from '../../common/types'
 
 const AuthContext = createContext<AuthContextValues>({
   auth: {

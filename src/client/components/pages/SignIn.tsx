@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import SubmitButton from '../form/SubmitButton'
 import TextField from '../form/TextField'
 import fields from '../../containers/pages/auth/signInFields'
-import { SignInComponentProps } from '../../../types'
+import { SignInComponentProps } from '../../../common/types'
 import backgroundImage from '../../public/assets/images/Chinese-Traditional-Medicine-Feature-image.jpg'
 
 function SignInComponent({

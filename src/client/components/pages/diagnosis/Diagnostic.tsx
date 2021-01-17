@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { MouseEventHandler } from 'react'
 import { Button } from 'react-bootstrap'
 import classnames from 'classnames'
-import { DiagnosisComponentProps } from '../../../../types'
+import { DiagnosisComponentProps } from '../../../../common/types'
 import LineChart from '../../../containers/analytics/LineChart'
 import RedoOrContinue from './RedoOrContinue'
 

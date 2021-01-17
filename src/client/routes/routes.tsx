@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, ReactElement } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
-import { Route as RouteType } from '../../types'
+import { Route as RouteType } from '../../common/types'
 import PrivateRoute from '../components/PrivateRoute'
 
 type RouteComponentType = typeof Route | ((param: any) => ReactElement)

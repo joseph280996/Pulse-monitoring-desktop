@@ -3,7 +3,7 @@ import { object } from 'yup'
 import { useFormik } from 'formik'
 import { Redirect } from 'react-router-dom'
 import { useAuthState } from '../../../context/AuthContext'
-import { BasicAuthType } from '../../../../types'
+import { BasicAuthType } from '../../../../common/types'
 import SignInComponent from '../../../components/pages/SignIn'
 import fields from './signInFields'
 

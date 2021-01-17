@@ -4,7 +4,7 @@ import SignIn from '../containers/pages/auth/SignIn'
 import ForgotPass from '../containers/pages/auth/ForgotPass'
 import ChangeUsername from '../containers/pages/auth/ChangeUsername'
 import Routes from './routes'
-import { Route } from '../../types'
+import { Route } from '../../common/types'
 
 const getAuthRoutes = (path: string): Route[] => [
   {

@@ -2,7 +2,7 @@ import { ipcRenderer } from 'electron'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
 import { LineMarkSeriesPoint } from 'react-vis'
-import { RecordedData } from '../../types'
+import { RecordedData } from '../../common/types'
 
 /**
  * @param channel the IPC channel to listen to

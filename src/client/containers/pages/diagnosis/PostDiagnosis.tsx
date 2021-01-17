@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import { Redirect, useLocation } from 'react-router-dom'
 import { ipcRenderer } from 'electron'
-import { PostDiagnosisLocationState } from '../../../../types'
+import { PostDiagnosisLocationState } from '../../../../common/types'
 import Component from '../../../components/pages/diagnosis/PostDiagnosis'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 

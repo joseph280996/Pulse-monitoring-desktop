@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from 'react'
 import { ipcRenderer } from 'electron'
 import Component from '../../../components/pages/diagnosis/Diagnostic'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
-import { DIAGNOSTIC_MODE } from '../../../../variables'
+import { DIAGNOSTIC_MODE } from '../../../../common/variables'
 import useIPCListener from '../../../hooks/useIPCListener'
 
 function Diagnosis(): ReactElement {
@@ -10,12 +10,12 @@ function Diagnosis(): ReactElement {
   const [isFinished, setIsFinished] = useState<boolean>(false)
   const { height, width } = useWindowDimensions(20)
   const [displayData, recordedData] = useIPCListener(
-    'sensorValues-reply',
+    'sensorValues',
     shouldStartRecord,
   )
 
   const onReset = () => {
-    ipcRenderer.send('sensorValues', DIAGNOSTIC_MODE.START)
+    ipcRenderer.send('getSensorValues', DIAGNOSTIC_MODE.START)
     setIsFinished(false)
   }
 
@@ -23,7 +23,7 @@ function Diagnosis(): ReactElement {
     setStartRecord(true)
   }
   const onStopHandler = () => {
-    ipcRenderer.send('sensorValues', DIAGNOSTIC_MODE.STOP)
+    ipcRenderer.send('getSensorValues', DIAGNOSTIC_MODE.STOP)
     setIsFinished(true)
   }
 
