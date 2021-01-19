@@ -15,7 +15,7 @@ function PostDiagnosis() {
   return (
     <Component
       width={width}
-      height={height}
+      height={height - 100}
       data={location.state?.recordedData?.map((datum) => ({
         x: moment(datum.time).valueOf(),
         y: datum.value,

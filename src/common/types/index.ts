@@ -1,3 +1,4 @@
+import { Pool, queryCallback } from 'mysql'
 import { ReactElement, ReactNode } from 'react'
 
 export * from './auth'
@@ -15,4 +16,19 @@ export interface RouteProps {
 export interface Route extends RouteProps {
   isPrivate?: boolean
   isExact?: boolean
+}
+
+export interface DB {
+  query: (
+    query: string,
+    values: Array<any>,
+    callback?: queryCallback,
+  ) => Promise<any>
+  cleanup: () => void
+}
+
+export interface ADS1115Interface {
+  gain(): number
+  gain(level: string): number
+  measure: (mux: string) => Promise<number>
 }
