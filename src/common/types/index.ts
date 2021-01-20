@@ -19,16 +19,23 @@ export interface Route extends RouteProps {
 }
 
 export interface DB {
-  query: (
+  query(
     query: string,
     values: Array<any>,
     callback?: queryCallback,
-  ) => Promise<any>
-  cleanup: () => void
+  ): Promise<any>
+  cleanup(): void
 }
 
 export interface ADS1115Interface {
   gain(): number
   gain(level: string): number
   measure: (mux: string) => Promise<number>
+}
+
+export interface I2CEventHandlerInterface {
+  isInitialized(): boolean
+  init(): Promise<ADS1115Interface | null>
+  getADS1115Instance(): ADS1115Interface | null
+  cleanup(): void
 }

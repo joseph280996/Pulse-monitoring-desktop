@@ -17,7 +17,7 @@ class IpcEventHandler {
 
   registerHandlers(channels: IpcChannelsInterface[]) {
     const channelNames = channels.map(({ channel, handler }) => {
-      ipcMain.on(channel, handler)
+      this.ipcEventEmitter.on(channel, handler)
       return channel
     })
     this.setChannels(channelNames)
