@@ -1,41 +1,7 @@
-import { Pool, queryCallback } from 'mysql'
-import { ReactElement, ReactNode } from 'react'
-
-export * from './auth'
-export * from './form'
-export * from './hooks'
-export * from './diagnosis'
-export * from './analytics'
-export * from './electron'
-export interface RouteProps {
-  Component?: ReactNode
-  component?: ReactNode
-  render?: () => ReactElement
-  route: string
-}
-export interface Route extends RouteProps {
-  isPrivate?: boolean
-  isExact?: boolean
-}
-
-export interface DB {
-  query(
-    query: string,
-    values: Array<any>,
-    callback?: queryCallback,
-  ): Promise<any>
-  cleanup(): void
-}
-
-export interface ADS1115Interface {
-  gain(): number
-  gain(level: string): number
-  measure: (mux: string) => Promise<number>
-}
-
-export interface I2CEventHandlerInterface {
-  isInitialized(): boolean
-  init(): Promise<ADS1115Interface | null>
-  getADS1115Instance(): ADS1115Interface | null
-  cleanup(): void
-}
+export * as AuthTypes from './auth'
+export * as FormTypes from './form'
+export * as HooksTypes from './hooks'
+export * as DiagnosisTypes from './diagnosis'
+export * as AnalyticsTypes from './analytics'
+export * as ElectronTypes from './electron'
+export * as ComponentTypes from './components'

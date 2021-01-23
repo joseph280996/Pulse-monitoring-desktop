@@ -5,6 +5,7 @@
     height: 100%;
     justify-content: flex-end;
     @include verticalCenter;
+    background-image: url('../../public/assets/images/Chinese-Traditional-Medicine-Feature-image.jpg');
     &-container {
       height: 100%;
       width: 50%;

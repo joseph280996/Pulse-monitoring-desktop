@@ -1,5 +1,5 @@
 import { createPool, Pool, queryCallback } from 'mysql'
-import { DB } from '../common/types'
+import { ElectronTypes } from '../common/types'
 
 const databaseConfig = {
   connectionLimit: 2,
@@ -10,7 +10,7 @@ const databaseConfig = {
   database: 'pulsemonitoring',
 }
 
-class DBInstance implements DB {
+class DBInstance implements ElectronTypes.DB {
   private pool: Pool | null = null
 
   private getPool() {

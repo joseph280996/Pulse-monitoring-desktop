@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextFieldProps } from '../../../common/types'
+import { FormTypes } from '../../../common/types'
 
 function TextField({
   type,
@@ -14,7 +14,7 @@ function TextField({
   disabled = false,
   required = false,
   className,
-}: TextFieldProps) {
+}: FormTypes.TextFieldProps) {
   return (
     <div className={`TextField-container ${className}`}>
       {label && (

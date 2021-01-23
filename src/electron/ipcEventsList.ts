@@ -1,7 +1,6 @@
 import { IpcMainEvent, IpcRendererEvent } from 'electron'
-import { I2CEventHandlerInterface, IpcChannelsInterface } from '../common/types'
-import { DIAGNOSTIC_MODE } from '../common/variables'
-import I2cEventHandler from './i2cEventHandler'
+import { ElectronTypes } from '../common/types'
+import DIAGNOSIS_MODE from '../common/variables'
 import IntervalHandler from './intevalHanlders'
 import Record from './models/Record'
 
@@ -9,32 +8,40 @@ const intervalHandler = new IntervalHandler()
 
 const intervalName = 'sendSensorValueInterval'
 
-let i2cHandler: I2CEventHandlerInterface
+let i2cHandler: ElectronTypes.I2CEventHandlerInterface
 
-const channelsHandler: IpcChannelsInterface[] = [
+const getSensorValue = async () => {
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line global-require
+    const I2cEventHandler = require('./i2cEventHandler')
+    if (!i2cHandler) i2cHandler = new I2cEventHandler()
+    if (!i2cHandler.isInitialized()) i2cHandler.init()
+    const ADS1115Instance = i2cHandler.getADS1115Instance()
+    return ADS1115Instance?.measure('0+GND')
+  }
+  return new Promise((resolve) => resolve(Math.random()))
+}
+
+const channelsHandler: ElectronTypes.IpcChannelsInterface[] = [
   {
     channel: 'getSensorValue',
     handler(event: IpcMainEvent | IpcRendererEvent, arg: any) {
       switch (arg) {
-        case DIAGNOSTIC_MODE.START:
-          if (!i2cHandler) i2cHandler = new I2cEventHandler()
-          if (!i2cHandler.isInitialized()) i2cHandler.init()
+        case DIAGNOSIS_MODE.START:
           intervalHandler.registerInterval(
             intervalName,
             setInterval(async () => {
               try {
-                const ADS1115Instance = i2cHandler.getADS1115Instance()
-                if (ADS1115Instance) {
-                  const sensorValue = ADS1115Instance.measure('0+GND')
-                  event.sender.send('sensorValues', sensorValue)
-                } else event.sender.send('sensorValue', null)
+                const sensorValue = await getSensorValue()
+                console.log(sensorValue)
+                event.sender.send('sensorValues', sensorValue)
               } catch (err) {
                 console.error(err)
               }
             }, 500),
           )
           break
-        case DIAGNOSTIC_MODE.STOP:
+        case DIAGNOSIS_MODE.STOP:
           try {
             if (i2cHandler && i2cHandler.isInitialized) {
               i2cHandler.cleanup()

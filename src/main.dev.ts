@@ -113,8 +113,10 @@ const createWindow = async () => {
   // eslint-disable-next-line
   new AppUpdater()
 
-  const ipcHandler = new IpcEventHandler(ipcMain)
-  ipcHandler.registerHandlers(eventList)
+  const ipcHandler = new IpcEventHandler()
+  console.log(ipcHandler)
+  ipcHandler.registerHandlers(eventList, ipcMain)
+  console.log(ipcHandler)
 }
 
 /**

@@ -1,13 +1,10 @@
-import { IpcMain, ipcMain, IpcRenderer } from 'electron'
-import { IpcChannelsInterface } from './types'
+import { IpcMain, IpcRenderer } from 'electron'
+import { ElectronTypes } from './types'
 
 class IpcEventHandler {
   private channels: string[]
 
-  private ipcEventEmitter: IpcMain | IpcRenderer
-
-  constructor(ipcEventEmitter: IpcMain | IpcRenderer) {
-    this.ipcEventEmitter = ipcEventEmitter
+  constructor() {
     this.channels = []
   }
 
@@ -15,9 +12,13 @@ class IpcEventHandler {
     this.channels = channels
   }
 
-  registerHandlers(channels: IpcChannelsInterface[]) {
+  registerHandlers(
+    channels: ElectronTypes.IpcChannelsInterface[],
+    ipcEventEmitter: IpcMain | IpcRenderer,
+  ) {
+    console.log(channels)
     const channelNames = channels.map(({ channel, handler }) => {
-      this.ipcEventEmitter.on(channel, handler)
+      ipcEventEmitter.on(channel, handler)
       return channel
     })
     this.setChannels(channelNames)
@@ -27,9 +28,9 @@ class IpcEventHandler {
     return this.channels
   }
 
-  end() {
+  end(ipcEventEmitter: IpcMain | IpcRenderer) {
     this.channels.forEach((channel) =>
-      this.ipcEventEmitter.removeAllListeners(channel),
+      ipcEventEmitter.removeAllListeners(channel),
     )
   }
 }

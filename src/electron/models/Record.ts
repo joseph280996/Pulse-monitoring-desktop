@@ -1,6 +1,5 @@
-import { Pool } from 'mysql'
 import { pick } from 'lodash'
-import { DB, RecordedData } from '../../common/types'
+import { ElectronTypes } from '../../common/types'
 import DBInstance from '../db'
 
 class Record {
@@ -8,7 +7,7 @@ class Record {
 
   pulseTypeID: number
 
-  private db: DB
+  private db: ElectronTypes.DB
 
   private static sqlFields = `Record.id as recordID,
    Record.dateTimeCreated, Record.dateTimeUpdated,

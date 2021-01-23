@@ -1,40 +1,41 @@
 import { faCircle, faStop } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { MouseEventHandler } from 'react'
-import { Button } from 'react-bootstrap'
-import classnames from 'classnames'
-import { DiagnosisComponentProps } from '../../../../common/types'
+import { DiagnosisTypes } from '../../../../common/types'
 import LineChart from '../../../containers/analytics/LineChart'
 import RedoOrContinue from './RedoOrContinue'
+import { ButtonWithIcon } from '../../form/Button'
 
-const RecordButton = ({ onRecord }: { onRecord: MouseEventHandler }) => {
+type RecordButtonProps = {
+  onRecord: MouseEventHandler
+}
+
+const RecordButton = ({ onRecord }: RecordButtonProps) => {
   return (
-    <Button type="button" onClick={onRecord} className="Diagnosis-button">
-      <span className="fa-stack fa-2x">
-        <FontAwesomeIcon
-          className="fa-stack-2x Icon-recording"
-          icon={faCircle}
-        />
-        <span
-          className={classnames('fa-stack-1x', 'Diagnosis-buttonTextRecord')}
-        >
-          REC
-        </span>
-      </span>
-    </Button>
+    <ButtonWithIcon
+      onClick={onRecord}
+      className="Diagnosis-button"
+      iconWrapperClassName="fa-stack fa-2x"
+      iconClassName="fa-stack-2x Icon-recording"
+      iconStyle={{ color: 'red' }}
+      icon={faCircle}
+      buttonTextClassName="fa-stack-1x Diagnosis-buttonTextRecord"
+    />
   )
 }
 
-const StopButton = ({ onStop }: { onStop: MouseEventHandler }) => {
+type StopButtonProps = {
+  onStop: MouseEventHandler
+}
+const StopButton = ({ onStop }: StopButtonProps) => {
   return (
-    <Button type="button" onClick={onStop} className="Diagnosis-button">
-      <span className="fa-stack fa-2x">
-        <FontAwesomeIcon className="fa-stack-2x Icon-stop" icon={faStop} />
-        <span className={classnames('fa-stack-1x', 'Diagnosis-buttonTextStop')}>
-          STOP
-        </span>
-      </span>
-    </Button>
+    <ButtonWithIcon
+      onClick={onStop}
+      className="Diagnosis-button"
+      iconWrapperClassName="fa-stack fa-2x"
+      iconClassName="fa-stack-2x Icon-stop"
+      icon={faStop}
+      buttonTextClassName="fa-stack-1x Diagnosis-buttonTextStop"
+    />
   )
 }
 
@@ -48,7 +49,7 @@ function Diagnostic({
   onReset,
   recordedData,
   recordStarted,
-}: DiagnosisComponentProps) {
+}: DiagnosisTypes.DiagnosisComponentProps) {
   return (
     <div className="Diagnosis" style={{ maxHeight: height }}>
       {isFinished && (

@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from 'react'
 import { ipcRenderer } from 'electron'
 import Component from '../../../components/pages/diagnosis/Diagnostic'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
-import { DIAGNOSTIC_MODE } from '../../../../common/variables'
+import DIAGNOSTIC_MODE from '../../../../common/variables'
 import useIPCListener from '../../../hooks/useIPCListener'
 
 function Diagnosis(): ReactElement {

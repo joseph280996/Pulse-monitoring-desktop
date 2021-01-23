@@ -2,12 +2,12 @@ import React from 'react'
 import moment from 'moment'
 import { Redirect, useLocation } from 'react-router-dom'
 import { ipcRenderer } from 'electron'
-import { PostDiagnosisLocationState } from '../../../../common/types'
+import { DiagnosisTypes } from '../../../../common/types'
 import Component from '../../../components/pages/diagnosis/PostDiagnosis'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 
 function PostDiagnosis() {
-  const location = useLocation<PostDiagnosisLocationState>()
+  const location = useLocation<DiagnosisTypes.PostDiagnosisLocationState>()
   const { width, height } = useWindowDimensions(20)
 
   if (!location.state || !location.state.recordedData)
