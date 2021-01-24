@@ -1,8 +1,8 @@
 import { string } from 'yup'
 import TextField from '../../../components/form/TextField'
-import { FieldConfig } from '../../../../types/form'
+import { FormTypes } from '../../../../common/types'
 
-const signInFields: FieldConfig[] = [
+const signInFields: FormTypes.FieldConfig[] = [
   {
     FieldComponent: TextField,
     type: 'text',

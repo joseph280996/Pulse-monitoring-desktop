@@ -6,6 +6,7 @@ module.exports = {
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
     'react/no-array-index-key': 1,
     '@typescript-eslint/no-use-before-define': 1,
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
   parserOptions: {
     ecmaVersion: 2020,

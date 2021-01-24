@@ -1657,6 +1657,13 @@
   resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.0.tgz#9140779736aa2655635ee756e2467d787cfe8a2a"
   integrity sha512-c3Xy026kOF7QOTn00hbIllV1dLR9hG9NkSrLQgCVs8NF6sBU+VGWjD3wLPhmh1TYAc7ugCFsvHYMN4VcBN1U1A==
 
+"@types/i2c-bus@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@types/i2c-bus/-/i2c-bus-5.1.0.tgz#241b91d40deb0b2d08ed60862efa655e53e96c30"
+  integrity sha512-zBwBpfaFzKtYaS2j/sh+m/zKRcbXuG26/wWlJq3F9+oWXQ9DSxuJXOU+t1PMorj3DBZzpLO8LqbVTGRE1PUb3g==
+  dependencies:
+    "@types/node" "*"
+
 "@types/invariant@^2.2.33":
   version "2.2.34"
   resolved "https://registry.yarnpkg.com/@types/invariant/-/invariant-2.2.34.tgz#05e4f79f465c2007884374d4795452f995720bbe"

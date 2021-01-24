@@ -1,4 +1,4 @@
-import { ObjectKeys } from '../../types/types'
+import { ObjectKeys } from '../../common/types/types'
 
 export const modifyItem = (data: any[], index: number, newData: ObjectKeys) => [
   ...data.slice(0, index),

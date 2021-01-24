@@ -1,8 +1,8 @@
 import React, { useState, createContext, FC, useContext } from 'react'
 import PropTypes from 'prop-types'
-import { AuthContextValues, AuthType } from '../../types'
+import { AuthTypes } from '../../common/types'
 
-const AuthContext = createContext<AuthContextValues>({
+const AuthContext = createContext<AuthTypes.AuthContextValues>({
   auth: {
     username: '',
     password: '',
@@ -11,7 +11,7 @@ const AuthContext = createContext<AuthContextValues>({
 })
 
 export const AuthProvider: FC = ({ children }) => {
-  const [auth, setAuth] = useState<AuthType>({
+  const [auth, setAuth] = useState<AuthTypes.AuthType>({
     username: 'pulsemonitoring',
     password: 'password',
     isSignedIn: false,
@@ -31,7 +31,7 @@ AuthProvider.defaultProps = {
   children: null,
 }
 
-export const useAuthState = (): AuthContextValues => {
+export const useAuthState = (): AuthTypes.AuthContextValues => {
   const context = useContext(AuthContext)
 
   if (context === undefined) {

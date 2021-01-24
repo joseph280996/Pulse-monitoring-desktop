@@ -1,11 +1,12 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import SubmitButton from '../form/SubmitButton'
+import { SubmitButton } from '../form/Button'
 import TextField from '../form/TextField'
 import fields from '../../containers/pages/auth/signInFields'
-import { SignInComponentProps } from '../../../types'
-import backgroundImage from '../../public/assets/images/Chinese-Traditional-Medicine-Feature-image.jpg'
+import { AuthTypes } from '../../../common/types'
+import Message from '../form/Message'
+import Img from '../Img'
 
 function SignInComponent({
   handleSubmit,
@@ -14,14 +15,9 @@ function SignInComponent({
   submitting,
   status,
   values,
-}: SignInComponentProps) {
+}: AuthTypes.SignInComponentProps) {
   return (
-    <div
-      className="SignIn"
-      style={{
-        background: `url(${backgroundImage}) 0 0 / cover no-repeat`,
-      }}
-    >
+    <div className="SignIn">
       <div className="SignIn-container">
         <div className="Form-container">
           <Form className="Form" onSubmit={handleSubmit}>
@@ -29,6 +25,7 @@ function SignInComponent({
               <h1 className="SignIn-welcome">Welcome to Pulse Monitoring</h1>
               <h3 className="SignIn-titleText">Sign In</h3>
             </div>
+            {status && <Message className="SignIn-error" error={status} />}
             <div className="Form-fields">
               {fields.map((field) => (
                 <TextField
@@ -55,6 +52,12 @@ function SignInComponent({
           </Form>
         </div>
       </div>
+      <Img
+        className="SignIn-backgroundImage"
+        src="/auth/background.jpg"
+        alt="authentication-background"
+        useBasePath
+      />
     </div>
   )
 }

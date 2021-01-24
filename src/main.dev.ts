@@ -11,11 +11,13 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import path from 'path'
-import { app, BrowserWindow, shell } from 'electron'
+import { app, BrowserWindow, ipcMain, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 import MenuBuilder from './electron/menus/menu'
-import './electron/events/ipcEvents'
+import IpcEventHandler from './common/ipcEventsHandlers'
+
+import eventList from './electron/ipcEventsList'
 
 export default class AppUpdater {
   constructor() {
@@ -110,6 +112,11 @@ const createWindow = async () => {
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater()
+
+  const ipcHandler = new IpcEventHandler()
+  console.log(ipcHandler)
+  ipcHandler.registerHandlers(eventList, ipcMain)
+  console.log(ipcHandler)
 }
 
 /**

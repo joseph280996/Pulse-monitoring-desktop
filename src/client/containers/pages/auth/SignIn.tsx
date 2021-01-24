@@ -3,19 +3,19 @@ import { object } from 'yup'
 import { useFormik } from 'formik'
 import { Redirect } from 'react-router-dom'
 import { useAuthState } from '../../../context/AuthContext'
-import { BasicAuthType } from '../../../../types'
+import { AuthTypes } from '../../../../common/types'
 import SignInComponent from '../../../components/pages/SignIn'
 import fields from './signInFields'
 
 function SignIn(): ReactElement {
   const { auth, setAuth } = useAuthState()
   const [submitting, setSubmitting] = useState(false)
-  const { setStatus, ...restFormikProps } = useFormik<BasicAuthType>({
+  const { setStatus, ...restFormikProps } = useFormik<AuthTypes.BasicAuthType>({
     initialValues: {
       username: '',
       password: '',
     },
-    onSubmit: (formValues: BasicAuthType) => {
+    onSubmit: (formValues: AuthTypes.BasicAuthType) => {
       setSubmitting(true)
       setTimeout(() => {
         if (
@@ -23,11 +23,11 @@ function SignIn(): ReactElement {
           auth.username === formValues.username &&
           auth.password === formValues.password
         ) {
+          setSubmitting(false)
           setAuth({ ...auth, isSignedIn: true })
-          setSubmitting(false)
         } else {
-          setStatus('Wrong username or password. Please try again.')
           setSubmitting(false)
+          setStatus('Wrong username or password. Please try again.')
         }
       }, 1000)
     },

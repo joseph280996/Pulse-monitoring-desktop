@@ -3,10 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { LineChartProps, PostDiagnosisProps } from '../../../../types'
+import { DiagnosisTypes } from '../../../../common/types'
 import LineChart from '../../../containers/analytics/LineChart'
 
-function PostDiagnosis({ data, width, height, onClick }: PostDiagnosisProps) {
+function PostDiagnosis({
+  data,
+  width,
+  height,
+  onClick,
+}: DiagnosisTypes.PostDiagnosisProps) {
   return (
     <div>
       <LineChart data={data} width={width} height={height} />
