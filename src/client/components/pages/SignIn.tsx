@@ -6,6 +6,7 @@ import TextField from '../form/TextField'
 import fields from '../../containers/pages/auth/signInFields'
 import { AuthTypes } from '../../../common/types'
 import Message from '../form/Message'
+import Img from '../Img'
 
 function SignInComponent({
   handleSubmit,
@@ -24,7 +25,7 @@ function SignInComponent({
               <h1 className="SignIn-welcome">Welcome to Pulse Monitoring</h1>
               <h3 className="SignIn-titleText">Sign In</h3>
             </div>
-            {status && <Message error={status} />}
+            {status && <Message className="SignIn-error" error={status} />}
             <div className="Form-fields">
               {fields.map((field) => (
                 <TextField
@@ -51,6 +52,12 @@ function SignInComponent({
           </Form>
         </div>
       </div>
+      <Img
+        className="SignIn-backgroundImage"
+        src="/auth/background.jpg"
+        alt="authentication-background"
+        useBasePath
+      />
     </div>
   )
 }

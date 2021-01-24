@@ -1,8 +1,9 @@
 import React from 'react'
 import { ComponentTypes } from '../../common/types'
 
-function Img({ src, alt }: ComponentTypes.ImgProps) {
-  return <img src={`../../public/assets/images${src}`} alt={alt} />
+function Img({ className, src, alt, useBasePath }: ComponentTypes.ImgProps) {
+  const basePath = useBasePath ? './assets/images' : ''
+  return <img className={className} src={`${basePath}${src}`} alt={alt} />
 }
 
 export default Img
