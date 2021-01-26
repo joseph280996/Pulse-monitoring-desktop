@@ -112,11 +112,6 @@ const createWindow = async () => {
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater()
-
-  const ipcHandler = new IpcEventHandler()
-  console.log(ipcHandler)
-  ipcHandler.registerHandlers(eventList, ipcMain)
-  console.log(ipcHandler)
 }
 
 /**
@@ -131,10 +126,13 @@ app.on('window-all-closed', () => {
   }
 })
 
-app.whenReady().then(createWindow).catch(console.log)
+app.whenReady().then(createWindow).catch(console.error)
 
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow()
 })
+
+const ipcHandler = new IpcEventHandler()
+ipcHandler.registerHandlers(eventList, ipcMain)

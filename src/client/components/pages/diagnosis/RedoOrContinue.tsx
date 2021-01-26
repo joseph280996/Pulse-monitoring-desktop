@@ -11,14 +11,16 @@ function RedoOrContinue({
 }: DiagnosisTypes.RedoOrContinueProps) {
   return (
     <div className="Overlay-container">
-      <Button type="button" onClick={onReset}>
-        <FontAwesomeIcon icon={faRedoAlt} />
-      </Button>
+      <div className="Overlay-redoWrapper">
+        <Button className="Overlay-button" type="button" onClick={onReset}>
+          <FontAwesomeIcon icon={faRedoAlt} />
+        </Button>
+      </div>
       <Link
         className="Overlay-link"
         to={{ pathname: '/postdiagnosis', state: { recordedData } }}
       >
-        <Button type="button">
+        <Button className="Overlay-button" type="button">
           <FontAwesomeIcon icon={faArrowRight} />
         </Button>
       </Link>

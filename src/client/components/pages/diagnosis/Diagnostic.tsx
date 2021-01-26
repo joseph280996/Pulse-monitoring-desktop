@@ -14,11 +14,9 @@ const RecordButton = ({ onRecord }: RecordButtonProps) => {
     <ButtonWithIcon
       onClick={onRecord}
       className="Diagnosis-button"
-      iconWrapperClassName="fa-stack fa-2x"
-      iconClassName="fa-stack-2x Icon-recording"
-      iconStyle={{ color: 'red' }}
+      iconClassName="Icon Icon-recording"
       icon={faCircle}
-      buttonTextClassName="fa-stack-1x Diagnosis-buttonTextRecord"
+      buttonTextClassName="Diagnosis-buttonTextRecord"
     />
   )
 }
@@ -31,10 +29,9 @@ const StopButton = ({ onStop }: StopButtonProps) => {
     <ButtonWithIcon
       onClick={onStop}
       className="Diagnosis-button"
-      iconWrapperClassName="fa-stack fa-2x"
-      iconClassName="fa-stack-2x Icon-stop"
+      iconClassName="Icon Icon-stop"
       icon={faStop}
-      buttonTextClassName="fa-stack-1x Diagnosis-buttonTextStop"
+      buttonTextClassName="Diagnosis-buttonTextStop"
     />
   )
 }

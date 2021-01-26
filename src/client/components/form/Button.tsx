@@ -10,16 +10,17 @@ export function SubmitButton({
   wrapperClassName,
   disabled,
   children,
+  isSubmitting,
 }: PropsWithChildren<FormTypes.ButtonProps>) {
   return (
-    <div className={classnames(wrapperClassName, 'SubmitButton-container')}>
+    <div className={classnames('SubmitButton-container', wrapperClassName)}>
       <Button
-        className={classnames(className, 'Button')}
+        className={classnames('Button', className)}
         type="submit"
         disabled={disabled}
       >
         {children || text}
-        {disabled && (
+        {isSubmitting && (
           <Spinner
             animation="border"
             role="status"
@@ -38,7 +39,7 @@ const iconPossiblePosition = {
 
 export const ButtonWithIcon = ({
   icon,
-  iconPosition,
+  iconPosition = iconPossiblePosition.START,
   iconClassName,
   iconWrapperClassName,
   iconStyle,
@@ -61,19 +62,16 @@ export const ButtonWithIcon = ({
         <span className={iconWrapperClassName}>
           {iconPosition === iconPossiblePosition.START && (
             <FontAwesomeIcon
-              className={classnames('fa-stack-2x', iconClassName)}
+              className={iconClassName}
               icon={icon}
               style={iconStyle}
             />
           )}
-          <span className={classnames('fa-stack-1x', buttonTextClassName)}>
-            {children || text}
-          </span>
+          {(children || text) && (
+            <span className={buttonTextClassName}>{children || text}</span>
+          )}
           {iconPosition === iconPossiblePosition.END && (
-            <FontAwesomeIcon
-              className={classnames('fa-stack-2x', iconClassName)}
-              icon={icon}
-            />
+            <FontAwesomeIcon className={iconClassName} icon={icon} />
           )}
         </span>
       </Button>

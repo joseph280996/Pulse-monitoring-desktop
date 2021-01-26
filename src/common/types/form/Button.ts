@@ -7,6 +7,7 @@ export interface ButtonProps {
   disabled?: boolean
   className?: string
   wrapperClassName?: string
+  isSubmitting?: boolean
 }
 
 export interface ButtonWithIconProps extends ButtonProps {

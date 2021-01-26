@@ -9,12 +9,12 @@ function TextField({
   onBlur,
   value,
   placeholder,
-  helperText,
-  error = false,
+  error,
   disabled = false,
   required = false,
   className,
 }: FormTypes.TextFieldProps) {
+  console.log(error)
   return (
     <div className={`TextField-container ${className}`}>
       {label && (
@@ -33,7 +33,7 @@ function TextField({
         placeholder={placeholder}
         disabled={disabled}
       />
-      {error && <div className="TextField-helper">{helperText}</div>}
+      {error && <div className="TextField-error">{error}</div>}
     </div>
   )
 }
