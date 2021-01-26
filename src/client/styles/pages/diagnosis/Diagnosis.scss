@@ -3,7 +3,6 @@
     height: 100%;
     &-toolbar {
       &Container {
-        float: bottom;
         display: flex;
         justify-content: center;
         & > * {
@@ -11,26 +10,32 @@
         }
       }
     }
-  }
-  &-button {
-    & > .Icon {
-      &-recording {
-        svg {
-          color: red;
+    &-button {
+      width: 100px;
+      height: 100px;
+      background-color: transparent;
+      border: 10px solid white;
+      border-radius: 50%;
+      padding: 10px;
+      &:hover {
+        background-color: transparent;
+        border-color: rgb(172, 172, 172);
+        .Icon {
+          &-recording {
+            color: red;
+          }
+          &-stop {
+            color: red;
+          }
         }
       }
-      &-stop {
-        svg {
-          color: red;
+      & > &Text {
+        &Stop {
+          color: black;
         }
-      }
-    }
-    & > &Text {
-      &Stop {
-        color: black;
-      }
-      &Recording {
-        color: black;
+        &Recording {
+          color: black;
+        }
       }
     }
   }

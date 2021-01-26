@@ -1,21 +1,25 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { FormikProps } from 'formik'
 import { SubmitButton } from '../form/Button'
 import TextField from '../form/TextField'
 import fields from '../../containers/pages/auth/signInFields'
-import { AuthTypes } from '../../../common/types'
 import Message from '../form/Message'
 import Img from '../Img'
+import { BasicAuthType } from '../../../common/types/auth'
 
 function SignInComponent({
   handleSubmit,
   handleBlur,
   handleChange,
-  submitting,
+  isSubmitting,
   status,
   values,
-}: AuthTypes.SignInComponentProps) {
+  dirty,
+  errors,
+  isValid,
+}: FormikProps<BasicAuthType>) {
   return (
     <div className="SignIn">
       <div className="SignIn-container">
@@ -29,6 +33,7 @@ function SignInComponent({
             <div className="Form-fields">
               {fields.map((field) => (
                 <TextField
+                  error={errors[field.name]}
                   key={field.name}
                   {...field}
                   value={values[field.name]}
@@ -44,9 +49,12 @@ function SignInComponent({
             </div>
             <div className="Form-buttonWrapper">
               <SubmitButton
+                isSubmitting={isSubmitting}
                 className="Button-primary"
                 text="Sign In"
-                disabled={submitting || Boolean(status)}
+                disabled={
+                  !dirty || isSubmitting || (!isValid && Boolean(errors))
+                }
               />
             </div>
           </Form>

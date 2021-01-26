@@ -13,12 +13,19 @@ function PostDiagnosis({
   onClick,
 }: DiagnosisTypes.PostDiagnosisProps) {
   return (
-    <div>
+    <div className="PostDiagnosis">
       <LineChart data={data} width={width} height={height} />
-      <div>
-        <Link to="/finish">
-          <Button type="button" onClick={onClick}>
-            <FontAwesomeIcon icon={faCheckCircle} />
+      <div className="PostDiagnosis-buttonContainer">
+        <Link className="PostDiagnosis-link" to="/finish">
+          <Button
+            className="PostDiagnosis-button"
+            type="button"
+            onClick={onClick}
+          >
+            <FontAwesomeIcon
+              className="Icon Icon-confirm"
+              icon={faCheckCircle}
+            />
           </Button>
         </Link>
       </div>

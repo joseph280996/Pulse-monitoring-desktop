@@ -16,7 +16,6 @@ class IpcEventHandler {
     channels: ElectronTypes.IpcChannelsInterface[],
     ipcEventEmitter: IpcMain | IpcRenderer,
   ) {
-    console.log(channels)
     const channelNames = channels.map(({ channel, handler }) => {
       ipcEventEmitter.on(channel, handler)
       return channel

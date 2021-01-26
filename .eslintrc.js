@@ -7,6 +7,7 @@ module.exports = {
     'react/no-array-index-key': 1,
     '@typescript-eslint/no-use-before-define': 1,
     '@typescript-eslint/no-unused-vars': ['error'],
+    'promise/always-return': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

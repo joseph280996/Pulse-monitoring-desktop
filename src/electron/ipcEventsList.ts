@@ -12,19 +12,19 @@ let i2cHandler: ElectronTypes.I2CEventHandlerInterface
 
 const getSensorValue = async () => {
   if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line global-require
-    const I2cEventHandler = require('./i2cEventHandler')
-    if (!i2cHandler) i2cHandler = new I2cEventHandler()
-    if (!i2cHandler.isInitialized()) i2cHandler.init()
-    const ADS1115Instance = i2cHandler.getADS1115Instance()
-    return ADS1115Instance?.measure('0+GND')
+    return new Promise((resolve) => resolve(Math.random()))
   }
-  return new Promise((resolve) => resolve(Math.random()))
+  // eslint-disable-next-line global-require
+  const I2cEventHandler = require('./i2cEventHandler')
+  if (!i2cHandler) i2cHandler = new I2cEventHandler()
+  if (!i2cHandler.isInitialized()) i2cHandler.init()
+  const ADS1115Instance = i2cHandler.getADS1115Instance()
+  return ADS1115Instance?.measure('0+GND')
 }
 
 const channelsHandler: ElectronTypes.IpcChannelsInterface[] = [
   {
-    channel: 'getSensorValue',
+    channel: 'getSensorValues',
     handler(event: IpcMainEvent | IpcRendererEvent, arg: any) {
       switch (arg) {
         case DIAGNOSIS_MODE.START:
@@ -33,7 +33,6 @@ const channelsHandler: ElectronTypes.IpcChannelsInterface[] = [
             setInterval(async () => {
               try {
                 const sensorValue = await getSensorValue()
-                console.log(sensorValue)
                 event.sender.send('sensorValues', sensorValue)
               } catch (err) {
                 console.error(err)
