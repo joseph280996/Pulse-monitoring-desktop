@@ -57,23 +57,11 @@ export default class MenuBuilder {
       label: 'Electron',
       submenu: [
         {
-          label: 'About ElectronReact',
-          selector: 'orderFrontStandardAboutPanel:',
+          label: 'Export',
+          click: () => {
+            console.log('Export Clicked')
+          },
         },
-        { type: 'separator' },
-        { label: 'Services', submenu: [] },
-        { type: 'separator' },
-        {
-          label: 'Hide ElectronReact',
-          accelerator: 'Command+H',
-          selector: 'hide:',
-        },
-        {
-          label: 'Hide Others',
-          accelerator: 'Command+Shift+H',
-          selector: 'hideOtherApplications:',
-        },
-        { label: 'Show All', selector: 'unhideAllApplications:' },
         { type: 'separator' },
         {
           label: 'Quit',
@@ -84,37 +72,14 @@ export default class MenuBuilder {
         },
       ],
     }
-    const subMenuEdit: DarwinMenuItemConstructorOptions = {
-      label: 'Edit',
-      submenu: [
-        { label: 'Undo', accelerator: 'Command+Z', selector: 'undo:' },
-        { label: 'Redo', accelerator: 'Shift+Command+Z', selector: 'redo:' },
-        { type: 'separator' },
-        { label: 'Cut', accelerator: 'Command+X', selector: 'cut:' },
-        { label: 'Copy', accelerator: 'Command+C', selector: 'copy:' },
-        { label: 'Paste', accelerator: 'Command+V', selector: 'paste:' },
-        {
-          label: 'Select All',
-          accelerator: 'Command+A',
-          selector: 'selectAll:',
-        },
-      ],
-    }
     const subMenuViewDev: MenuItemConstructorOptions = {
       label: 'View',
       submenu: [
         {
-          label: 'Reload',
-          accelerator: 'Command+R',
-          click: () => {
-            this.mainWindow.webContents.reload()
-          },
-        },
-        {
-          label: 'Toggle Full Screen',
+          label: 'Exit Full-screen',
           accelerator: 'Ctrl+Command+F',
           click: () => {
-            this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen())
+            this.mainWindow.setFullScreen(false)
           },
         },
         {
@@ -130,10 +95,10 @@ export default class MenuBuilder {
       label: 'View',
       submenu: [
         {
-          label: 'Toggle Full Screen',
+          label: 'Exit Full-screen',
           accelerator: 'Ctrl+Command+F',
           click: () => {
-            this.mainWindow.setFullScreen(!this.mainWindow.isFullScreen())
+            this.mainWindow.setFullScreen(false)
           },
         },
       ],
@@ -169,7 +134,7 @@ export default class MenuBuilder {
         ? subMenuViewDev
         : subMenuViewProd
 
-    return [subMenuAbout, subMenuEdit, subMenuView, subMenuWindow, subMenuHelp]
+    return [subMenuAbout, subMenuView, subMenuWindow, subMenuHelp]
   }
 
   buildDefaultTemplate() {
@@ -178,8 +143,10 @@ export default class MenuBuilder {
         label: '&File',
         submenu: [
           {
-            label: '&Open',
-            accelerator: 'Ctrl+O',
+            label: '&Export',
+            click: () => {
+              console.log('Export Clicked')
+            },
           },
           {
             label: '&Close',
@@ -222,12 +189,10 @@ export default class MenuBuilder {
               ]
             : [
                 {
-                  label: 'Toggle &Full Screen',
+                  label: 'Exit &Full Screen',
                   accelerator: 'F11',
                   click: () => {
-                    this.mainWindow.setFullScreen(
-                      !this.mainWindow.isFullScreen(),
-                    )
+                    this.mainWindow.setFullScreen(false)
                   },
                 },
               ],

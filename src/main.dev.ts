@@ -11,13 +11,10 @@
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
 import path from 'path'
-import { app, BrowserWindow, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
-import MenuBuilder from './electron/menus/menu'
-import IpcEventHandler from './common/ipcEventsHandlers'
-
-import eventList from './electron/ipcEventsList'
+import MenuBuilder from './electron/menu'
 
 export default class AppUpdater {
   constructor() {
@@ -133,6 +130,3 @@ app.on('activate', () => {
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) createWindow()
 })
-
-const ipcHandler = new IpcEventHandler()
-ipcHandler.registerHandlers(eventList, ipcMain)
