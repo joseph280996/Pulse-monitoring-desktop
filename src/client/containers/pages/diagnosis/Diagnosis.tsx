@@ -6,12 +6,17 @@ import DIAGNOSTIC_MODE from '../../../../common/variables'
 import useIPCListener from '../../../hooks/useIPCListener'
 
 function Diagnosis(): ReactElement {
-  const [shouldStartRecord, setStartRecord] = useState<boolean>(false)
   const [isFinished, setIsFinished] = useState<boolean>(false)
+
+  const [recordedStartIndex, setRecordedIndex] = useState<number | null>(null)
+  const [recordedEndIndex, setEndIndex] = useState<number | null>(null)
   const { height, width } = useWindowDimensions(20)
-  const [displayData, recordedData] = useIPCListener(
+
+  const [displayData] = useIPCListener(
     'sensorValues',
-    shouldStartRecord,
+    (arg: any, currentTime: any) => (prevData: any) => {
+      return [...prevData, { x: currentTime.valueOf(), y: arg }]
+    },
   )
 
   const onReset = () => {
@@ -20,11 +25,11 @@ function Diagnosis(): ReactElement {
   }
 
   const onRecordHandler = () => {
-    setStartRecord(true)
+    setRecordedIndex(displayData.length)
   }
   const onStopHandler = () => {
-    ipcRenderer.send('getSensorValues', DIAGNOSTIC_MODE.STOP)
     setIsFinished(true)
+    setEndIndex(displayData.length)
   }
 
   return (
@@ -34,10 +39,10 @@ function Diagnosis(): ReactElement {
       isFinished={isFinished}
       data={displayData}
       onRecord={onRecordHandler}
-      recordStarted={shouldStartRecord}
       onStop={onStopHandler}
       onReset={onReset}
-      recordedData={recordedData}
+      recordedStartIndex={recordedStartIndex}
+      recordedEndIndex={recordedEndIndex}
     />
   )
 }

@@ -7,13 +7,13 @@ export interface RedoOrContinueProps {
   recordedData: RecordedData[] | LineMarkSeriesPoint[]
 }
 
-export interface DiagnosisComponentProps
-  extends RedoOrContinueProps,
-    LineChartProps {
+export interface DiagnosisComponentProps extends LineChartProps {
+  onReset: MouseEventHandler
   isFinished: boolean
   onRecord: MouseEventHandler
   onStop: MouseEventHandler
-  recordStarted: boolean
+  recordedStartIndex: number | null
+  recordedEndIndex: number | null
 }
 
 export type SensorDataContextValues = {

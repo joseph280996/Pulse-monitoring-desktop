@@ -1,8 +1,6 @@
 import { ipcRenderer } from 'electron'
 import moment from 'moment'
-import { useEffect, useState } from 'react'
-import { LineMarkSeriesPoint } from 'react-vis'
-import { AnalyticsTypes } from '../../common/types'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 /**
  * @param channel the IPC channel to listen to
@@ -10,31 +8,24 @@ import { AnalyticsTypes } from '../../common/types'
  * @returns recorded data and display data
  */
 
-const useIPCListener = (channel: string, shouldStartRecord: boolean) => {
-  const [data, setData] = useState<LineMarkSeriesPoint[]>([])
-  const [recordedData, setRecordedData] = useState<
-    AnalyticsTypes.RecordedData[]
-  >([])
+const useIPCListener = (
+  channel: string,
+  setDataFunc?: (arg: any, timeStamp: any) => Dispatch<SetStateAction<any>>,
+) => {
+  const [data, setData] = useState<any>([])
   useEffect(() => {
-    ipcRenderer.on(channel, (_event, arg) => {
+    ipcRenderer.on(channel, (_, arg) => {
       const currentTime = moment()
-      setData((prevData) => {
-        if (prevData.length > 100)
-          return [...prevData.slice(1), { x: currentTime.valueOf(), y: arg }]
-        return [...prevData, { x: currentTime.valueOf(), y: arg }]
-      })
-      if (shouldStartRecord) {
-        setRecordedData((prevRecorded) => {
-          return [...prevRecorded, { time: currentTime.valueOf(), value: arg }]
-        })
-      }
+      if (setDataFunc) {
+        setData(setDataFunc(arg, currentTime))
+      } else setData(arg)
     })
     return () => {
       ipcRenderer.removeAllListeners(channel)
     }
-  }, [channel, shouldStartRecord])
+  }, [channel, setDataFunc])
 
-  return [data, recordedData]
+  return [data]
 }
 
 export default useIPCListener

@@ -1,7 +1,8 @@
 import { faCircle, faStop } from '@fortawesome/free-solid-svg-icons'
 import React, { MouseEventHandler } from 'react'
+import { takeRight } from 'lodash'
 import { DiagnosisTypes } from '../../../../common/types'
-import LineChart from '../../../containers/analytics/LineChart'
+import LineChart from '../../analytics/LineChart'
 import RedoOrContinue from './RedoOrContinue'
 import { ButtonWithIcon } from '../../form/Button'
 
@@ -44,19 +45,26 @@ function Diagnostic({
   onRecord,
   onStop,
   onReset,
-  recordedData,
-  recordStarted,
+  recordedStartIndex,
+  recordedEndIndex,
 }: DiagnosisTypes.DiagnosisComponentProps) {
   return (
     <div className="Diagnosis" style={{ maxHeight: height }}>
       {isFinished && (
-        <RedoOrContinue onReset={onReset} recordedData={recordedData} />
+        <RedoOrContinue
+          onReset={onReset}
+          recordedData={data.slice(recordedStartIndex, recordedEndIndex)}
+        />
       )}
       <div>
-        <LineChart data={data} width={width} height={height - 100} />
+        <LineChart
+          data={takeRight(data, 20)}
+          width={width}
+          height={height - 100}
+        />
       </div>
       <div className="Diagnosis-toolbarContainer">
-        {recordStarted ? (
+        {recordedStartIndex ? (
           <StopButton onStop={onStop} />
         ) : (
           <RecordButton onRecord={onRecord} />
