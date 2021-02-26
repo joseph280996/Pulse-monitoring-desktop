@@ -5,24 +5,29 @@ const databaseConfig = {
   connectionLimit: 2,
   host: '127.0.0.1',
   port: 42333,
-  user: 'pulsemonitoring@localhost',
-  password: 'password',
+  user: 'pulsemonitoring',
+  password: 'Jpxt280996@1406',
   database: 'pulsemonitoring',
 }
 
 class DBInstance implements ElectronTypes.DB {
   private pool: Pool | null = null
 
-  private getPool() {
-    if (!this.pool) {
+  constructor() {
+    try {
       this.pool = createPool(databaseConfig)
+    } catch (err) {
+      console.log(err)
     }
+  }
+
+  private getPool() {
     return this.pool
   }
 
-  query(query: string, values: Array<any>, callback?: queryCallback) {
+  query = (query: string, values: Array<any>, callback?: queryCallback) => {
     return new Promise((resolve, reject) => {
-      this.getPool().query(query, values, (error, result) => {
+      this.getPool()?.query(query, values, (error, result) => {
         if (callback) {
           callback(error, result)
         }
@@ -34,7 +39,7 @@ class DBInstance implements ElectronTypes.DB {
     })
   }
 
-  cleanup() {
+  cleanup = () => {
     if (this.pool) {
       this.pool.end()
       this.pool = null
