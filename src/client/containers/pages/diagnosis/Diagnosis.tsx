@@ -1,9 +1,10 @@
 import React, { ReactElement, useState } from 'react'
 import { ipcRenderer } from 'electron'
+import { Spinner } from 'react-bootstrap'
 import Component from '../../../components/pages/diagnosis/Diagnostic'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 import DIAGNOSTIC_MODE from '../../../../common/variables'
-import useIPCListener from '../../../hooks/useIPCListener'
+import useWebSocket from '../../../hooks/useWebSocket'
 
 function Diagnosis(): ReactElement {
   const [isFinished, setIsFinished] = useState<boolean>(false)
@@ -12,10 +13,9 @@ function Diagnosis(): ReactElement {
   const [recordedEndIndex, setEndIndex] = useState<number | null>(null)
   const { height, width } = useWindowDimensions(20)
 
-  const [displayData] = useIPCListener(
-    'sensorValues',
-    (arg: any, currentTime: any) => (prevData: any) => {
-      return [...prevData, { x: currentTime.valueOf(), y: arg }]
+  const { error, data, readyState } = useWebSocket(
+    ({ data: newData, timeStamp }) => (prevData: any) => {
+      return [...prevData, { x: timeStamp.valueOf(), y: newData }]
     },
   )
 
@@ -25,19 +25,30 @@ function Diagnosis(): ReactElement {
   }
 
   const onRecordHandler = () => {
-    setRecordedIndex(displayData.length)
+    setRecordedIndex(data.length)
   }
   const onStopHandler = () => {
     setIsFinished(true)
-    setEndIndex(displayData.length)
+    setEndIndex(data.length)
   }
+
+  if (!readyState || readyState === WebSocket.CONNECTING)
+    return <Spinner animation="border" role="status" />
+
+  if (error)
+    return (
+      <div>
+        <Spinner animation="border" role="status" />
+        <p>{error.message}</p>
+      </div>
+    )
 
   return (
     <Component
       height={height}
       width={width}
       isFinished={isFinished}
-      data={displayData}
+      data={data}
       onRecord={onRecordHandler}
       onStop={onStopHandler}
       onReset={onReset}

@@ -52,11 +52,11 @@ class Server implements ServerInterface {
   }
 
   private registerWSHandlers() {
-    this.wss.on('connection', (ws: WebSocket.Server, client: WebSocket) => {
+    this.wss.on('connection', (ws: WebSocket) => {
       ws.on('message', (message: string) => {
         WSHandlers.forEach(({ regex, handler }) => {
           if (regex.test(message)) {
-            handler(client, message.replace(regex, ''))
+            handler(ws, message.replace(regex, ''))
           }
         })
       })
