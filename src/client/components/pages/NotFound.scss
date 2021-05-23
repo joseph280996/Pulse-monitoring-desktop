@@ -1,0 +1,17 @@
+.NotFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 100%;
+  &-container {
+    padding: 20px;
+  }
+  &-title {
+    font-weight: 600px;
+  }
+  &-buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

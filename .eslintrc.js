@@ -3,10 +3,7 @@ module.exports = {
   rules: {
     // A temporary hack related to IDE not resolving correct package.json
     'import/no-extraneous-dependencies': 'off',
-    'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
-    'react/no-array-index-key': 1,
-    '@typescript-eslint/no-use-before-define': 1,
-    '@typescript-eslint/no-unused-vars': ['error'],
+    'react/jsx-props-no-spreading': 'off',
     'promise/always-return': 'off',
   },
   parserOptions: {

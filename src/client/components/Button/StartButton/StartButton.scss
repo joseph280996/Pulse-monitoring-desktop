@@ -1,0 +1,15 @@
+@import '../../../app.global.scss';
+.StartButton {
+  @include circleIcon;
+  &.btn {
+    font-size: 37.5px;
+  }
+  &.btn-primary {
+    background-color: $green;
+    border-color: $green;
+    &:active {
+      background-color: $green;
+      border-color: $green;
+    }
+  }
+}

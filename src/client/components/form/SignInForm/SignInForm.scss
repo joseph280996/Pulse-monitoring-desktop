@@ -1,0 +1,54 @@
+@import '../../../app.global.scss';
+.SignInForm {
+  &-welcome {
+    font-size: 20px;
+    text-align: center;
+  }
+  &-field {
+    font-size: 30px;
+  }
+  &-titleText {
+    text-align: center;
+  }
+  &-otherOption {
+    font-size: 20px;
+  }
+  &-link {
+    text-decoration: underline;
+    color: $primary;
+    &:hover {
+      color: $primary-hover;
+    }
+  }
+  &-error {
+    font-size: 10px;
+    margin-bottom: 5px;
+  }
+  &-signInButton.btn {
+    font-size: 15px;
+    border-radius: 10%;
+  }
+  .Form {
+    width: 100%;
+    height: 100%;
+    &-title {
+      margin-bottom: 0px;
+    }
+    &-container {
+      width: 100%;
+      height: 100%;
+      min-height: 100px;
+    }
+    .TextField {
+      &-input {
+        & > * {
+          font-size: 5px;
+        }
+        font-size: 10px;
+      }
+      &-error {
+        font-size: 10px;
+      }
+    }
+  }
+}

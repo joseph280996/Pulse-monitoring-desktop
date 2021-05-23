@@ -1,15 +1,15 @@
-import React, { ReactElement } from 'react'
-import { HashRouter as Router } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
-import Routes from './routes/routes'
-import routesConfig from './routes/routesConfig'
+import * as React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import ContextWrapper from './components/ContextWrapper'
+import mainPages from './containers/pages/mainPages'
+import Routes from './router'
 
-export default function App(): ReactElement {
+export default function App(): React.ReactElement {
   return (
-    <AuthProvider>
+    <ContextWrapper>
       <Router>
-        <Routes routes={routesConfig} />
+        <Routes routes={mainPages} />
       </Router>
-    </AuthProvider>
+    </ContextWrapper>
   )
 }

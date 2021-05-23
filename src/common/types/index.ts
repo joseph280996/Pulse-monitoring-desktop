@@ -1,7 +1,0 @@
-export * as AuthTypes from './auth'
-export * as FormTypes from './form'
-export * as HooksTypes from './hooks'
-export * as DiagnosisTypes from './diagnosis'
-export * as AnalyticsTypes from './analytics'
-export * as ElectronTypes from './electron'
-export * as ComponentTypes from './components'

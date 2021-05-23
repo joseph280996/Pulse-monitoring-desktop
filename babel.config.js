@@ -1,8 +1,8 @@
 /* eslint global-require: off, import/no-extraneous-dependencies: off */
 
-const developmentEnvironments = ['development', 'test'];
+const developmentEnvironments = ['development', 'test']
 
-const developmentPlugins = [require('@babel/plugin-transform-runtime')];
+const developmentPlugins = [require('@babel/plugin-transform-runtime')]
 
 const productionPlugins = [
   require('babel-plugin-dev-expression'),
@@ -11,12 +11,12 @@ const productionPlugins = [
   require('@babel/plugin-transform-react-constant-elements'),
   require('@babel/plugin-transform-react-inline-elements'),
   require('babel-plugin-transform-react-remove-prop-types'),
-];
+]
 
 module.exports = (api) => {
   // See docs about api at https://babeljs.io/docs/en/config-files#apicache
 
-  const development = api.env(developmentEnvironments);
+  const development = api.env(developmentEnvironments)
 
   return {
     presets: [
@@ -54,9 +54,10 @@ module.exports = (api) => {
       require('@babel/plugin-syntax-dynamic-import'),
       require('@babel/plugin-syntax-import-meta'),
       [require('@babel/plugin-proposal-class-properties'), { loose: true }],
+      [require('@babel/plugin-proposal-private-methods'), { loose: true }],
       require('@babel/plugin-proposal-json-strings'),
 
       ...(development ? developmentPlugins : productionPlugins),
     ],
-  };
-};
+  }
+}

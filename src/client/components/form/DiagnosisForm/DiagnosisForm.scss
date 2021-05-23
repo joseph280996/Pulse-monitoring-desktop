@@ -1,0 +1,40 @@
+@import '../../../app.global.scss';
+.DiagnosisForm {
+  height: 100%;
+  &-toolbar {
+    &Container {
+      display: flex;
+      justify-content: center;
+      & > * {
+        display: inline;
+      }
+    }
+  }
+  &-button {
+    width: 75px;
+    height: 75px;
+    &.btn {
+      color: white;
+      font-size: 37.5px;
+      border-radius: 50%;
+    }
+    & > &Text {
+      &Stop {
+        color: black;
+      }
+      &Recording {
+        color: black;
+      }
+    }
+  }
+  &-pulseSelect {
+    width: 100%;
+    .Select {
+      width: 100%;
+      font-size: 14px;
+    }
+    &Wrapper {
+      width: 100%;
+    }
+  }
+}

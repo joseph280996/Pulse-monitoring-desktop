@@ -1,0 +1,17 @@
+.ExportDataOrDiagnosisPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-exportDataButton,
+  &-diagnoseButton {
+    &.btn {
+      border-radius: 10px;
+      font-size: 30px;
+    }
+  }
+  &-exportDataButton {
+    margin-right: 20px;
+  }
+}

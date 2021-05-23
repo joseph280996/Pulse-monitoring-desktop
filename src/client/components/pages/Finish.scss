@@ -1,0 +1,28 @@
+.Finish {
+  background-color: white;
+  padding: 20px 30px;
+  min-width: 300px;
+  & > h1 {
+    font-size: 60px;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-button {
+    margin-right: 10px;
+    &.btn {
+      border-radius: 10px;
+      font-size: 30px;
+    }
+  }
+}

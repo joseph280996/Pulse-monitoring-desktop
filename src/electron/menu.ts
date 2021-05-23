@@ -76,6 +76,13 @@ export default class MenuBuilder {
       label: 'View',
       submenu: [
         {
+          label: 'Reload',
+          accelerator: 'Command+R',
+          click: () => {
+            this.mainWindow.webContents.reload()
+          },
+        },
+        {
           label: 'Exit Full-screen',
           accelerator: 'Ctrl+Command+F',
           click: () => {
@@ -94,6 +101,13 @@ export default class MenuBuilder {
     const subMenuViewProd: MenuItemConstructorOptions = {
       label: 'View',
       submenu: [
+        {
+          label: 'Reload',
+          accelerator: 'Command+R',
+          click: () => {
+            this.mainWindow.webContents.reload()
+          },
+        },
         {
           label: 'Exit Full-screen',
           accelerator: 'Ctrl+Command+F',

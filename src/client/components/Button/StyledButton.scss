@@ -1,0 +1,34 @@
+@import '../../app.global.scss';
+
+.Button {
+  &-primary {
+    &.btn {
+      border: 1px solid #ced4da;
+      background-color: $primary;
+      border-radius: 15px;
+      padding: 10px 20px;
+      color: white;
+      font-weight: 60;
+    }
+
+    &:hover {
+      border: 1px olid #ced4da;
+
+      background-color: $primary-hover;
+    }
+
+    &:disabled,
+    &[disabled] {
+      outline: none;
+
+      border: 0px;
+
+      background-color: $primary-tint-50;
+    }
+  }
+
+  &-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

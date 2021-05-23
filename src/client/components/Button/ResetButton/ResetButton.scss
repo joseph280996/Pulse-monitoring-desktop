@@ -1,0 +1,7 @@
+@import '../../../common/styles/utils/circleIcon.scss';
+.ResetButton {
+  @include circleIcon;
+  &.btn {
+    font-size: 37.5px;
+  }
+}

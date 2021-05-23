@@ -1,0 +1,7 @@
+@import '../../../common/styles/utils/circleIcon.scss';
+.ContinueButton {
+  @include circleIcon;
+  &.btn {
+    font-size: 37.5px;
+  }
+}

@@ -1,0 +1,14 @@
+.TextField {
+  &-container {
+    display: block;
+  }
+  &-input {
+    &:focus {
+      border: 3px solid #f48024;
+    }
+    width: 100%;
+  }
+  &-error {
+    color: red;
+  }
+}
