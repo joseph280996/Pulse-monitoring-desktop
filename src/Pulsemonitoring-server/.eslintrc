@@ -1,0 +1,50 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "import"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "airbnb-typescript/base",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "settings": {
+    "import/parser": {
+      "@typescript-eslint/parser": [".ts"]
+    }
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": ["error"],
+    "@typescript-eslint/semi": ["error", "never"],
+    "@typescript-eslint/indent": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "alphabetize": {
+          "order": "asc" /* sort in ascending order. Options: ["ignore", "asc", "desc"] */,
+          "caseInsensitive": true /* ignore case. Options: [true, false] */
+        }
+      }
+    ],
+    "implicit-arrow-linebreak": "off",
+    "max-len": "off",
+    "no-unused-vars": "off",
+    "no-underscore-dangle": "off",
+    "object-curly-newline": "off",
+    "semi": "off"
+  }
+}
