@@ -1,19 +1,35 @@
 // Colors
-$primary-tone-50: #7b684d;
-$primary-tone-40: #937d5c;
-$primary-tone-30: #ac926b;
-$primary-tone-20: #c4a67a;
-$primary-tone-10: #ddbb8a;
-$primary: #f5d099;
-$primary-tint-10: #ddbb8a;
-$primary-tint-20: #f7d9ad;
-$primary-tint-30: #f8deb8;
-$primary-tint-40: #f9e3c2;
-$primary-tint-50: #fae8cc;
-
-// Hover Colors
-$primary-hover: #cab298;
+$primary-tone-100: #000000;
+$primary-tone-90: #011010;
+$primary-tone-80: #022020;
+$primary-tone-70: #022f2f;
+$primary-tone-60: #033f3f;
+$primary-tone-50: #044f4f;
+$primary-tone-40: #055f5f;
+$primary-tone-30: #066f6f;
+$primary-tone-20: #067e7e;
+$primary-tone-10: #078e8e;
+$primary-tint-10: #21a8a8;
+$primary-tint-20: #39b1b1;
+$primary-tint-30: #52bbbb;
+$primary-tint-40: #6bc5c5;
+$primary-tint-50: #84cfcf;
+$primary-tint-60: #9cd8d8;
+$primary-tint-70: #b5e2e2;
+$primary-tint-80: #ceecec;
+$primary-tint-90: #e6f5f5;
+$primary-tint-100: #ffffff;
+$gray: #b3b3b3;
+$light-gray: #e8e8e8;
+$primary-color: $light-gray;
 
 // Button Colors
+$primary-button-color: $primary-color;
+$primary-button-hover-color: $primary-tone-30;
 $green: #7cd889;
 $red: #f65959;
+$disabled-button-color: $gray;
+
+// Link Colors
+$primary-link-color: $primary-color;
+$primary-link-hover-color: $primary-tone-30;
