@@ -14,7 +14,10 @@ import path from 'path'
 import { app, BrowserWindow, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
+import installer, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer'
+import { exec, spawn } from 'child_process'
 import MenuBuilder from './electron/menu'
+import processController from './utils/processController'
 
 export default class AppUpdater {
   constructor() {
@@ -39,16 +42,13 @@ if (
 }
 
 const installExtensions = async () => {
-  const installer = require('electron-devtools-installer')
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS
-  const extensions = ['REACT_DEVELOPER_TOOLS']
+  const extensions = [REACT_DEVELOPER_TOOLS]
 
-  return installer
-    .default(
-      extensions.map((name) => installer[name]),
-      forceDownload,
-    )
-    .catch(console.log)
+  return installer(extensions, {
+    loadExtensionOptions: { allowFileAccess: true },
+    forceDownload,
+  }).catch(console.log)
 }
 
 const createWindow = async () => {
@@ -58,6 +58,8 @@ const createWindow = async () => {
   ) {
     await installExtensions()
   }
+
+  processController.registerProcess(exec('yarn run start:server'))
 
   const RESOURCES_PATH = app.isPackaged
     ? path.join(process.resourcesPath, 'resources')
@@ -116,6 +118,7 @@ const createWindow = async () => {
  */
 
 app.on('window-all-closed', () => {
+  processController.cleanUp()
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
   if (process.platform !== 'darwin') {
