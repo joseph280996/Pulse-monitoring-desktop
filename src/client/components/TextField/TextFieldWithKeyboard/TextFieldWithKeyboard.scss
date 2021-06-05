@@ -1,11 +1,17 @@
+@import '../../../common/styles/variables';
 .TextFieldWithKeyboard {
   &-overlayInner {
+    background-color: $light-gray;
     width: 100%;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 50px;
     display: flex;
     flex-direction: column;
   }
   &-field {
     width: 100%;
+    margin-right: 20px;
   }
   &-fieldAndCloseButton {
     width: 100%;

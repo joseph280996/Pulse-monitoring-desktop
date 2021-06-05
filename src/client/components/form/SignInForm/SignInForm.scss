@@ -1,23 +1,35 @@
-@import '../../../app.global.scss';
+@import '../../../common/styles/variables';
+@import '../../../common/styles/form/Form';
 .SignInForm {
-  &-welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  &-fieldsWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &-header {
     font-size: 20px;
     text-align: center;
   }
   &-field {
     font-size: 30px;
   }
-  &-titleText {
+  &-subtitle {
+    font-size: 30px;
     text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
   }
   &-otherOption {
     font-size: 20px;
   }
   &-link {
     text-decoration: underline;
-    color: $primary;
+    color: $primary-link-color;
     &:hover {
-      color: $primary-hover;
+      color: $primary-link-hover-color;
     }
   }
   &-error {
@@ -31,6 +43,9 @@
   .Form {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     &-title {
       margin-bottom: 0px;
     }

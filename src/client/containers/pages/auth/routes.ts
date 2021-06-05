@@ -1,12 +1,12 @@
+import SignInPage from '../../../components/pages/signin'
 import { RouteType } from '../../../router/router'
 import ChangeUsername from './ChangeUsername'
 import ForgotPass from './ForgotPass'
-import SignIn from './SignIn'
 
 export default [
   {
     route: `/auth/signin`,
-    Component: SignIn,
+    Component: SignInPage,
   },
   {
     route: `/auth/forgotpass`,
