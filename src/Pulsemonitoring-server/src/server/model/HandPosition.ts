@@ -6,7 +6,8 @@ type HandPositionConstructorParamType = {
 }
 
 class HandPosition {
-  private static fields = `id, name`
+  private static fields = 'id, name'
+
   private id!: number
 
   get handPosID(): number {
@@ -32,7 +33,7 @@ class HandPosition {
     this.handPosName = obj.name
   }
 
-  static async loadAll() {
+  static async loadAll(): Promise<HandPosition[] | undefined[]> {
     const result = await db.query(`
     SELECT ${HandPosition.fields}
     FROM HandPosition

@@ -1,5 +1,6 @@
 import { RequestHandler } from 'express'
 import { pick } from 'lodash'
+import db from '../db'
 import HandPosition from '../model/HandPosition'
 import Patient from '../model/Patient'
 import PulseTypes from '../model/PulseTypes'
@@ -49,6 +50,22 @@ export default [
         })
         const savedRecord = await newRecord.save()
         res.status(200).send(savedRecord)
+      } catch (err) {
+        console.error(err)
+        console.log(err.stack)
+        res.status(500).send('Internal Error')
+      }
+    },
+  },
+  {
+    method: 'post',
+    route: '/data',
+    handler: async (req, res) => {
+      try {
+        if (req.body.export) {
+          await db.dump()
+        }
+        res.status(200).send({ status: 200 })
       } catch (err) {
         console.error(err)
         console.log(err.stack)
