@@ -15,9 +15,7 @@ import { app, BrowserWindow, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 import installer, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer'
-import { exec, spawn } from 'child_process'
 import MenuBuilder from './electron/menu'
-import processController from './utils/processController'
 
 export default class AppUpdater {
   constructor() {
@@ -58,8 +56,6 @@ const createWindow = async () => {
   ) {
     await installExtensions()
   }
-
-  processController.registerProcess(exec('yarn run start:server'))
 
   const RESOURCES_PATH = app.isPackaged
     ? path.join(process.resourcesPath, 'resources')
@@ -116,9 +112,7 @@ const createWindow = async () => {
 /**
  * Add event listeners...
  */
-
 app.on('window-all-closed', () => {
-  processController.cleanUp()
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed
   if (process.platform !== 'darwin') {
