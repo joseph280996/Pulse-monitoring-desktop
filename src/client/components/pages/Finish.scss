@@ -4,7 +4,8 @@
   padding: 20px 30px;
   min-width: 300px;
   & > h1 {
-    font-size: pxToRem(60);
+    font-size: pxToRem(70);
+    text-align: center;
   }
 
   &-wrapper {
@@ -16,14 +17,16 @@
 
   &-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    button {
+      padding: 20px;
+      border-radius: 10px;
+      font-size: pxToRem(40);
+    }
   }
 
   &-button {
     margin-right: 10px;
-    &.btn {
-      border-radius: 10px;
-      font-size: pxToRem(30);
-    }
+    min-width: 200px;
   }
 }

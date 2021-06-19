@@ -5,16 +5,31 @@ import ExportDataOrDiagnosisPageComponent from '../../../components/pages/Export
 
 const ExportDataOrDiagnosisPageContainer = (): React.ReactElement => {
   const history = useHistory()
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [isMessageOpen, setIsMessageOpen] = React.useState(false)
   const onDiagnose = () => {
     history.push('/')
   }
   const onExportData = React.useCallback(async () => {
-    await tcmAPIRequestController.post('/record', {
-      export: true,
-    })
+    setIsSubmitting(true)
+    try {
+      const response = await tcmAPIRequestController.post('/data', {
+        export: true,
+      })
+      if (response.data.successful) {
+        setIsMessageOpen(response.data.successful)
+      }
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setIsSubmitting(false)
+    }
   }, [])
   return (
     <ExportDataOrDiagnosisPageComponent
+      isMessageOpen={isMessageOpen}
+      setIsMessageOpen={setIsMessageOpen}
+      isSubmitting={isSubmitting}
       onExportData={onExportData}
       onDiagnose={onDiagnose}
     />

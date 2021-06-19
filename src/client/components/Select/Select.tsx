@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import * as React from 'react'
 
 type SelectProps = {
+  id?: any
   name?: string
   className?: string
   value: any
@@ -16,9 +17,11 @@ function Select({
   value,
   onChange,
   onBlur,
+  id,
 }: React.PropsWithChildren<SelectProps>): React.ReactElement {
   return (
     <select
+      id={id}
       className={classNames('Select', className)}
       name={name}
       value={value}

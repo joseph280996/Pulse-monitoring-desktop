@@ -3,7 +3,7 @@ import * as React from 'react'
 import StyledButton from '../../Button'
 import LineChart from '../../Chart/LineChart'
 import { PulseTypeSelect } from '../../Select'
-import TextField from '../../TextField'
+import { TextFieldWithKeyboard } from '../../TextField'
 import styles from './PostDiagnosisForm.scss'
 import { IPostDiagnosisProps } from './PostDiagnosisFormTypes'
 
@@ -22,13 +22,15 @@ function PostDiagnosisFormComponent({
 }: IPostDiagnosisProps): React.ReactElement {
   return (
     <form onSubmit={handleSubmit}>
-      <TextField
+      <TextFieldWithKeyboard
+        className={styles['PostDiagnosis-field']}
         type="text"
-        label="Patient Name"
         placeholder="Patient Name"
+        onChange={(input) => {
+          setFieldValue('patientName', input)
+        }}
         error={errors.patientName}
         name="patientName"
-        onChange={handleChange}
         onBlur={handleBlur}
         value={values.patientName}
         required

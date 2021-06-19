@@ -1,6 +1,9 @@
 @import '../../../common/styles/utils';
 .ContinueButton {
   @include circleIcon;
+  &-wrapper {
+    height: 100%;
+  }
   &.btn {
     font-size: pxToRem(37);
     box-shadow: unset;

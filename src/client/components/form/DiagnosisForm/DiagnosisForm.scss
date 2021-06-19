@@ -1,19 +1,20 @@
 @import '../../../common/styles/variables';
 @import '../../../common/styles/utils';
+@import '../../../common/styles/form/Form.scss';
 .DiagnosisForm {
   height: 100%;
   &-toolbar {
     &Container {
-      display: flex;
-      justify-content: center;
-      & > * {
-        display: inline;
-      }
+      width: 95%;
+      position: absolute;
+      bottom: 2%;
     }
   }
   &-button {
     width: 75px;
     height: 75px;
+    margin-left: auto;
+    margin-right: auto;
     &.btn {
       color: white;
       font-size: pxToRem(37);
@@ -35,7 +36,17 @@
       font-size: pxToRem(14);
     }
     &Wrapper {
-      width: 100%;
+      margin-left: 2%;
+      z-index: 2;
     }
+  }
+  &-continueOrResetContainer {
+    background-color: $light-gray;
+    border-radius: 20px;
+    min-width: 200px;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

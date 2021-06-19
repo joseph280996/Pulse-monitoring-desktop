@@ -42,6 +42,7 @@ function SignInFormComponent({
                 <FieldComponent
                   error={errors[name]}
                   key={name}
+                  name={name}
                   value={values[name]}
                   onChange={(input) => {
                     setFieldValue(name, input)

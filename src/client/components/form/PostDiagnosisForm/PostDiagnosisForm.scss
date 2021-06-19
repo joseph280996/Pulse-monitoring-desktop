@@ -1,8 +1,15 @@
 @import '../../../common/styles/utils/';
 .PostDiagnosis {
+  &-field {
+    padding-top: 10px;
+    font-size: pxToRem(30);
+  }
   &-button {
     width: 100%;
     height: 100%;
+    button {
+      width: 100%;
+    }
     &Container {
       width: 100%;
       display: flex;
@@ -12,6 +19,7 @@
       width: 70px;
       height: 70px;
       border-radius: 50%;
+      margin-right: 10px;
     }
     &Icon.btn {
       width: 100%;

@@ -37,7 +37,6 @@ function DiagnosisPageContainer(): React.ReactElement {
   }
 
   const onRecordHandler = () => {
-    console.log('record clicked')
     setRecordedIndex(data.length)
   }
   const onStopHandler = () => {
