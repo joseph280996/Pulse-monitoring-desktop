@@ -25,7 +25,9 @@ function TextField({
         </label>
       )}
       <input
-        className={styles['TextField-input']}
+        className={classNames(styles['TextField-input'], {
+          [styles[`TextField-input--error`]]: !!error,
+        })}
         required={required}
         name={name}
         type={type}

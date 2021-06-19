@@ -1,9 +1,10 @@
+@import '../../common/styles/utils';
 .Finish {
   background-color: white;
   padding: 20px 30px;
   min-width: 300px;
   & > h1 {
-    font-size: 60px;
+    font-size: pxToRem(60);
   }
 
   &-wrapper {
@@ -22,7 +23,7 @@
     margin-right: 10px;
     &.btn {
       border-radius: 10px;
-      font-size: 30px;
+      font-size: pxToRem(30);
     }
   }
 }

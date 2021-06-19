@@ -1,3 +1,5 @@
+@import '../../../common/styles/utils/';
+
 .ExportDataOrDiagnosisPage {
   width: 100%;
   height: 100%;
@@ -8,10 +10,10 @@
   &-diagnoseButton {
     &.btn {
       border-radius: 10px;
-      font-size: 30px;
+      font-size: pxToRem(30);
     }
   }
   &-exportDataButton {
-    margin-right: 20px;
+    margin-right: pxToRem(20);
   }
 }

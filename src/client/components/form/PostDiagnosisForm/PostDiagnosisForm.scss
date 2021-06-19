@@ -1,3 +1,4 @@
+@import '../../../common/styles/utils/';
 .PostDiagnosis {
   &-button {
     width: 100%;
@@ -15,7 +16,7 @@
     &Icon.btn {
       width: 100%;
       height: 100%;
-      font-size: 35px;
+      font-size: pxToRem(35);
       border-radius: 50%;
     }
   }

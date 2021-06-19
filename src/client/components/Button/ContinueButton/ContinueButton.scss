@@ -1,8 +1,8 @@
-@import '../../../common/styles/utils/circleIcon.scss';
+@import '../../../common/styles/utils';
 .ContinueButton {
   @include circleIcon;
   &.btn {
-    font-size: 37.5px;
+    font-size: pxToRem(37);
     box-shadow: unset;
   }
 }

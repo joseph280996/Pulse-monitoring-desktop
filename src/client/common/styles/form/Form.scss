@@ -1,3 +1,4 @@
+@import '../utils';
 .Form {
   padding: 20px 10px;
   min-height: 200px;
@@ -11,7 +12,7 @@
   &-fields {
     & > * {
       margin-bottom: 5px;
-      font-size: 10px;
+      font-size: pxToRem(16);
     }
   }
 }

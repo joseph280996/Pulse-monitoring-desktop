@@ -1,4 +1,5 @@
-@import '../../../app.global.scss';
+@import '../../../common/styles/variables';
+@import '../../../common/styles/utils';
 .DiagnosisForm {
   height: 100%;
   &-toolbar {
@@ -15,7 +16,7 @@
     height: 75px;
     &.btn {
       color: white;
-      font-size: 37.5px;
+      font-size: pxToRem(37);
       border-radius: 50%;
     }
     & > &Text {
@@ -31,7 +32,7 @@
     width: 100%;
     .Select {
       width: 100%;
-      font-size: 14px;
+      font-size: pxToRem(14);
     }
     &Wrapper {
       width: 100%;

@@ -24,10 +24,10 @@ function SignInFormComponent({
       <Form className={styles.Form} onSubmit={handleSubmit}>
         <div className={styles['SignInForm-fieldsWrapper']}>
           <div className={styles['Form-title']}>
-            <h1 className={styles['SignInForm-header']}>
-              Welcome to Pulse Monitoring
-            </h1>
-            <h3 className={styles['SignInForm-subtitle']}>Sign In</h3>
+            <h1 className={styles['SignInForm-header']}>Welcome</h1>
+            <h3 className={styles['SignInForm-subtitle']}>
+              Sign In To Get Started
+            </h3>
           </div>
           {status && (
             <Message className={styles['SignInForm-error']} error={status} />
@@ -46,6 +46,7 @@ function SignInFormComponent({
                   onChange={(input) => {
                     setFieldValue(name, input)
                   }}
+                  className={styles['SignInForm-field']}
                   onBlur={handleBlur}
                   {...passThroughProps}
                 />

@@ -2,6 +2,7 @@ import { dropRight } from 'lodash'
 import React, { useState, MutableRefObject, useMemo } from 'react'
 import Keyboard from 'react-simple-keyboard'
 import KeyboardInternational from 'simple-keyboard-layouts'
+import styles from './VirtualKeyboard.scss'
 import 'react-simple-keyboard/build/css/index.css'
 
 export type VirtualKeyboardChangeEventHandlerType = (input: string) => void
@@ -58,24 +59,29 @@ const VirtualKeyboard = ({
   )
 
   return (
-    <Keyboard
-      keyboardRef={(r: any) => {
-        // eslint-disable-next-line no-param-reassign
-        keyboardRef.current = r
-      }}
-      {...{ ...defaultKeyboardLayout, layout: customKeyboardLayout }}
-      display={{
-        '{international}': '🌐',
-        '{space}': 'Space',
-        '{tab}': 'Tab',
-        '{lock}': 'CapsLock',
-        '{shift}': 'Shift',
-        '{bksp}': 'Backspace',
-        '{enter}': enterDisplayOverride || 'Enter',
-      }}
-      onChange={onChange}
-      onKeyPress={onKeyPress}
-    />
+    <div className={styles.VirtualKeyboard}>
+      <Keyboard
+        keyboardRef={(r: any) => {
+          // eslint-disable-next-line no-param-reassign
+          keyboardRef.current = r
+        }}
+        {...defaultKeyboardLayout}
+        layout={customKeyboardLayout}
+        display={{
+          '{international}': '🌐',
+          '{space}': 'Space',
+          '{tab}': 'Tab',
+          '{lock}': 'CapsLock',
+          '{shift}': 'Shift',
+          '{bksp}': 'Backspace',
+          '{enter}': enterDisplayOverride || 'Enter',
+        }}
+        theme="hg-theme-default hg-layout-default VirtualKeyboard"
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+        buttonTheme={[{ class: 'hg-internationalize', buttons: '🌐' }]}
+      />
+    </div>
   )
 }
 VirtualKeyboard.defaultProps = {

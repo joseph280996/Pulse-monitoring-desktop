@@ -22,15 +22,23 @@ $primary-tint-100: #ffffff;
 $gray: #b3b3b3;
 $light-gray: #e8e8e8;
 $dark-gray: #ced4da;
-$primary-color: $light-gray;
+$primary-color: $primary-tint-10;
+$box-shadow-inset-dark: #ababab;
+$box-shadow-dark: #acacac;
+$box-shadow-light: white;
 
 // Button Colors
 $primary-button-color: $primary-color;
 $primary-button-hover-color: $primary-tone-30;
 $green: #7cd889;
-$red: #f65959;
+$red: #ff7e7e;
 $disabled-button-color: $gray;
 
 // Link Colors
 $primary-link-color: $primary-color;
 $primary-link-hover-color: $primary-tone-30;
+
+// bootstrap theme
+$theme-colors: (
+  'primary': $light-gray,
+);
