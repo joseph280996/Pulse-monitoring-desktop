@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import StyledButton from '../../Button'
 import styles from './Finish.scss'
 
 type FinishPropType = {
@@ -13,17 +13,17 @@ const Finish = ({ onEndClick }: FinishPropType): React.ReactElement => {
       <div className={styles.Finish}>
         <h1>Finish</h1>
         <div className={styles['Finish-buttons']}>
-          <Button
+          <StyledButton
             className={styles['Finish-button']}
             type="button"
             onClick={onEndClick}
           >
             End
-          </Button>
+          </StyledButton>
           <Link to="/">
-            <Button type="button" className={styles['Finish-button']}>
+            <StyledButton type="button" className={styles['Finish-button']}>
               Start a new session
-            </Button>
+            </StyledButton>
           </Link>
         </div>
       </div>

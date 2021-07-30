@@ -49,13 +49,20 @@ const StyledButton = ({
   isSubmitting,
 }: PropsWithChildren<IButtonWithIconProps>): React.ReactElement => {
   return (
-    <div className={classnames(styles['Button-container'], wrapperClassName)}>
+    <div
+      className={classnames(
+        styles['Button-container'],
+        {
+          [styles['Button-iconOnly']]: !children && !text,
+        },
+        wrapperClassName,
+      )}
+    >
       <Button
         type={type}
         onClick={onClick}
         disabled={disabled}
         className={classnames(
-          'Button',
           {
             [styles['Button-primary']]: primary,
           },

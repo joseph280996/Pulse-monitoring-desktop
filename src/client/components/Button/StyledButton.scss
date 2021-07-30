@@ -1,34 +1,54 @@
-@import '../../app.global.scss';
+@import '../../common/styles/variables';
+@import '../../common/styles/utils';
 
 .Button {
-  &-primary {
-    &.btn {
-      border: 1px solid #ced4da;
-      background-color: $primary;
-      border-radius: 15px;
-      padding: 10px 20px;
-      color: white;
-      font-weight: 60;
-    }
-
-    &:hover {
-      border: 1px olid #ced4da;
-
-      background-color: $primary-hover;
-    }
-
-    &:disabled,
-    &[disabled] {
-      outline: none;
-
-      border: 0px;
-
-      background-color: $primary-tint-50;
-    }
-  }
-
   &-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    button {
+      padding: 2% 4%;
+      color: $primary-color;
+      border-radius: 50px;
+      border: 0.5px solid $dark-gray;
+      font-size: pxToRem(30);
+      font-weight: 600;
+      transition: all 0.15s ease-in-out, border-color 0s;
+      &:hover {
+        border: 0;
+        color: $primary-color;
+        background-color: $light-gray;
+        box-shadow: 0.5rem 0.5rem 1rem $box-shadow-dark,
+          -0.5rem -0.5rem 1rem $box-shadow-light;
+      }
+      &:active {
+        box-shadow: 0.5rem 0.5rem 0.5rem $box-shadow-dark,
+          -0.5rem -0.5rem 1rem $box-shadow-light,
+          inset 2px 2px 10px $box-shadow-inset-dark,
+          inset -2px -2px 10px $box-shadow-light;
+      }
+      &:disabled,
+      &[disabled] {
+        border: 0px;
+        background-color: $gray;
+        color: $light-gray;
+        &:hover {
+          background-color: $gray;
+          color: $light-gray;
+          box-shadow: unset;
+        }
+      }
+    }
+  }
+  &-iconOnly {
+    border-radius: 50%;
+    button {
+      padding: 10px;
+    }
+  }
+  &-primary {
+    &:disabled,
+    &[disabled] {
+      background-color: $primary-tint-50;
+    }
   }
 }

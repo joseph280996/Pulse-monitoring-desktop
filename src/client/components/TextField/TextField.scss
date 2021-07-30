@@ -1,14 +1,22 @@
+@import '../../common/styles/variables';
+@import '../../common/styles/utils';
 .TextField {
   &-container {
     display: block;
   }
+
   &-input {
-    &:focus {
-      border: 3px solid #f48024;
-    }
     width: 100%;
+    &--error {
+      border: 1px solid $red;
+    }
+    &:focus {
+      border: 1px solid $primary-color;
+    }
   }
+
   &-error {
-    color: red;
+    color: $red;
+    font-size: pxToRem(30);
   }
 }

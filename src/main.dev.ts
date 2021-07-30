@@ -14,6 +14,7 @@ import path from 'path'
 import { app, BrowserWindow, shell } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
+import installer, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer'
 import MenuBuilder from './electron/menu'
 
 export default class AppUpdater {
@@ -39,16 +40,13 @@ if (
 }
 
 const installExtensions = async () => {
-  const installer = require('electron-devtools-installer')
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS
-  const extensions = ['REACT_DEVELOPER_TOOLS']
+  const extensions = [REACT_DEVELOPER_TOOLS]
 
-  return installer
-    .default(
-      extensions.map((name) => installer[name]),
-      forceDownload,
-    )
-    .catch(console.log)
+  return installer(extensions, {
+    loadExtensionOptions: { allowFileAccess: true },
+    forceDownload,
+  }).catch(console.log)
 }
 
 const createWindow = async () => {
@@ -77,7 +75,7 @@ const createWindow = async () => {
     },
   })
 
-  mainWindow.loadURL(`file://${__dirname}/client/public/index.html`)
+  mainWindow.loadURL(`file://${__dirname}/index.html#app`)
 
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/master/docs/api/browser-window.md#using-ready-to-show-event
@@ -114,7 +112,6 @@ const createWindow = async () => {
 /**
  * Add event listeners...
  */
-
 app.on('window-all-closed', () => {
   // Respect the OSX convention of having the application in memory even
   // after all windows have been closed

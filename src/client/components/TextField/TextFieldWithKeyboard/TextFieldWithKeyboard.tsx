@@ -1,4 +1,5 @@
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import classNames from 'classnames'
 import * as React from 'react'
 import Keyboard from 'react-simple-keyboard'
 import StyledButton from '../../Button'
@@ -15,6 +16,7 @@ interface ITextFieldWithKeyboard extends Omit<ITextFieldProps, 'onChange'> {
 
 const TextFieldWithKeyboard = ({
   onChange,
+  className,
   ...textFieldProps
 }: ITextFieldWithKeyboard): React.ReactElement => {
   const [isOpenOverLay, setIsOpenOverlay] = React.useState<boolean>(false)
@@ -28,7 +30,10 @@ const TextFieldWithKeyboard = ({
               className={styles['TextFieldWithKeyboard-fieldAndCloseButton']}
             >
               <TextField
-                className={styles['TextFieldWithKeyboard-field']}
+                className={classNames(
+                  styles['TextFieldWithKeyboard-field'],
+                  className,
+                )}
                 onChange={(event) => {
                   event.stopPropagation()
                   onChange((event.target as HTMLInputElement).value)
@@ -55,6 +60,7 @@ const TextFieldWithKeyboard = ({
         </Overlay>
       )}
       <TextField
+        className={className}
         onClick={() => {
           setIsOpenOverlay(true)
         }}

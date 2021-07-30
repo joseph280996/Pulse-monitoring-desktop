@@ -1,4 +1,3 @@
-import moment from 'moment'
 import * as React from 'react'
 import { Spinner } from 'react-bootstrap'
 import useWebSocket, {
@@ -37,7 +36,6 @@ function DiagnosisPageContainer(): React.ReactElement {
   }
 
   const onRecordHandler = () => {
-    console.log('record clicked')
     setRecordedIndex(data.length)
   }
   const onStopHandler = () => {

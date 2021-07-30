@@ -1,0 +1,18 @@
+{
+  "cSpell.words": ["Pulsemonitoring", "fontawesome", "formik"],
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 42333,
+      "driver": "MariaDB",
+      "database": "pulsemonitoring",
+      "username": "pulsemonitoring",
+      "password": "Jpxt280996@1406",
+      "name": "pulse-monitoring"
+    }
+  ]
+}

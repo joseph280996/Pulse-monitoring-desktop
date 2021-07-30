@@ -1,1 +1,8 @@
-@import '../../app.global.scss';
+@import '../../common/styles/variables';
+.VirtualKeyboard {
+  .simple-keyboard.hg-theme-default {
+    .hg-button {
+      border-radius: 20px;
+    }
+  }
+}
