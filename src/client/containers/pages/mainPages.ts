@@ -16,7 +16,7 @@ export default [
     Component: ExportDataOrDiagnosisPage,
   },
   {
-    route: '/',
+    route: '/app',
     isPrivate: true,
     isExact: true,
     Component: Diagnosis,

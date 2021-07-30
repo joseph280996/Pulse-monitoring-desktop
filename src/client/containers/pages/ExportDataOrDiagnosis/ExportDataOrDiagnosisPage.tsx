@@ -8,7 +8,7 @@ const ExportDataOrDiagnosisPageContainer = (): React.ReactElement => {
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const [isMessageOpen, setIsMessageOpen] = React.useState(false)
   const onDiagnose = () => {
-    history.push('/')
+    history.push('/app')
   }
   const onExportData = React.useCallback(async () => {
     setIsSubmitting(true)
