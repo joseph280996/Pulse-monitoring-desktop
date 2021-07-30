@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import StyledButton from '../../Button'
 import styles from './NotFound.scss'
 
 function NotFoundPage(): React.ReactNode {
@@ -15,7 +15,7 @@ function NotFoundPage(): React.ReactNode {
           </p>
           <div className={styles['NotFound-buttonContainer']}>
             <Link to="/">
-              <Button type="button">Go back to our homepage</Button>
+              <StyledButton type="button">Go back to our homepage</StyledButton>
             </Link>
           </div>
         </div>

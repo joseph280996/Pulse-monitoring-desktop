@@ -3,7 +3,7 @@ export interface IField {
   name?: string
   disabled?: boolean
   error?: any
-  value: string | number | readonly string[] | undefined
+  value?: string | number | readonly string[]
   required?: boolean
   className?: string
 }

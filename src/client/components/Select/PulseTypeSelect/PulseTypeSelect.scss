@@ -1,7 +1,10 @@
+@import '../../../common/styles/utils';
 .PulseTypeSelect {
   display: flex;
   align-items: center;
   height: 70px;
+  font-size: pxToRem(50);
+  padding-left: 10px;
   .Select {
     bottom: 0;
     font-size: 15px;

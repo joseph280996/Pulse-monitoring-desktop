@@ -11,6 +11,7 @@ interface IStartButtonProps extends IButtonWithIconProps {
 const StartButton = ({
   onStart,
   className,
+  ...buttonProps
 }: IStartButtonProps): React.ReactElement => {
   return (
     <StyledButton
@@ -18,6 +19,7 @@ const StartButton = ({
       wrapperClassName={styles['StartButton-wrapper']}
       className={classNames(styles.StartButton, className)}
       onClick={onStart}
+      {...buttonProps}
     />
   )
 }

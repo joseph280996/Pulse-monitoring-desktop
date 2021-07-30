@@ -23,7 +23,6 @@ function DiagnosisForm({
     },
     onSubmit: (values: FormikValuesType) => {
       const recordedData = data.slice(recordedStartIndex, recordedEndIndex)
-      console.log(recordedData)
       history.push('/postdiagnosis', {
         recordedData,
         handPositionID: values.pulsePositionID,

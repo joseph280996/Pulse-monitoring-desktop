@@ -25,8 +25,9 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "mysql": "^2.18.1",
+    "mysqldump": "^3.2.0",
     "tsc": "^1.20150623.0",
-    "ws": "^7.4.3"
+    "ws": "^7.4.6"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
@@ -35,7 +36,7 @@
     "@types/i2c-bus": "^5.1.0",
     "@types/lodash": "^4.14.168",
     "@types/mysql": "^2.15.18",
-    "@types/node": "^14.14.32",
+    "@types/node": "^14.17.2",
     "@types/ws": "^7.4.0",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",

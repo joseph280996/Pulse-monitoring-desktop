@@ -1,2 +1,7 @@
+@import '../../../common/styles/utils';
 .PulsePositionSelect {
+  font-size: pxToRem(50);
+  &-label {
+    margin-right: 10px;
+  }
 }

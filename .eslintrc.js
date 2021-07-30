@@ -5,6 +5,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'react/jsx-props-no-spreading': 'off',
     'promise/always-return': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
   parserOptions: {
     ecmaVersion: 2020,

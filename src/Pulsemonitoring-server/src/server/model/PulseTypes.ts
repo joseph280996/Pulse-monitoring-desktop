@@ -33,7 +33,7 @@ class PulseType {
     this.pulseName = obj.pulseName
   }
 
-  static loadAll = async (): Promise<PulseType[]> =>
+  static loadAll = async (): Promise<PulseType[] | undefined[]> =>
     db
       .query(`SELECT ${PulseType.sqlFields} FROM PulseType`)
       .then((result: any) => {

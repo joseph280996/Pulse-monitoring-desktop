@@ -45,20 +45,12 @@ function DiagnosisForm({
     <Form className={styles.Form} onSubmit={handleSubmit}>
       {isFinished && (
         <Overlay>
-          <ResetButton onReset={onReset} />
-          <ContinueButton type="submit" />
+          <div className={styles['DiagnosisForm-continueOrResetContainer']}>
+            <ResetButton onReset={onReset} />
+            <ContinueButton type="submit" />
+          </div>
         </Overlay>
       )}
-      <div className={styles[`DiagnosisForm-pulseSelectWrapper`]}>
-        <PulsePositionSelect
-          className={styles[`DiagnosisForm-pulseSelect`]}
-          value={values.pulsePositionID}
-          name="pulsePositionID"
-          onPositionChange={handleChange}
-          onBlur={handleBlur}
-          required
-        />
-      </div>
       <div>
         <LineChart
           data={takeRight<LineSeriesPoint>(data, 200)}
@@ -67,10 +59,22 @@ function DiagnosisForm({
         />
       </div>
       <div className={styles[`DiagnosisForm-toolbarContainer`]}>
+        <div className={styles[`DiagnosisForm-pulseSelectWrapper`]}>
+          <PulsePositionSelect
+            label="Pulse Position"
+            className={styles[`DiagnosisForm-pulseSelect`]}
+            value={values.pulsePositionID}
+            name="pulsePositionID"
+            onPositionChange={handleChange}
+            onBlur={handleBlur}
+            required
+          />
+        </div>
         {!isStarted ? (
           <StartButton
             className={styles[`DiagnosisForm-button`]}
             onStart={onStart}
+            disabled={!dirty || !touched}
           />
         ) : recordedStartIndex ? (
           <StopButton

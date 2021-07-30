@@ -1,8 +1,9 @@
-@import '../../../app.global.scss';
+@import '../../../common/styles/variables';
+@import '../../../common/styles/utils';
 .StartButton {
   @include circleIcon;
   &.btn {
-    font-size: 37.5px;
+    font-size: pxToRem(37);
   }
   &.btn-primary {
     background-color: $green;
