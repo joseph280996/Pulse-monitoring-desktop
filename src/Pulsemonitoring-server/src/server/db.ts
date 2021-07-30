@@ -61,7 +61,7 @@ class DB implements DBInterface {
   dump = async () => {
     mysqldump({
       connection: DBConf,
-      dumpToFile: './pulse-mysql-dump.sql',
+      dumpToFile: '../../../../pulse-mysql-dump.sql',
     })
   }
 }

@@ -65,7 +65,7 @@ export default [
         if (req.body.export) {
           await db.dump()
         }
-        res.status(200).send({ status: 200 })
+        res.status(200).send({ successful: true })
       } catch (err) {
         console.error(err)
         console.log(err.stack)
