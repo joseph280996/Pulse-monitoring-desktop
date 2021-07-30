@@ -74,6 +74,7 @@ function DiagnosisForm({
           <StartButton
             className={styles[`DiagnosisForm-button`]}
             onStart={onStart}
+            disabled={!dirty || !touched}
           />
         ) : recordedStartIndex ? (
           <StopButton

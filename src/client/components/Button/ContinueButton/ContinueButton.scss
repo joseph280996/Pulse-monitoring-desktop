@@ -2,7 +2,10 @@
 .ContinueButton {
   @include circleIcon;
   &-wrapper {
-    height: 100%;
+    button {
+      width: 100%;
+      height: 100%;
+    }
   }
   &.btn {
     font-size: pxToRem(37);
