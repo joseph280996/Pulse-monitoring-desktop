@@ -5,7 +5,8 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: pxt280996
-      MYSQL_USER: pulsemonitoring@localhost
-      MYSQL_PASSWORD: password
+      MYSQL_USER: pulsemonitoring
+      MYSQL_PASSWORD: Jpxt280996@1406
+      MYSQL_DATABASE: pulsemonitoring
     ports:
       - 42333:3306

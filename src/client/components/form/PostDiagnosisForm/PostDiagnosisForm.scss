@@ -1,0 +1,50 @@
+@import '../../../common/styles/utils/';
+.PostDiagnosis {
+  &-field {
+    padding-top: 10px;
+    font-size: pxToRem(30);
+  }
+  &-button {
+    width: 100%;
+    height: 100%;
+    button {
+      width: 100%;
+    }
+    &Container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    &Wrapper {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    &Icon.btn {
+      width: 100%;
+      height: 100%;
+      font-size: pxToRem(35);
+      border-radius: 50%;
+    }
+  }
+  &-link {
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border: 10px solid white;
+    border-radius: 50%;
+    &:hover {
+      border-color: rgb(172, 172, 172);
+      .PostDiagnosis {
+        &-button {
+        }
+      }
+      .Icon {
+        &-confirm {
+          color: rgb(61, 119, 61);
+        }
+      }
+    }
+  }
+}

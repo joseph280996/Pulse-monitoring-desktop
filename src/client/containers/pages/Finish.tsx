@@ -1,21 +1,16 @@
-import React from 'react'
-import { Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import * as React from 'react'
+import { useHistory } from 'react-router-dom'
+import useAuthState from '../../common/utils/hooks/useAuthState'
+import FinishComponent from '../../components/pages/Finish'
 
-const Finish = () => {
-  return (
-    <div>
-      <h1>Finish</h1>
-      <div>
-        <Button type="button" onClick={() => console.log('end')}>
-          End
-        </Button>
-        <Link to="/">
-          <Button type="button">Start a new session</Button>
-        </Link>
-      </div>
-    </div>
-  )
+const Finish: React.FC = () => {
+  const { setAuth } = useAuthState()
+  const history = useHistory()
+  const onEndClick = () => {
+    if (setAuth) setAuth((auth) => ({ ...auth, isSignedIn: false }))
+    history.push('/')
+  }
+  return <FinishComponent onEndClick={onEndClick} />
 }
 
 export default Finish

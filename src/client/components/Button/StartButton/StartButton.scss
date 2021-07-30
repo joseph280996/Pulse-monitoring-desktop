@@ -1,0 +1,16 @@
+@import '../../../common/styles/variables';
+@import '../../../common/styles/utils';
+.StartButton {
+  @include circleIcon;
+  &.btn {
+    font-size: pxToRem(37);
+  }
+  &.btn-primary {
+    background-color: $green;
+    border-color: $green;
+    &:active {
+      background-color: $green;
+      border-color: $green;
+    }
+  }
+}

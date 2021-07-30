@@ -1,0 +1,32 @@
+@import '../../../common/styles/utils';
+.Finish {
+  background-color: white;
+  padding: 20px 30px;
+  min-width: 300px;
+  & > h1 {
+    font-size: pxToRem(70);
+    text-align: center;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    button {
+      padding: 20px;
+      border-radius: 10px;
+      font-size: pxToRem(40);
+    }
+  }
+
+  &-button {
+    margin-right: 10px;
+    min-width: 200px;
+  }
+}

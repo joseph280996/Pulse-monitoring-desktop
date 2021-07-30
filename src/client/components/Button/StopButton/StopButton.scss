@@ -1,0 +1,13 @@
+@import '../../../common/styles/variables';
+.StopButton {
+  &.btn-primary {
+    background-color: $red;
+    border-color: $red;
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $red;
+      border-color: $red;
+    }
+  }
+}

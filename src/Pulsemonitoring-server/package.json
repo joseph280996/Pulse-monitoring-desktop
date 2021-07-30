@@ -1,0 +1,58 @@
+{
+  "name": "pulse-monitoring",
+  "version": "1.0.0",
+  "description": "Raspberry Pi application for pulse monitoring and data collecting.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint \"**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "npm run lint --fix",
+    "start": "nodemon src/index.ts"
+  },
+  "keywords": [
+    "Raspberry Pi",
+    "pulse monitoring",
+    "data collecting",
+    "telemedicine",
+    "traditional chinese medicine"
+  ],
+  "author": "Tung Pham",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "mysqldump": "^3.2.0",
+    "tsc": "^1.20150623.0",
+    "ws": "^7.4.6"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/helmet": "^4.0.0",
+    "@types/i2c-bus": "^5.1.0",
+    "@types/lodash": "^4.14.168",
+    "@types/mysql": "^2.15.18",
+    "@types/node": "^14.17.2",
+    "@types/ws": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "optionalDependencies": {
+    "ads1115": "^1.2.0",
+    "i2c-bus": "^5.2.1"
+  }
+}

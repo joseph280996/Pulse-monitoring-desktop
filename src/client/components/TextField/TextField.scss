@@ -1,0 +1,22 @@
+@import '../../common/styles/variables';
+@import '../../common/styles/utils';
+.TextField {
+  &-container {
+    display: block;
+  }
+
+  &-input {
+    width: 100%;
+    &--error {
+      border: 1px solid $red;
+    }
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &-error {
+    color: $red;
+    font-size: pxToRem(30);
+  }
+}

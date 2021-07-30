@@ -1,4 +1,55 @@
-@import '~bootstrap/scss/bootstrap.scss';
 @import '~react-vis/dist/style';
+@import '~react-simple-keyboard/build/css/index.css';
+@import './common/styles';
+@import '~bootstrap/scss/bootstrap.scss';
 
-@import './styles/index.scss';
+html,
+body {
+  background-color: $light-gray;
+  height: 100%;
+  font-size: pxToRem(10);
+}
+
+#root {
+  height: 100%;
+  color: $primary-color;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+input {
+  color: $primary-color;
+  font-size: pxToRem(25);
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 10px 20px;
+  background-color: $light-gray;
+  border: none;
+  box-shadow: inset 2px 2px 5px $box-shadow-inset-dark,
+    inset -2px -2px 5px $box-shadow-light;
+  border-radius: 20px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.simple-keyboard {
+  font-size: pxToRem(40);
+}
+.simple-keyboard.hg-theme-default {
+  background-color: $light-gray;
+}
+
+.simple-keyboard.hg-theme-default.VirtualKeyboard .hg-button {
+  background-color: $light-gray;
+  box-shadow: none;
+  border: 1px solid $dark-gray;
+  &:hover {
+    border: 0px;
+    box-shadow: 1px 1px 1px $box-shadow-dark, -1px -1px 1px $box-shadow-light;
+  }
+}

@@ -1,0 +1,44 @@
+// Colors
+$primary-tone-100: #000000;
+$primary-tone-90: #011010;
+$primary-tone-80: #022020;
+$primary-tone-70: #022f2f;
+$primary-tone-60: #033f3f;
+$primary-tone-50: #044f4f;
+$primary-tone-40: #055f5f;
+$primary-tone-30: #066f6f;
+$primary-tone-20: #067e7e;
+$primary-tone-10: #078e8e;
+$primary-tint-10: #21a8a8;
+$primary-tint-20: #39b1b1;
+$primary-tint-30: #52bbbb;
+$primary-tint-40: #6bc5c5;
+$primary-tint-50: #84cfcf;
+$primary-tint-60: #9cd8d8;
+$primary-tint-70: #b5e2e2;
+$primary-tint-80: #ceecec;
+$primary-tint-90: #e6f5f5;
+$primary-tint-100: #ffffff;
+$gray: #b3b3b3;
+$light-gray: #e8e8e8;
+$dark-gray: #ced4da;
+$primary-color: $primary-tint-10;
+$box-shadow-inset-dark: #ababab;
+$box-shadow-dark: #acacac;
+$box-shadow-light: white;
+
+// Button Colors
+$primary-button-color: $primary-color;
+$primary-button-hover-color: $primary-tone-30;
+$green: #7cd889;
+$red: #ff7e7e;
+$disabled-button-color: $gray;
+
+// Link Colors
+$primary-link-color: $primary-color;
+$primary-link-hover-color: $primary-tone-30;
+
+// bootstrap theme
+$theme-colors: (
+  'primary': $light-gray,
+);
