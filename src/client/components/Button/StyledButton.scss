@@ -6,12 +6,13 @@
     display: flex;
     justify-content: center;
     button {
+      padding: 2% 4%;
       color: $primary-color;
       border-radius: 50px;
       border: 0.5px solid $dark-gray;
       font-size: pxToRem(30);
       font-weight: 600;
-      padding: 2% 4%;
+      transition: all 0.15s ease-in-out, border-color 0s;
       &:hover {
         border: 0;
         color: $primary-color;
