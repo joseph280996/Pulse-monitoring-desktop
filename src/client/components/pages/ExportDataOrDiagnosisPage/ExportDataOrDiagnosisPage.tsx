@@ -8,7 +8,6 @@ import Overlay from '../../Overlay'
 import StyledButton from '../../Button'
 
 const ExportDataOrDiagnosisPageComponent = ({
-  onDiagnose,
   onExportData,
   isSubmitting,
   isMessageOpen,
@@ -37,7 +36,7 @@ const ExportDataOrDiagnosisPageComponent = ({
         className={styles[`ExportDataOrDiagnosisPage-exportDataButton`]}
         onExport={onExportData}
       />
-      <DiagnoseButton onDiagnose={onDiagnose} />
+      <DiagnoseButton />
     </div>
   )
 }

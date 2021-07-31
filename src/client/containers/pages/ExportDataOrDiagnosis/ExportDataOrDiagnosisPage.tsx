@@ -1,15 +1,10 @@
 import * as React from 'react'
-import { useHistory } from 'react-router-dom'
 import tcmAPIRequestController from '../../../common/tcmAPI'
 import ExportDataOrDiagnosisPageComponent from '../../../components/pages/ExportDataOrDiagnosisPage/ExportDataOrDiagnosisPage'
 
 const ExportDataOrDiagnosisPageContainer = (): React.ReactElement => {
-  const history = useHistory()
   const [isSubmitting, setIsSubmitting] = React.useState(false)
   const [isMessageOpen, setIsMessageOpen] = React.useState(false)
-  const onDiagnose = () => {
-    history.push('/app')
-  }
   const onExportData = React.useCallback(async () => {
     setIsSubmitting(true)
     try {
@@ -31,7 +26,6 @@ const ExportDataOrDiagnosisPageContainer = (): React.ReactElement => {
       setIsMessageOpen={setIsMessageOpen}
       isSubmitting={isSubmitting}
       onExportData={onExportData}
-      onDiagnose={onDiagnose}
     />
   )
 }

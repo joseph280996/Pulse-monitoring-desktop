@@ -1,5 +1,9 @@
+@import '../../../common/styles/variables';
 .DiagnoseButton {
   button {
     padding: 20px 30px;
+  }
+  &-link {
+    color: $primary-color;
   }
 }
