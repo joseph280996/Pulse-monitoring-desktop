@@ -1,5 +1,5 @@
 import NotFoundPage from '../../components/pages/NotFound'
-import AuthPage from './Auth/AuthPage'
+import AuthPage from './auth/AuthPage'
 import Diagnosis from './Diagnosis'
 import ExportDataOrDiagnosisPage from './ExportDataOrDiagnosis'
 import Finish from './Finish'
