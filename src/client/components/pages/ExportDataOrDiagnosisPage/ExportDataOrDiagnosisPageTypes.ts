@@ -5,5 +5,4 @@ export type ExportDataOrDiagnosisPageProps = {
   setIsMessageOpen: React.Dispatch<React.SetStateAction<boolean>>
   isSubmitting: boolean
   onExportData: MouseEventHandler
-  onDiagnose: MouseEventHandler
 }

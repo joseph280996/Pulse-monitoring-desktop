@@ -1,6 +1,7 @@
 import { faStethoscope } from '@fortawesome/free-solid-svg-icons'
 import classNames from 'classnames'
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import StyledButton, { IButtonWithIconProps } from '../StyledButton'
 import styles from './DiagnoseButton.scss'
 
@@ -13,14 +14,16 @@ function DiagnoseButton({
   className,
 }: IDiagnoseButtonProps): React.ReactElement {
   return (
-    <StyledButton
-      icon={faStethoscope}
-      wrapperClassName={styles.DiagnoseButton}
-      className={classNames('DiagnoseButton', className)}
-      onClick={onDiagnose}
-    >
-      Diagnose
-    </StyledButton>
+    <Link to="/" className={styles['DiagnoseButton-link']}>
+      <StyledButton
+        icon={faStethoscope}
+        wrapperClassName={styles.DiagnoseButton}
+        className={classNames('DiagnoseButton', className)}
+        onClick={onDiagnose}
+      >
+        Diagnose
+      </StyledButton>
+    </Link>
   )
 }
 
