@@ -13,8 +13,8 @@ const postDiagnosisFormFields: FieldConfig[] = [
     validate: array()
       .of(
         object().shape({
-          timeStamp: number(),
-          data: number(),
+          x: number(),
+          y: number(),
         }),
       )
       .required('Required'),

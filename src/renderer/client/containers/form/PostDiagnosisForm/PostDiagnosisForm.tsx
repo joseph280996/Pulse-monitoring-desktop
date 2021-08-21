@@ -12,6 +12,7 @@ import fields from './postDiagnosisFields'
 
 const PostDiagnosisFormContainer = ({
   initialValues,
+  data,
   ...passThroughProps
 }: IPostDiagnosisFormContainerProp): React.ReactElement => {
   const history = useHistory()
@@ -21,7 +22,7 @@ const PostDiagnosisFormContainer = ({
     onSubmit: async (values: PostDiagnosisFormProps) => {
       await tcmAPIRequestController.post('/record', {
         ...pick(values, ['pulseTypeID', 'handPositionID', 'patientName']),
-        data: JSON.stringify(values.data),
+        data: JSON.stringify(data),
       })
       history.push('/finish')
     },
@@ -32,7 +33,9 @@ const PostDiagnosisFormContainer = ({
     ),
   })
 
-  return <PostDiagnosisFormComponent {...formik} {...passThroughProps} />
+  return (
+    <PostDiagnosisFormComponent data={data} {...formik} {...passThroughProps} />
+  )
 }
 
 export default PostDiagnosisFormContainer
