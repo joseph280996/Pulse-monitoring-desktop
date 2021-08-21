@@ -18,9 +18,12 @@ function PostDiagnosisFormComponent({
   setFieldValue,
   values,
   isSubmitting,
+  status,
 }: IPostDiagnosisProps): React.ReactElement {
+  console.log(errors)
   return (
     <form onSubmit={handleSubmit}>
+      {status && <div>{status}</div>}
       <TextFieldWithKeyboard
         className={styles['PostDiagnosis-field']}
         type="text"
