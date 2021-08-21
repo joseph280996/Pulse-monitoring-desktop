@@ -1,6 +1,5 @@
 import dotenv from 'dotenv'
 import { Pool, createPool, MysqlError } from 'mysql'
-import mysqldump from 'mysqldump'
 
 interface DBInterface {
   query(query: string, values: unknown): Promise<unknown>
@@ -56,13 +55,6 @@ class DB implements DBInterface {
     if (this.pool) {
       this.pool.end()
     }
-  }
-
-  dump = async () => {
-    mysqldump({
-      connection: DBConf,
-      dumpToFile: '../../../../pulse-mysql-dump.sql',
-    })
   }
 }
 
