@@ -48,6 +48,18 @@ class Patient implements PatientInterface {
     this.id = result.insertId
   }
 
+  static async getById(id: number): Promise<Patient | null> {
+    const result = await db.query(
+      `
+      SELECT ${Patient.fields}
+      FROM Patient
+      WHERE id = ?;
+    `,
+      [id],
+    )
+    return result ? new Patient(result) : null
+  }
+
   static async findPatientByName(name: string): Promise<Patient | null> {
     const results = await db.query(
       `

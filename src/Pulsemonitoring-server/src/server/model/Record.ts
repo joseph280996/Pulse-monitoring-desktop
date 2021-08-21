@@ -1,18 +1,14 @@
 import db from '../db'
+import {
+  GetRecordByRangeInputType,
+  IRecord,
+  RecordFieldsType,
+} from './RecordTypes'
 
-type RecordConstructorParamType = {
-  id?: number
-  pulseTypeID: number
-  handPositionID: number
-  data: string
-  patientID: number
-}
+class Record implements IRecord {
+  private static fields =
+    'id, data, dateTimeCreated, dateTimeUpdated, PulseTypeID, HandPositionID, PatientID'
 
-interface RecordInterface {
-  save(): Promise<Record>
-}
-
-class Record implements RecordInterface {
   private _id: number | undefined
 
   get id(): number | undefined {
@@ -63,7 +59,7 @@ class Record implements RecordInterface {
     this._patientID = patientID
   }
 
-  constructor(obj: RecordConstructorParamType) {
+  constructor(obj: RecordFieldsType) {
     this.id = obj.id
     this.pulseTypeID = obj.pulseTypeID
     this.handPositionID = obj.handPositionID
@@ -80,6 +76,21 @@ class Record implements RecordInterface {
       [[this.data, this.pulseTypeID, this.handPositionID, this.patientID]],
     )
     return new Record({ ...this, id: result.insertId })
+  }
+
+  static async getByDateRange({
+    startDate,
+    endDate,
+  }: GetRecordByRangeInputType): Promise<[Record]> {
+    const res = await db.query(
+      `
+      SELECT ${Record.fields} FROM Record WHERE dateTimeCreated > ? AND dateTimeCreated < ?;
+      `,
+      [startDate, endDate],
+    )
+    return res && res.length > 0
+      ? res.map((row: any) => new Record(row as RecordFieldsType))
+      : []
   }
 }
 

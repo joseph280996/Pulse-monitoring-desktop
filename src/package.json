@@ -2,6 +2,7 @@
   "name": "pulse-monitoring-desktop",
   "productName": "pulse-monitoring-desktop",
   "version": "2.3.0",
+  "type": "module",
   "description": "Pulse Monitoring App is a Linux based application running on Pulse Monitoring Device",
   "main": "./main.prod.js",
   "author": {

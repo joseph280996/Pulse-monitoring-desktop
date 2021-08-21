@@ -1,0 +1,14 @@
+@import '../../../common/styles/utils/';
+@import '../../../common/styles/variables';
+.ExportDataForm {
+  &-exportSuccessMessage {
+    padding: 4% 2%;
+    font-size: pxToRem(50);
+    border-radius: 50px;
+    background-color: $light-gray;
+  }
+  &-closeIcon {
+    width: 75px;
+    height: 75px;
+  }
+}
