@@ -1,9 +1,5 @@
 import db from '../db'
-
-type PulseTypeConstructor = {
-  id: number
-  pulseName: string
-}
+import { PulseTypeFieldsType } from './PulseTypesType'
 
 class PulseType {
   private static sqlFields = 'id, pulseName'
@@ -28,7 +24,7 @@ class PulseType {
     this.name = pulseName
   }
 
-  constructor(obj: PulseTypeConstructor) {
+  constructor(obj: PulseTypeFieldsType) {
     this.id = obj.id
     this.pulseName = obj.pulseName
   }
