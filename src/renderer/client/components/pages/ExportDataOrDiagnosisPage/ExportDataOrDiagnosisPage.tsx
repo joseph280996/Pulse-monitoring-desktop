@@ -6,7 +6,9 @@ import styles from './ExportDataOrDiagnosisPage.scss'
 const ExportDataOrDiagnosisPageComponent = (): React.ReactElement => {
   return (
     <div className={styles.ExportDataOrDiagnosisPage}>
-      <ExportDataButton />
+      <ExportDataButton
+        className={styles['ExportDataOrDiagnosisPage-exportDataButton']}
+      />
       <DiagnoseButton />
     </div>
   )
