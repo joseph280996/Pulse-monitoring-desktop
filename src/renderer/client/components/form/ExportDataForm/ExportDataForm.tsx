@@ -95,7 +95,6 @@ const ExportDataFormComponent = ({
               </div>
             )
           }}
-          monthsShown={2}
           selectsRange
           selected={startDate}
           onChange={onDateChange}
