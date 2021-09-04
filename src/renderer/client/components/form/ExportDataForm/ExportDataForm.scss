@@ -1,6 +1,16 @@
 @import '../../../common/styles/utils/';
 @import '../../../common/styles/variables';
 .ExportDataForm {
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  &-label {
+    font-size: pxToRem(50);
+  }
   &-exportSuccessMessage {
     padding: 4% 2%;
     font-size: pxToRem(50);
