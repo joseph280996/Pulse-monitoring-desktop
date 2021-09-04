@@ -1,6 +1,6 @@
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
-import moment from 'Pulsemonitoring-server/node_modules/moment/ts3.1-typings/moment'
 import * as React from 'react'
+import classNames from 'classnames'
 import DatePicker from 'react-datepicker'
 import { Link } from 'react-router-dom'
 import StyledButton from '../../Button'
@@ -18,7 +18,7 @@ const ExportDataFormComponent = ({
 }: ExportDataFormComponentPropsType) => {
   return (
     <div className={styles['ExportDataForm-wrapper']}>
-      <form onSubmit={handleSubmit} className="ExportDataForm">
+      <form onSubmit={handleSubmit} className={styles.ExportDataForm}>
         <h1 className={styles['ExportDataForm-label']}>
           Date Range For Export
         </h1>
@@ -30,16 +30,18 @@ const ExportDataFormComponent = ({
                 <StyledButton
                   className={styles['ExportDataForm-closeIcon']}
                   icon={faWindowClose}
-                >
-                  Export Data
-                </StyledButton>
+                />
               </Link>
             </div>
           </Overlay>
         )}
         <DatePicker
+          weekDayClassName={() => styles['ExportDataForm-datePickerWeekday']}
+          showPopperArrow={false}
           startDate={startDate}
           endDate={endDate}
+          dayClassName={() => styles['ExportDataForm-datePickerDay']}
+          calendarClassName={styles['ExportDataForm-datePickerCalendar']}
           renderCustomHeader={({
             monthDate,
             customHeaderCount,
@@ -59,11 +61,20 @@ const ExportDataFormComponent = ({
                   }}
                   onClick={decreaseMonth}
                 >
-                  <span className="react-datepicker__navigation-icon react-datepicker__navigation-icon--previous">
+                  <span
+                    className={classNames(
+                      'react-datepicker__navigation-icon react-datepicker__navigation-icon--previous',
+                    )}
+                  >
                     {'<'}
                   </span>
                 </button>
-                <span className="react-datepicker__current-month">
+                <span
+                  className={classNames(
+                    'react-datepicker__current-month',
+                    styles['ExportDataForm-datePickerHeader'],
+                  )}
+                >
                   {monthDate.toLocaleString('en-US', {
                     month: 'long',
                     year: 'numeric',
@@ -78,16 +89,17 @@ const ExportDataFormComponent = ({
                   }
                   onClick={increaseMonth}
                 >
-                  <span className="react-datepicker__navigation-icon react-datepicker__navigation-icon--next">
+                  <span
+                    className={classNames(
+                      'react-datepicker__navigation-icon react-datepicker__navigation-icon--next',
+                    )}
+                  >
                     {'>'}
                   </span>
                 </button>
               </div>
             )
           }}
-          dayClassName={(date) =>
-            moment(date).day() < Math.random() * 31 ? 'random' : ''
-          }
           monthsShown={2}
           selectsRange
           selected={startDate}
