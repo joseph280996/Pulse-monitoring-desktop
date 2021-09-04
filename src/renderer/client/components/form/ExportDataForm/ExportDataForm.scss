@@ -1,6 +1,9 @@
 @import '../../../common/styles/utils/';
 @import '../../../common/styles/variables';
 .ExportDataForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   &-wrapper {
     display: flex;
     justify-content: center;
@@ -20,5 +23,24 @@
   &-closeIcon {
     width: 75px;
     height: 75px;
+  }
+  &-datePicker {
+    &Weekday {
+      font-size: pxToRem(40);
+      width: 50px;
+    }
+    &Header {
+      font-size: pxToRem(60);
+    }
+    &Day {
+      font-size: pxToRem(60);
+      width: 50px;
+      height: 40px;
+      line-height: 1em;
+    }
+    &Calendar {
+      transform: translate(-300px, 0px);
+      width: 50vw;
+    }
   }
 }
