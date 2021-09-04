@@ -69,12 +69,7 @@ const ExportDataFormComponent = ({
                     {'<'}
                   </span>
                 </button>
-                <span
-                  className={classNames(
-                    'react-datepicker__current-month',
-                    styles['ExportDataForm-datePickerHeader'],
-                  )}
-                >
+                <span className={styles['ExportDataForm-datePickerHeader']}>
                   {monthDate.toLocaleString('en-US', {
                     month: 'long',
                     year: 'numeric',

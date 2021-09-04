@@ -27,16 +27,18 @@
   &-datePicker {
     &Weekday {
       font-size: pxToRem(40);
-      width: 50px;
+      width: 50px !important;
     }
     &Header {
+      margin: 10px;
+      font-weight: 600;
       font-size: pxToRem(60);
     }
     &Day {
       font-size: pxToRem(60);
-      width: 50px;
+      width: 50px !important;
       height: 40px;
-      line-height: 1em;
+      line-height: 1em !important;
     }
     &Calendar {
       width: 40vw;
