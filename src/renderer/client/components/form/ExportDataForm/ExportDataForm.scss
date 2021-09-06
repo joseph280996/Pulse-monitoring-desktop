@@ -1,6 +1,18 @@
 @import '../../../common/styles/utils/';
 @import '../../../common/styles/variables';
 .ExportDataForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  &-label {
+    font-size: pxToRem(50);
+  }
   &-exportSuccessMessage {
     padding: 4% 2%;
     font-size: pxToRem(50);
@@ -10,5 +22,25 @@
   &-closeIcon {
     width: 75px;
     height: 75px;
+  }
+  &-datePicker {
+    &Weekday {
+      font-size: pxToRem(40);
+      width: 50px !important;
+    }
+    &Header {
+      margin: 10px;
+      font-weight: 600;
+      font-size: pxToRem(60);
+    }
+    &Day {
+      font-size: pxToRem(60);
+      width: 50px !important;
+      height: 40px;
+      line-height: 1em !important;
+    }
+    &Calendar {
+      width: 50vw;
+    }
   }
 }

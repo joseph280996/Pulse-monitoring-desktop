@@ -1,5 +1,5 @@
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
-import * as React from 'react'
+import React, { ReactElement } from 'react'
 import StyledButton from '../../Button'
 import LineChart from '../../Chart/LineChart'
 import { PulseTypeSelect } from '../../Select'
@@ -19,8 +19,7 @@ function PostDiagnosisFormComponent({
   values,
   isSubmitting,
   status,
-}: IPostDiagnosisProps): React.ReactElement {
-  console.log(errors)
+}: IPostDiagnosisProps): ReactElement {
   return (
     <form onSubmit={handleSubmit}>
       {status && <div>{status}</div>}

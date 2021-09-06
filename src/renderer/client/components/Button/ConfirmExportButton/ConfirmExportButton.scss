@@ -1,6 +1,9 @@
 @import '../../../common/styles/utils';
 .ContinueButton {
-  @include circleIcon;
+  margin-top: pxToRem(20);
+  &-text {
+    margin-right: pxToRem(10);
+  }
   &-wrapper {
     button {
       width: 100%;

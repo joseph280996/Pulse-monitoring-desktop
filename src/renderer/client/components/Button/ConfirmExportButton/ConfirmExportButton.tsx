@@ -8,11 +8,15 @@ const ContinueButton = ({
 }: IButtonProps): React.ReactElement => {
   return (
     <StyledButton
+      buttonTextClassName={styles['ContinueButton-text']}
       wrapperClassName={styles['ContinueButton-wrapper']}
       className={styles.ContinueButton}
+      iconPosition="end"
       icon={faArrowRight}
       type={type}
-    />
+    >
+      Export Data
+    </StyledButton>
   )
 }
 
