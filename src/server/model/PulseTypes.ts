@@ -1,36 +1,22 @@
 import db from '../db'
-
-type PulseTypeConstructor = {
-  id: number
-  pulseName: string
-}
+import { PulseTypeFieldsType } from './PulseTypesType'
 
 class PulseType {
   private static sqlFields = 'id, pulseName'
 
   id!: number
 
-  get pulseID(): number {
-    return this.id
-  }
+  pulseName!: string
 
-  set pulseID(id: number) {
-    this.id = id
-  }
+  chineseName!: string
 
-  name!: string
+  features!: string
 
-  get pulseName(): string {
-    return this.name
-  }
-
-  set pulseName(pulseName: string) {
-    this.name = pulseName
-  }
-
-  constructor(obj: PulseTypeConstructor) {
+  constructor(obj: PulseTypeFieldsType) {
+    this.chineseName = obj.chineseName
     this.id = obj.id
-    this.pulseName = obj.pulseName
+    this.pulseName = obj.name
+    this.features = obj.features
   }
 
   static loadAll = async (): Promise<PulseType[] | undefined[]> =>
