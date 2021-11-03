@@ -2,8 +2,6 @@
 @import '../../../common/styles/utils';
 .SignIn {
   height: 100%;
-  justify-content: flex-end;
-  @include verticalCenter;
   &-container {
     width: 50%;
     border-radius: 50px;
