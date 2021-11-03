@@ -5,12 +5,14 @@ import { RequestHandler } from 'express'
 import { pick } from 'lodash'
 import Patient from '../model/Patient'
 import Record from '../model/Record'
+import splitNameForDB from '../utils/splitNameForDB'
 
 const recordData: RequestHandler = async (req, res) => {
   try {
+    const [firstName, lastName] = splitNameForDB(req.body.patientName)
     let foundPatient = await Patient.findPatientByName(req.body.patientName)
     if (!foundPatient) {
-      foundPatient = new Patient({ name: req.body.patientName })
+      foundPatient = new Patient({ firstName, lastName })
       await foundPatient.save()
     }
     const newRecord = new Record({
@@ -21,7 +23,6 @@ const recordData: RequestHandler = async (req, res) => {
     res.status(200).send(savedRecord)
   } catch (err) {
     console.error(err)
-    console.log(err.stack)
     res.status(500).send('Internal Error')
   }
 }
@@ -40,7 +41,7 @@ export const exportData: RequestHandler = async (req, res) => {
     )
     const stringifiedRecords = JSON.stringify(records)
     fs.writeFile(
-      path.join(os.homedir(), 'data.json'),
+      path.join(os.homedir(), `${startDate}-${endDate}.json`),
       stringifiedRecords,
       (e) => {
         if (e) {
@@ -52,7 +53,6 @@ export const exportData: RequestHandler = async (req, res) => {
     res.status(200).send({ status: 200 })
   } catch (err) {
     console.error(err)
-    console.log(err.stack)
     res.status(500).send('Internal Error')
   }
 }

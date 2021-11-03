@@ -1,9 +1,6 @@
+import IRecord from 'src/types/interface/IRecord'
 import db from '../db'
-import {
-  GetRecordByRangeInputType,
-  IRecord,
-  RecordFieldsType,
-} from './RecordTypes'
+import { GetRecordByRangeInputType, RecordFieldsType } from './RecordTypes'
 
 class Record implements IRecord {
   private static fields =

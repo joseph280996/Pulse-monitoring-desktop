@@ -1,4 +1,6 @@
 export type PulseTypeFieldsType = {
   id: number
-  pulseName: string
+  name: string
+  chineseName: string
+  features: string
 }

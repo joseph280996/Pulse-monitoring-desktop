@@ -1,57 +1,62 @@
+import IPatient from '../../types/interface/IPatient'
 import db from '../db'
 
-type PatientConstructorParamType = {
+type PatientInputType = {
   id?: number
-  name: string
+  userID?: number
+  firstName?: string
+  lastName?: string
 }
 
-interface PatientInterface {
-  save(): void
+type PatientNameType = {
+  firstName: string
+  lastName: string
 }
+class Patient implements IPatient {
+  private static sqlFields = 'Patient.id, Patient.name'
 
-class Patient implements PatientInterface {
-  private static fields = 'id, name'
+  public id?: number | undefined
 
-  private _id!: number | undefined
+  public userID?: number
 
-  get id(): number | undefined {
-    return this._id
-  }
+  public firstName?: string
 
-  set id(id: number | undefined) {
-    this._id = id
-  }
+  public lastName?: string
 
-  private _name!: string
-
-  get name(): string {
-    return this._name
-  }
-
-  set name(name: string) {
-    this._name = name
-  }
-
-  constructor(obj: PatientConstructorParamType) {
+  constructor(obj: PatientInputType) {
     this.id = obj.id
-    this.name = obj.name
+    this.userID = obj.userID
+    this.firstName = obj.firstName
+    this.lastName = obj.lastName
   }
 
-  async save(): Promise<void> {
+  async save(): Promise<boolean> {
     const result = await db.query(
       `
-        INSERT INTO Patient(id, name)
+        INSERT INTO Patient(name)
         VALUES (?)
       `,
-      [[this.id, this.name]],
+      [[this.userID]],
     )
     this.id = result.insertId
+    return !!result.insertId
+  }
+
+  static async getAll(): Promise<Patient[]> {
+    const result = await db.query(`
+    SELECT ${Patient.sqlFields}
+    FROM Patient
+    WHERE id > 0;
+    `)
+    return result && result.length > 0
+      ? result.map((row: any) => new Patient(row))
+      : []
   }
 
   static async getById(id: number): Promise<Patient | null> {
     const result = await db.query(
       `
-      SELECT ${Patient.fields}
+      SELECT ${Patient.sqlFields}
       FROM Patient
       WHERE id = ?;
     `,
@@ -60,15 +65,18 @@ class Patient implements PatientInterface {
     return result ? new Patient(result) : null
   }
 
-  static async findPatientByName(name: string): Promise<Patient | null> {
+  static async findPatientByName({
+    firstName,
+    lastName,
+  }: PatientNameType): Promise<Patient | null> {
     const results = await db.query(
       `
-      SELECT ${Patient.fields}
-      FROM Patient
-      WHERE name = ?
+      SELECT ${Patient.sqlFields}, User.firstName as firstName, User.lastName as lastName
+      FROM Patient INNER JOIN User ON Patient.UserID = User.id
+      WHERE firstName = ? AND lastName = ?
       LIMIT 1;
       `,
-      [name],
+      [firstName, lastName],
     )
     return results && results.length ? new Patient(results[0]) : null
   }

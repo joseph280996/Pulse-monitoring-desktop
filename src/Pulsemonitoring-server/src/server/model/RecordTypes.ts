@@ -12,7 +12,3 @@ export type GetRecordByRangeInputType = {
   startDate: Moment
   endDate: Moment
 }
-
-export interface IRecord {
-  save(): Promise<IRecord>
-}

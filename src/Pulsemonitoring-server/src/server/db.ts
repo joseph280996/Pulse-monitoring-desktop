@@ -1,11 +1,11 @@
-import dotenv from 'dotenv'
+import { config } from 'dotenv'
 import { Pool, createPool, MysqlError } from 'mysql'
 
 interface DBInterface {
   query(query: string, values: unknown): Promise<unknown>
 }
 
-dotenv.config()
+config()
 const DBConf = {
   database: process.env.DATABASE_NAME || '',
   port: process.env.PORT ? +process.env.PORT : 3306,
@@ -19,26 +19,27 @@ const DBConf = {
 class DB implements DBInterface {
   private _pool?: Pool
 
-  get pool(): Pool | undefined {
+  private getPool(): Pool | undefined {
     if (!this._pool) {
-      this.pool = createPool({
+      const newPool = createPool({
         ...DBConf,
         debug:
           process.env.NODE_ENV === 'development' ? ['ComQueryPacket'] : false,
       })
+      this.setPool(newPool)
     }
     return this._pool
   }
 
-  set pool(pool: Pool | undefined) {
+  private setPool(pool: Pool | undefined) {
     this._pool = pool
   }
 
-  hasPoolOpened = () => Boolean(this.pool)
+  hasPoolOpened = () => Boolean(this._pool)
 
   query(query: string, values?: Array<any>) {
     return new Promise<any>((resolve, reject) => {
-      this.pool?.query(
+      this.getPool()?.query(
         query,
         values,
         (error: MysqlError | null, result: any) => {
@@ -52,8 +53,9 @@ class DB implements DBInterface {
   }
 
   cleanUp = () => {
-    if (this.pool) {
-      this.pool.end()
+    const pool = this.getPool()
+    if (pool) {
+      pool.end()
     }
   }
 }
