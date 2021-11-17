@@ -1,4 +1,4 @@
-import IRecord from 'src/types/interface/IRecord'
+import IRecord from 'src/server/types/interface/IRecord'
 import db from '../db'
 import { GetRecordByRangeInputType, RecordFieldsType } from './RecordTypes'
 

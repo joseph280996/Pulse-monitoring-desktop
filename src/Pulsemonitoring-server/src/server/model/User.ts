@@ -1,5 +1,5 @@
 import { genSalt, hash } from 'bcrypt'
-import IUser from 'src/types/interface/IUser'
+import IUser from 'src/server/types/interface/IUser'
 import DB from '../db'
 
 type UserInputType = {
