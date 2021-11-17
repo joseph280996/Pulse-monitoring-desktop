@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "importHelpers": true,
     "target": "ES6",
     "module": "commonjs",
     "lib": ["ES6", "ESNext", "ES2015"],

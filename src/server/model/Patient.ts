@@ -1,5 +1,5 @@
-import IPatient from '../../types/interface/IPatient'
 import db from '../db'
+import IPatient from '../types/interface/IPatient'
 
 type PatientInputType = {
   id?: number
