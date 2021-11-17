@@ -81,7 +81,7 @@ class Record implements IRecord {
   }: GetRecordByRangeInputType): Promise<[Record]> {
     const res = await db.query(
       `
-      SELECT ${Record.fields} FROM Record WHERE dateTimeCreated > ? AND dateTimeCreated < ?;
+      SELECT ${Record.fields} FROM Record WHERE dateTimeCreated >= ? AND dateTimeCreated <= ?;
       `,
       [startDate, endDate],
     )
