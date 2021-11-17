@@ -1,4 +1,4 @@
-/* eslint-disable no-await-in-loop */
+/* eslint-disable no-await-in-loop, import/no-extraneous-dependencies */
 import dotenv from 'dotenv'
 import moment, { Moment } from 'moment'
 import WebSocket from 'ws'
