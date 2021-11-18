@@ -2,11 +2,11 @@ import db from '../db'
 import { PulseTypeFieldsType } from './PulseTypesType'
 
 class PulseType {
-  private static sqlFields = 'id, pulseName'
+  private static sqlFields = 'id, name, chineseName, features '
 
   id!: number
 
-  pulseName!: string
+  name!: string
 
   chineseName!: string
 
@@ -15,7 +15,7 @@ class PulseType {
   constructor(obj: PulseTypeFieldsType) {
     this.chineseName = obj.chineseName
     this.id = obj.id
-    this.pulseName = obj.name
+    this.name = obj.name
     this.features = obj.features
   }
 
