@@ -1,9 +1,6 @@
+import IRecord from 'src/server/types/interface/IRecord'
 import db from '../db'
-import {
-  GetRecordByRangeInputType,
-  IRecord,
-  RecordFieldsType,
-} from './RecordTypes'
+import { GetRecordByRangeInputType, RecordFieldsType } from './RecordTypes'
 
 class Record implements IRecord {
   private static fields =
@@ -84,7 +81,7 @@ class Record implements IRecord {
   }: GetRecordByRangeInputType): Promise<[Record]> {
     const res = await db.query(
       `
-      SELECT ${Record.fields} FROM Record WHERE dateTimeCreated > ? AND dateTimeCreated < ?;
+      SELECT ${Record.fields} FROM Record WHERE dateTimeCreated >= ? AND dateTimeCreated <= ?;
       `,
       [startDate, endDate],
     )

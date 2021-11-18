@@ -7,7 +7,6 @@ const getHandPositions: RequestHandler = async (_req, res) => {
     res.status(200).send(handPositions)
   } catch (err) {
     console.error(err)
-    console.log(err.stack)
     res.status(500).send('Internal Error')
   }
 }
