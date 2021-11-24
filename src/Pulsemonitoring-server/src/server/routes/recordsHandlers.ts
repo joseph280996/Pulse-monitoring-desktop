@@ -11,7 +11,7 @@ import splitNameForDB from '../utils/splitNameForDB'
 const recordData: RequestHandler = async (req, res) => {
   try {
     const [firstName, lastName] = splitNameForDB(req.body.patientName)
-    let foundPatient = await Patient.findPatientByName(req.body.patientName)
+    let foundPatient = await Patient.findPatientByName({ firstName, lastName })
     if (!foundPatient) {
       foundPatient = new Patient({ firstName, lastName })
       await foundPatient.save()

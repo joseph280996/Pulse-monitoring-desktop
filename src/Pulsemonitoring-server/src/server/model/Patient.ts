@@ -13,7 +13,7 @@ type PatientNameType = {
   lastName: string
 }
 class Patient implements IPatient {
-  private static sqlFields = 'Patient.id, Patient.name'
+  private static sqlFields = 'Patient.id, Patient.firstName, Patient.lastName'
 
   public id?: number | undefined
 
@@ -33,10 +33,10 @@ class Patient implements IPatient {
   async save(): Promise<boolean> {
     const result = await db.query(
       `
-        INSERT INTO Patient(name)
+        INSERT INTO Patient(firstName, lastName)
         VALUES (?)
       `,
-      [[this.userID]],
+      [[this.firstName, this.lastName]],
     )
     this.id = result.insertId
     return !!result.insertId
@@ -71,9 +71,9 @@ class Patient implements IPatient {
   }: PatientNameType): Promise<Patient | null> {
     const results = await db.query(
       `
-      SELECT ${Patient.sqlFields}, User.firstName as firstName, User.lastName as lastName
-      FROM Patient INNER JOIN User ON Patient.UserID = User.id
-      WHERE firstName = ? AND lastName = ?
+      SELECT ${Patient.sqlFields}
+      FROM Patient
+      WHERE firstName LIKE ? AND lastName LIKE ?
       LIMIT 1;
       `,
       [firstName, lastName],

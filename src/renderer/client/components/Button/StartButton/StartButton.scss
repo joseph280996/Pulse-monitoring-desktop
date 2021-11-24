@@ -2,6 +2,10 @@
 @import '../../../common/styles/utils';
 .StartButton {
   @include circleIcon;
+  &-wrapper {
+    width: unset;
+    height: unset;
+  }
   &.btn {
     font-size: pxToRem(37);
   }
