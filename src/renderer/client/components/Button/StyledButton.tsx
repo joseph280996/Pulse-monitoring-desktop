@@ -48,6 +48,16 @@ const StyledButton = ({
   primary,
   isSubmitting,
 }: PropsWithChildren<IButtonWithIconProps>): React.ReactElement => {
+  const IconComponent = () =>
+    isSubmitting ? (
+      <Spinner animation="border" role="status" className="Button-spinner" />
+    ) : (
+      <FontAwesomeIcon
+        className={iconClassName}
+        icon={icon}
+        style={iconStyle}
+      />
+    )
   return (
     <div
       className={classnames(
@@ -71,25 +81,14 @@ const StyledButton = ({
       >
         {icon && iconPosition === ICON_POSSIBLE_POSITION.START && (
           <span className={iconWrapperClassName}>
-            <FontAwesomeIcon
-              className={iconClassName}
-              icon={icon}
-              style={iconStyle}
-            />
+            <IconComponent />
           </span>
         )}
         {(children || text) && (
           <span className={buttonTextClassName}>{children || text}</span>
         )}
         {icon && iconPosition === ICON_POSSIBLE_POSITION.END && (
-          <FontAwesomeIcon className={iconClassName} icon={icon} />
-        )}
-        {isSubmitting && (
-          <Spinner
-            animation="border"
-            role="status"
-            className="Button-spinner"
-          />
+          <IconComponent />
         )}
       </Button>
     </div>
