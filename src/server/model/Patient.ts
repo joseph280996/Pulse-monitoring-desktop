@@ -71,8 +71,8 @@ class Patient implements IPatient {
   }: PatientNameType): Promise<Patient | null> {
     const results = await db.query(
       `
-      SELECT ${Patient.sqlFields}, User.firstName as firstName, User.lastName as lastName
-      FROM Patient INNER JOIN User ON Patient.UserID = User.id
+      SELECT ${Patient.sqlFields}
+      FROM Patient
       WHERE firstName LIKE ? AND lastName LIKE ?
       LIMIT 1;
       `,
