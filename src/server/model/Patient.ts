@@ -34,7 +34,7 @@ class Patient implements IPatient {
     const result = await db.query(
       `
         INSERT INTO Patient(firstName, lastName)
-        VALUES ?
+        VALUES (?)
       `,
       [[this.firstName, this.lastName]],
     )
