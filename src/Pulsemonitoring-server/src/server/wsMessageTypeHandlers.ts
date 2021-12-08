@@ -1,4 +1,6 @@
-/* eslint-disable no-await-in-loop, import/no-extraneous-dependencies */
+/* eslint-disable no-await-in-loop */
+import i2c from 'i2c-bus'
+import ADS1115 from 'ads1115'
 import dotenv from 'dotenv'
 import moment, { Moment } from 'moment'
 import WebSocket from 'ws'
@@ -27,15 +29,13 @@ export default [
       if (process.env.NODE_ENV === 'production') {
         // eslint-disable-next-line @typescript-eslint/no-extra-semi
         ;(async () => {
-          const i2c = await import('i2c-bus')
-          const ADS1115 = await import('ads1115')
-          const bus = i2c.openPromisified(1)
-          const ads1115 = ADS1115(bus)
+	  const bus = await i2c.openPromisified(1)
+          const ads1115 = await ADS1115(bus)
           while (isLoopStart) {
-            store.push({
-              timeStamp: moment.utc(),
-              data: await ads1115.measure('0+GND'),
-            })
+             store.push({
+               timeStamp: moment.utc(),
+               data: await ads1115.measure('0+GND'),
+             })
           }
         })()
       }
