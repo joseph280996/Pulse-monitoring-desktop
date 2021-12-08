@@ -29,12 +29,17 @@ function DiagnosisForm({
       })
     },
   })
-  return (
-    <DiagnosisFormComponent
-      data={data.map((datum: ReceivedDatum) => ({
+  const mappedData = React.useMemo(
+    () =>
+      data.map((datum: ReceivedDatum) => ({
         x: moment.utc(datum.timeStamp).valueOf(),
         y: datum.data,
-      }))}
+      })),
+    [data],
+  )
+  return (
+    <DiagnosisFormComponent
+      data={mappedData}
       recordedEndIndex={recordedEndIndex}
       recordedStartIndex={recordedStartIndex}
       {...formikProps}

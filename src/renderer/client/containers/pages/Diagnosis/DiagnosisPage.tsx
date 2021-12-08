@@ -13,14 +13,19 @@ function DiagnosisPageContainer(): React.ReactElement {
   const [recordedStartIndex, setRecordedIndex] =
     React.useState<number | undefined>()
   const [recordedEndIndex, setEndIndex] = React.useState<number | undefined>()
+  const [data, setData] = React.useState<ReceivedDatum[]>([])
+
+  const setDataFunc =
+    (newData: ReceivedDatum[]): React.SetStateAction<ReceivedDatum[]> =>
+    (prevData: ReceivedDatum[]): ReceivedDatum[] => {
+      return [...prevData, ...newData]
+    }
 
   const { height, width } = useWindowDimensions(20)
-  const { error, data, readyState, wsClient } = useWebSocket(
-    (newData: ReceivedDatum[]): React.SetStateAction<ReceivedDatum[]> =>
-      (prevData: ReceivedDatum[]): ReceivedDatum[] => {
-        return [...prevData, ...newData]
-      },
-  )
+  const { error, readyState, wsClient } = useWebSocket({
+    setData,
+    setDataFunc,
+  })
   const onStart = () => {
     setIsStarted(true)
     wsClient?.ws().send('start')
@@ -34,6 +39,7 @@ function DiagnosisPageContainer(): React.ReactElement {
   }
 
   const onRecordHandler = () => {
+    setData([])
     setRecordedIndex(data.length)
   }
   const onStopHandler = () => {
