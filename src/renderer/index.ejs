@@ -3,19 +3,12 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Hello Electron React!</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'" />
+  <title>Pulse Monitoring App</title>
 </head>
 
 <body>
   <div id="root"></div>
 </body>
-<script>
-  window.electron?.ipcRenderer.once('ipc-example', (arg) => {
-    // eslint-disable-next-line no-console
-    console.log(arg);
-  });
-
-  window.electron?.ipcRenderer.myPing();
-</script>
 
 </html>
