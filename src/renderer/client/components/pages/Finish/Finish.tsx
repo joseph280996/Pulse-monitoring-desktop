@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import StyledButton from '../../Button'
-import styles from './Finish.scss'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import StyledButton from '../../Button';
+import styles from './Finish.scss';
 
 type FinishPropType = {
-  onEndClick: React.MouseEventHandler
-}
+  onEndClick: React.MouseEventHandler;
+};
 
 const Finish = ({ onEndClick }: FinishPropType): React.ReactElement => {
   return (
@@ -28,7 +28,7 @@ const Finish = ({ onEndClick }: FinishPropType): React.ReactElement => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Finish
+export default Finish;

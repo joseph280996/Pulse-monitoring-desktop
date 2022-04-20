@@ -1,7 +1,7 @@
-import * as React from 'react'
-import DiagnoseButton from '../../Button/DiagnoseButton'
-import ExportDataButton from '../../Button/ExportDataButton'
-import styles from './ExportDataOrDiagnosisPage.scss'
+import * as React from 'react';
+import DiagnoseButton from '../../Button/DiagnoseButton';
+import ExportDataButton from '../../Button/ExportDataButton';
+import styles from './ExportDataOrDiagnosisPage.scss';
 
 const ExportDataOrDiagnosisPageComponent = (): React.ReactElement => {
   return (
@@ -11,7 +11,7 @@ const ExportDataOrDiagnosisPageComponent = (): React.ReactElement => {
       />
       <DiagnoseButton />
     </div>
-  )
-}
+  );
+};
 
-export default ExportDataOrDiagnosisPageComponent
+export default ExportDataOrDiagnosisPageComponent;

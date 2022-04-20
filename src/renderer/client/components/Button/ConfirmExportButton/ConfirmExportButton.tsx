@@ -1,7 +1,7 @@
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import * as React from 'react'
-import styles from './ConfirmExportButton.scss'
-import StyledButton, { IButtonProps } from '../StyledButton'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import * as React from 'react';
+import styles from './ConfirmExportButton.scss';
+import StyledButton, { IButtonProps } from '../StyledButton';
 
 const ContinueButton = ({
   type = 'button',
@@ -17,7 +17,7 @@ const ContinueButton = ({
     >
       Export Data
     </StyledButton>
-  )
-}
+  );
+};
 
-export default ContinueButton
+export default ContinueButton;

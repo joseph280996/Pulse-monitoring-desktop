@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
 function ForgotPass(): React.ReactElement {
-  return <div>ForgotPass</div>
+  return <div>ForgotPass</div>;
 }
 
-export default ForgotPass
+export default ForgotPass;

@@ -1,18 +1,18 @@
-import * as React from 'react'
+import * as React from 'react';
 
 export interface IBasicAuthType {
-  username: string
-  password: string
+  username: string;
+  password: string;
 }
 export interface IAuthType extends IBasicAuthType {
-  confirmPass?: string
-  isSignedIn: boolean
+  confirmPass?: string;
+  isSignedIn: boolean;
 }
 
 export type AuthContextValues = {
-  auth: IAuthType
-  setAuth?: React.Dispatch<React.SetStateAction<IAuthType>>
-}
+  auth: IAuthType;
+  setAuth?: React.Dispatch<React.SetStateAction<IAuthType>>;
+};
 
 const AuthContext = React.createContext<AuthContextValues>({
   auth: {
@@ -20,7 +20,7 @@ const AuthContext = React.createContext<AuthContextValues>({
     password: '',
     isSignedIn: false,
   },
-})
+});
 
 export const AuthProvider = ({
   children,
@@ -29,12 +29,12 @@ export const AuthProvider = ({
     username: 'pulsemonitoring',
     password: 'password',
     isSignedIn: false,
-  })
+  });
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
-export default AuthContext
+export default AuthContext;

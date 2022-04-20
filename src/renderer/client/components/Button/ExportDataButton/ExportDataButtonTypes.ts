@@ -1,3 +1,3 @@
 export type ExportDataButtonPropsType = {
-  className?: string
-}
+  className?: string;
+};

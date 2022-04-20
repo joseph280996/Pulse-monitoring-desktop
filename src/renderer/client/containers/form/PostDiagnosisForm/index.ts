@@ -1,1 +1,1 @@
-export { default } from './PostDiagnosisForm'
+export { default } from './PostDiagnosisForm';

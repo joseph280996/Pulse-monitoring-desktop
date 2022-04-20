@@ -1,1 +1,1 @@
-export { default } from './ExportDataPage'
+export { default } from './ExportDataPage';

@@ -1,11 +1,11 @@
-import { faCircle } from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames'
-import React from 'react'
-import StyledButton, { IButtonWithIconProps } from '../StyledButton'
-import styles from './RecordButton.scss'
+import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
+import React from 'react';
+import StyledButton, { IButtonWithIconProps } from '../StyledButton';
+import styles from './RecordButton.scss';
 
 interface IRecordButtonProps extends IButtonWithIconProps {
-  onRecord: React.MouseEventHandler
+  onRecord: React.MouseEventHandler;
 }
 
 const RecordButton = ({
@@ -24,7 +24,7 @@ const RecordButton = ({
       onClick={onRecord}
       icon={faCircle}
     />
-  )
-}
+  );
+};
 
-export default RecordButton
+export default RecordButton;

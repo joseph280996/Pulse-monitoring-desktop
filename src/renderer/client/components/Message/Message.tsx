@@ -1,12 +1,12 @@
-import * as React from 'react'
-import { Alert } from 'react-bootstrap'
+import * as React from 'react';
+import { Alert } from 'react-bootstrap';
 
 export type MessageProps = {
-  className?: string
-  message?: string
-  error?: string
-  variant?: string
-}
+  className?: string;
+  message?: string;
+  error?: string;
+  variant?: string;
+};
 
 function Message({
   className,
@@ -18,7 +18,14 @@ function Message({
     <Alert className={className} variant={error ? 'danger' : variant}>
       {message || error}
     </Alert>
-  )
+  );
 }
 
-export default Message
+Message.defaultProps = {
+  className: null,
+  message: null,
+  error: null,
+  variant: null,
+};
+
+export default Message;

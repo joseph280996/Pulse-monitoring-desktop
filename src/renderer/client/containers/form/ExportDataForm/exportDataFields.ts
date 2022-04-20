@@ -1,5 +1,5 @@
-import { FieldConfig } from 'renderer/client/components/types'
-import { string } from 'yup'
+import { FieldConfig } from 'renderer/client/components/types';
+import { string } from 'yup';
 
 const exportDataFields: FieldConfig[] = [
   {
@@ -10,5 +10,5 @@ const exportDataFields: FieldConfig[] = [
     name: 'endDate',
     validate: string().required('Required'),
   },
-]
-export default exportDataFields
+];
+export default exportDataFields;

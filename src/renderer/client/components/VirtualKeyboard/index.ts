@@ -1,1 +1,1 @@
-export { default } from './VirtualKeyboard'
+export { default } from './VirtualKeyboard';

@@ -1,3 +1,3 @@
 export type FakeAuthResolveType = {
-  isSignedIn: boolean
-}
+  isSignedIn: boolean;
+};

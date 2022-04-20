@@ -1,6 +1,6 @@
-import * as React from 'react'
-import SignIn from '../../../containers/form/SignInForm/SignInForm'
-import styles from './SignInPage.scss'
+import * as React from 'react';
+import SignIn from '../../../containers/form/SignInForm/SignInForm';
+import styles from './SignInPage.scss';
 
 const SignInPage = (): React.ReactElement => {
   return (
@@ -9,7 +9,7 @@ const SignInPage = (): React.ReactElement => {
         <SignIn />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignInPage
+export default SignInPage;

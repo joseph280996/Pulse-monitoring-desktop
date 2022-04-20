@@ -1,5 +1,5 @@
-import { FieldConfig } from 'renderer/client/components/types'
-import { array, number, object, string } from 'yup'
+import { FieldConfig } from 'renderer/client/components/types';
+import { array, number, object, string } from 'yup';
 
 const postDiagnosisFormFields: FieldConfig[] = [
   {
@@ -15,7 +15,7 @@ const postDiagnosisFormFields: FieldConfig[] = [
         object().shape({
           x: number(),
           y: number(),
-        }),
+        })
       )
       .required('Required'),
   },
@@ -27,5 +27,5 @@ const postDiagnosisFormFields: FieldConfig[] = [
     name: 'handPositionID',
     validate: number().required('Required'),
   },
-]
-export default postDiagnosisFormFields
+];
+export default postDiagnosisFormFields;

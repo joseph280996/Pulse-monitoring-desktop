@@ -1,1 +1,1 @@
-export { default } from './RecordButton'
+export { default } from './RecordButton';

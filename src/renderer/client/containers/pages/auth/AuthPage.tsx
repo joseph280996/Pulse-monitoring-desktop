@@ -1,14 +1,18 @@
-import * as React from 'react'
-import { Redirect } from 'react-router-dom'
-import Routes from '../../../router/router'
-import authRoutes from './routes'
+import * as React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import SignInPage from '../../../components/pages/signin';
+import ChangeUsername from './ChangeUsername';
+import ForgotPass from './ForgotPass';
 
 function AuthPage(): React.ReactElement {
   return (
-    <Routes routes={authRoutes}>
-      <Redirect to="/auth/signin" />
+    <Routes>
+      <Route path="/signin" element={SignInPage} />
+      <Route path="/forgotpass" element={ForgotPass} />
+      <Route path="?changeusername" element={ChangeUsername} />
+      <Route path="/" element={() => <Navigate to="/signin" replace />} />
     </Routes>
-  )
+  );
 }
 
-export default AuthPage
+export default AuthPage;

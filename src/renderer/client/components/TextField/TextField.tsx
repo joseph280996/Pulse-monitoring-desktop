@@ -1,7 +1,7 @@
-import classNames from 'classnames'
-import * as React from 'react'
-import styles from './TextField.scss'
-import { ITextFieldProps } from './TextFieldTypes'
+import classNames from 'classnames';
+import * as React from 'react';
+import styles from './TextField.scss';
+import { ITextFieldProps } from './TextFieldTypes';
 
 function TextField({
   type = 'text',
@@ -40,7 +40,7 @@ function TextField({
       />
       {error && <div className={styles['TextField-error']}>{error}</div>}
     </div>
-  )
+  );
 }
 
 TextField.defaultProps = {
@@ -48,6 +48,6 @@ TextField.defaultProps = {
   onBlur: null,
   label: null,
   placeholder: '',
-}
+};
 
-export default TextField
+export default TextField;

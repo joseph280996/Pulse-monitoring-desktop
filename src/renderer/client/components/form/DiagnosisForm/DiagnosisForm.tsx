@@ -1,23 +1,23 @@
 /* eslint-disable no-nested-ternary */
-import { FormikProps } from 'formik'
-import { takeRight } from 'lodash'
-import * as React from 'react'
-import { Form } from 'react-bootstrap'
-import { LineSeriesPoint } from 'react-vis'
+import { FormikProps } from 'formik';
+import { takeRight } from 'lodash';
+import * as React from 'react';
+import { Form } from 'react-bootstrap';
+import { LineSeriesPoint } from 'react-vis';
 import DiagnosisFormValuesType, {
   IDiagnosisFormProps,
-} from '../../../containers/form/DiagnosisForm/DiagnosisFormTypes'
+} from '../../../containers/form/DiagnosisForm/DiagnosisFormTypes';
 import {
   ContinueButton,
   RecordButton,
   ResetButton,
   StartButton,
   StopButton,
-} from '../../Button'
-import LineChart from '../../Chart/LineChart/LineChart'
-import Overlay from '../../Overlay'
-import { PulsePositionSelect } from '../../Select'
-import styles from './DiagnosisForm.scss'
+} from '../../Button';
+import LineChart from '../../Chart/LineChart/LineChart';
+import Overlay from '../../Overlay';
+import { PulsePositionSelect } from '../../Select';
+import styles from './DiagnosisForm.scss';
 
 interface IDiagnosisFormComponentProps
   extends IDiagnosisFormProps,
@@ -95,7 +95,7 @@ function DiagnosisForm({
         )}
       </div>
     </Form>
-  )
+  );
 }
 
-export default DiagnosisForm
+export default DiagnosisForm;

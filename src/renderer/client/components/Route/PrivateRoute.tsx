@@ -1,16 +1,18 @@
-import * as React from 'react'
-import { Redirect, Route, RouteProps } from 'react-router-dom'
-import useAuthState from '../../common/utils/hooks/useAuthState'
+import * as React from 'react';
+import { Navigate, Route, PathRouteProps } from 'react-router-dom';
+import useAuthState from '../../common/utils/hooks/useAuthState';
 
 function PrivateRoute({
   path,
-  component: Component,
-  exact,
-}: RouteProps): React.ReactElement {
-  const { auth } = useAuthState()
-  if (auth.isSignedIn)
-    return <Route path={path} exact={exact} component={Component} />
-  return <Redirect to="/auth" />
+  element: Component,
+}: PathRouteProps): React.ReactElement {
+  const { auth } = useAuthState();
+  return (
+    <Route
+      path={path}
+      element={() => (auth.isSignedIn ? <Navigate to="/auth" /> : Component)}
+    />
+  );
 }
 
-export default PrivateRoute
+export default PrivateRoute;

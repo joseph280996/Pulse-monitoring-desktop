@@ -1,33 +1,33 @@
-import { useCallback, useEffect, useState } from 'react'
-import tcmAPIRequestController from '../../tcmAPI'
+import { useCallback, useEffect, useState } from 'react';
+import tcmAPIRequestController from '../../tcmAPI';
 
 type PulseType = {
-  id: number
-  name: string
-}
+  id: number;
+  name: string;
+};
 
 type UsePulseType = {
-  pulseTypes: PulseType[]
-  error: Error | null | undefined
-}
+  pulseTypes: PulseType[];
+  error: Error | null | undefined;
+};
 
 const usePulseTypes = (): UsePulseType => {
-  const [pulseTypes, setPulseTypes] = useState<PulseType[]>([])
-  const [error, setError] = useState<Error | null | undefined>(null)
+  const [pulseTypes, setPulseTypes] = useState<PulseType[]>([]);
+  const [error, setError] = useState<Error | null | undefined>(null);
   const getPulseTypes = useCallback(async () => {
     const { data, error: requestError } = await tcmAPIRequestController.get(
-      '/pulse-type',
-    )
-    setPulseTypes(data)
+      '/pulse-type'
+    );
+    setPulseTypes(data);
     if (requestError) {
-      setError(requestError)
+      setError(requestError);
     }
-  }, [setPulseTypes, setError])
+  }, [setPulseTypes, setError]);
   useEffect(() => {
-    getPulseTypes()
-  }, [getPulseTypes])
+    getPulseTypes();
+  }, [getPulseTypes]);
 
-  return { pulseTypes, error }
-}
+  return { pulseTypes, error };
+};
 
-export default usePulseTypes
+export default usePulseTypes;

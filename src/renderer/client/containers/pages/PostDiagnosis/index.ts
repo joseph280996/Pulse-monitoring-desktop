@@ -1,3 +1,3 @@
-export { default } from './PostDiagnosis'
+export { default } from './PostDiagnosis';
 
-export * from './PostDiagnosisTypes'
+export * from './PostDiagnosisTypes';

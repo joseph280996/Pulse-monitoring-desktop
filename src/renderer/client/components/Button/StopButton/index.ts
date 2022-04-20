@@ -1,1 +1,1 @@
-export { default } from './StopButton'
+export { default } from './StopButton';

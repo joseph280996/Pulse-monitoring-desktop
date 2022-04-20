@@ -1,11 +1,11 @@
-import { faPlay } from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames'
-import * as React from 'react'
-import StyledButton, { IButtonWithIconProps } from '../StyledButton'
-import styles from './StartButton.scss'
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
+import * as React from 'react';
+import StyledButton, { IButtonWithIconProps } from '../StyledButton';
+import styles from './StartButton.scss';
 
 interface IStartButtonProps extends IButtonWithIconProps {
-  onStart: React.MouseEventHandler
+  onStart: React.MouseEventHandler;
 }
 
 const StartButton = ({
@@ -21,7 +21,7 @@ const StartButton = ({
       onClick={onStart}
       {...buttonProps}
     />
-  )
-}
+  );
+};
 
-export default StartButton
+export default StartButton;

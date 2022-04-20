@@ -1,14 +1,14 @@
-import classNames from 'classnames'
-import * as React from 'react'
+import classNames from 'classnames';
+import * as React from 'react';
 
 type SelectProps = {
-  id?: any
-  name?: string
-  className?: string
-  value: any
-  onChange: React.ChangeEventHandler
-  onBlur?: React.FocusEventHandler
-}
+  id?: any;
+  name?: string;
+  className?: string;
+  value: any;
+  onChange: React.ChangeEventHandler;
+  onBlur?: React.FocusEventHandler;
+};
 
 function Select({
   className,
@@ -30,7 +30,14 @@ function Select({
     >
       {children}
     </select>
-  )
+  );
 }
 
-export default Select
+Select.defaultProps = {
+  id: null,
+  name: null,
+  className: null,
+  onBlur: null,
+};
+
+export default Select;

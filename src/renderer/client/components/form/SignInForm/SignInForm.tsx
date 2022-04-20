@@ -1,11 +1,11 @@
-import classNames from 'classnames'
-import * as React from 'react'
-import { Form } from 'react-bootstrap'
-import Button from '../../Button'
-import Message from '../../Message'
-import { TextFieldWithKeyboard } from '../../TextField'
-import styles from './SignInForm.scss'
-import { ISignInFormProps } from './SignInFormTypes'
+import classNames from 'classnames';
+import * as React from 'react';
+import { Form } from 'react-bootstrap';
+import Button from '../../Button';
+import Message from '../../Message';
+import { TextFieldWithKeyboard } from '../../TextField';
+import styles from './SignInForm.scss';
+import { ISignInFormProps } from './SignInFormTypes';
 
 function SignInFormComponent({
   handleSubmit,
@@ -45,13 +45,13 @@ function SignInFormComponent({
                   name={name}
                   value={values[name]}
                   onChange={(input) => {
-                    setFieldValue(name, input)
+                    setFieldValue(name, input);
                   }}
                   className={styles['SignInForm-field']}
                   onBlur={handleBlur}
                   {...passThroughProps}
                 />
-              ),
+              )
             )}
           </div>
         </div>
@@ -66,7 +66,7 @@ function SignInFormComponent({
         </div>
       </Form>
     </div>
-  )
+  );
 }
 
-export default SignInFormComponent
+export default SignInFormComponent;

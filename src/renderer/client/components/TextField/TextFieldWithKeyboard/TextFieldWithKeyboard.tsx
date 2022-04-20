@@ -1,17 +1,17 @@
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames'
-import * as React from 'react'
-import Keyboard from 'react-simple-keyboard'
-import StyledButton from '../../Button'
-import Overlay from '../../Overlay'
-import VirtualKeyboard from '../../VirtualKeyboard'
-import { VirtualKeyboardChangeEventHandlerType } from '../../VirtualKeyboard/VirtualKeyboard'
-import TextField from '../TextField'
-import { ITextFieldProps } from '../TextFieldTypes'
-import styles from './TextFieldWithKeyboard.scss'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
+import * as React from 'react';
+import Keyboard from 'react-simple-keyboard';
+import StyledButton from '../../Button';
+import Overlay from '../../Overlay';
+import VirtualKeyboard from '../../VirtualKeyboard';
+import { VirtualKeyboardChangeEventHandlerType } from '../../VirtualKeyboard/VirtualKeyboard';
+import TextField from '../TextField';
+import { ITextFieldProps } from '../TextFieldTypes';
+import styles from './TextFieldWithKeyboard.scss';
 
 interface ITextFieldWithKeyboard extends Omit<ITextFieldProps, 'onChange'> {
-  onChange: VirtualKeyboardChangeEventHandlerType
+  onChange: VirtualKeyboardChangeEventHandlerType;
 }
 
 const TextFieldWithKeyboard = ({
@@ -19,8 +19,8 @@ const TextFieldWithKeyboard = ({
   className,
   ...textFieldProps
 }: ITextFieldWithKeyboard): React.ReactElement => {
-  const [isOpenOverLay, setIsOpenOverlay] = React.useState<boolean>(false)
-  const keyboardRef = React.useRef<typeof Keyboard>()
+  const [isOpenOverLay, setIsOpenOverlay] = React.useState<boolean>(false);
+  const keyboardRef = React.useRef<typeof Keyboard>();
   return (
     <div>
       {isOpenOverLay && (
@@ -32,17 +32,17 @@ const TextFieldWithKeyboard = ({
               <TextField
                 className={classNames(
                   styles['TextFieldWithKeyboard-field'],
-                  className,
+                  className
                 )}
                 onChange={(event) => {
-                  event.stopPropagation()
-                  onChange((event.target as HTMLInputElement).value)
+                  event.stopPropagation();
+                  onChange((event.target as HTMLInputElement).value);
                 }}
                 {...textFieldProps}
               />
               <StyledButton
                 onClick={() => {
-                  setIsOpenOverlay(false)
+                  setIsOpenOverlay(false);
                 }}
                 className={styles['TextFieldWithKeyboard-closeIcon']}
                 icon={faWindowClose}
@@ -51,7 +51,7 @@ const TextFieldWithKeyboard = ({
             <VirtualKeyboard
               enterDisplayOverride="Close"
               onEnterOverride={() => {
-                setIsOpenOverlay(false)
+                setIsOpenOverlay(false);
               }}
               onChange={onChange}
               keyboardRef={keyboardRef}
@@ -62,15 +62,15 @@ const TextFieldWithKeyboard = ({
       <TextField
         className={className}
         onClick={() => {
-          setIsOpenOverlay(true)
+          setIsOpenOverlay(true);
         }}
         onChange={(event) => {
-          onChange((event.target as HTMLInputElement).value)
+          onChange((event.target as HTMLInputElement).value);
         }}
         {...textFieldProps}
       />
     </div>
-  )
-}
+  );
+};
 
-export default TextFieldWithKeyboard
+export default TextFieldWithKeyboard;

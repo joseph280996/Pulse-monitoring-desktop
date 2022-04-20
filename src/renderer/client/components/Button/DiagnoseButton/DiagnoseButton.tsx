@@ -1,11 +1,11 @@
-import { faStethoscope } from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames'
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import StyledButton, { IButtonWithIconProps } from '../StyledButton'
-import styles from './DiagnoseButton.scss'
+import { faStethoscope } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import StyledButton, { IButtonWithIconProps } from '../StyledButton';
+import styles from './DiagnoseButton.scss';
 
-type IDiagnoseButtonProps = IButtonWithIconProps
+type IDiagnoseButtonProps = IButtonWithIconProps;
 
 function DiagnoseButton({
   className,
@@ -20,7 +20,7 @@ function DiagnoseButton({
         Diagnose
       </StyledButton>
     </Link>
-  )
+  );
 }
 
-export default DiagnoseButton
+export default DiagnoseButton;

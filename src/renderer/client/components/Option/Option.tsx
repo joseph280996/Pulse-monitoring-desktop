@@ -1,9 +1,9 @@
-import * as React from 'react'
-import './Option.scss'
+import * as React from 'react';
+import './Option.scss';
 
 type OptionPropsType = {
-  className?: string
-}
+  className?: string;
+};
 
 const Option = ({
   className,
@@ -14,7 +14,7 @@ const Option = ({
     <option className={`Option ${className}`} value={value}>
       {children}
     </option>
-  )
-}
+  );
+};
 
-export default Option
+export default Option;

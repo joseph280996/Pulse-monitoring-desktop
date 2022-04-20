@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 type WindowDimension = {
-  width: number
-  height: number
-}
+  width: number;
+  height: number;
+};
 
 /**
  *
@@ -11,11 +11,11 @@ type WindowDimension = {
  * @returns {WindowDimension}
  */
 function getWindowDimensions(offset: number): WindowDimension {
-  const { innerWidth: width, innerHeight: height } = window
+  const { innerWidth: width, innerHeight: height } = window;
   return {
     width: width - offset,
     height: height - offset,
-  }
+  };
 }
 
 /**
@@ -24,16 +24,16 @@ function getWindowDimensions(offset: number): WindowDimension {
  */
 export default (offset: number): WindowDimension => {
   const [windowDimensions, setWindowDimensions] = useState<WindowDimension>(
-    getWindowDimensions(offset),
-  )
+    getWindowDimensions(offset)
+  );
 
   useEffect(() => {
     function handleResize() {
-      setWindowDimensions(getWindowDimensions(offset))
+      setWindowDimensions(getWindowDimensions(offset));
     }
 
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [offset])
-  return windowDimensions
-}
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [offset]);
+  return windowDimensions;
+};

@@ -1,6 +1,6 @@
-import { string } from 'yup'
-import { FieldConfig } from '../../../components/types'
-import { TextFieldWithKeyboard } from '../../../components/TextField'
+import { string } from 'yup';
+import { FieldConfig } from '../../../components/types';
+import { TextFieldWithKeyboard } from '../../../components/TextField';
 
 const signInFields: FieldConfig[] = [
   {
@@ -19,6 +19,6 @@ const signInFields: FieldConfig[] = [
     required: true,
     validate: string().required('Required'),
   },
-]
+];
 
-export default signInFields
+export default signInFields;

@@ -1,50 +1,51 @@
-import * as React from 'react'
-import { Spinner } from 'react-bootstrap'
+import * as React from 'react';
+import { Spinner } from 'react-bootstrap';
 import useWebSocket, {
   ReceivedDatum,
-} from '../../../common/utils/hooks/useWebSocket'
-import useWindowDimensions from '../../../common/utils/hooks/useWindowDimensions'
-import LoadingSpinner from '../../../components/LoadingSpinner'
-import DiagnosisPageComponent from '../../../components/pages/DiagnosisPage/DiagnosisPage'
+} from '../../../common/utils/hooks/useWebSocket';
+import useWindowDimensions from '../../../common/utils/hooks/useWindowDimensions';
+import LoadingSpinner from '../../../components/LoadingSpinner';
+import DiagnosisPageComponent from '../../../components/pages/DiagnosisPage/DiagnosisPage';
 
 function DiagnosisPageContainer(): React.ReactElement {
-  const [isStarted, setIsStarted] = React.useState<boolean>(false)
-  const [isFinished, setIsFinished] = React.useState<boolean>(false)
-  const [recordedStartIndex, setRecordedIndex] =
-    React.useState<number | undefined>()
-  const [recordedEndIndex, setEndIndex] = React.useState<number | undefined>()
+  const [isStarted, setIsStarted] = React.useState<boolean>(false);
+  const [isFinished, setIsFinished] = React.useState<boolean>(false);
+  const [recordedStartIndex, setRecordedIndex] = React.useState<
+    number | undefined
+  >();
+  const [recordedEndIndex, setEndIndex] = React.useState<number | undefined>();
 
-  const { height, width } = useWindowDimensions(20)
+  const { height, width } = useWindowDimensions(20);
   const { error, data, readyState, wsClient } = useWebSocket(
     (newData: ReceivedDatum[]): React.SetStateAction<ReceivedDatum[]> =>
       (prevData: ReceivedDatum[]): ReceivedDatum[] => {
-        return [...prevData, ...newData]
-      },
-  )
+        return [...prevData, ...newData];
+      }
+  );
   const onStart = () => {
-    setIsStarted(true)
-    wsClient?.ws().send('start')
-  }
+    setIsStarted(true);
+    wsClient?.ws().send('start');
+  };
 
   const onReset = () => {
-    setRecordedIndex(undefined)
-    setEndIndex(undefined)
-    wsClient?.ws().send('start')
-    setIsFinished(false)
-  }
+    setRecordedIndex(undefined);
+    setEndIndex(undefined);
+    wsClient?.ws().send('start');
+    setIsFinished(false);
+  };
 
   const onRecordHandler = () => {
-    setRecordedIndex(data.length)
-  }
+    setRecordedIndex(data.length);
+  };
   const onStopHandler = () => {
-    wsClient?.ws().send('stop')
-    setIsFinished(true)
-    setEndIndex(data.length)
-  }
+    wsClient?.ws().send('stop');
+    setIsFinished(true);
+    setEndIndex(data.length);
+  };
   if (!readyState || readyState === WebSocket.CONNECTING)
-    return <Spinner animation="border" role="status" />
+    return <Spinner animation="border" role="status" />;
 
-  if (error) return <LoadingSpinner message={error.message} />
+  if (error) return <LoadingSpinner message={error.message} />;
 
   return (
     <DiagnosisPageComponent
@@ -60,7 +61,7 @@ function DiagnosisPageContainer(): React.ReactElement {
       recordedStartIndex={recordedStartIndex}
       recordedEndIndex={recordedEndIndex}
     />
-  )
+  );
 }
 
-export default DiagnosisPageContainer
+export default DiagnosisPageContainer;

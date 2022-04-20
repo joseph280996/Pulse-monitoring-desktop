@@ -1,13 +1,13 @@
-import classNames from 'classnames'
-import * as React from 'react'
-import { Spinner } from 'react-bootstrap'
-import './LoadingSpinner.scss'
+import classNames from 'classnames';
+import * as React from 'react';
+import { Spinner } from 'react-bootstrap';
+import './LoadingSpinner.scss';
 
 type LoadingSpinnerPropsType = {
-  className?: string
-  wrapperClassName?: string
-  message?: string
-}
+  className?: string;
+  wrapperClassName?: string;
+  message?: string;
+};
 
 const LoadingSpinner = ({
   className,
@@ -23,13 +23,13 @@ const LoadingSpinner = ({
       />
       {message && <p className="Loading-message">{message}</p>}
     </div>
-  )
-}
+  );
+};
 
 LoadingSpinner.defaultProps = {
   className: '',
   wrapperClassName: '',
   message: null,
-}
+};
 
-export default LoadingSpinner
+export default LoadingSpinner;

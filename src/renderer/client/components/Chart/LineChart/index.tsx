@@ -1,3 +1,3 @@
-export { default } from './LineChart'
+export { default } from './LineChart';
 
-export * from './LineChartTypes'
+export * from './LineChartTypes';

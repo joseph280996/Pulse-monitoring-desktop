@@ -1,10 +1,10 @@
-import { faFileExport } from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames'
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import StyledButton from '../StyledButton'
-import styles from './ExportDataButton.scss'
-import { ExportDataButtonPropsType } from './ExportDataButtonTypes'
+import { faFileExport } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import StyledButton from '../StyledButton';
+import styles from './ExportDataButton.scss';
+import { ExportDataButtonPropsType } from './ExportDataButtonTypes';
 
 const ExportDataButton = ({
   className,
@@ -20,7 +20,7 @@ const ExportDataButton = ({
         Export Data
       </StyledButton>
     </Link>
-  )
-}
+  );
+};
 
-export default ExportDataButton
+export default ExportDataButton;

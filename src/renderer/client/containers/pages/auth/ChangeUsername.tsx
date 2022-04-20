@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
 function ChangeUsername(): React.ReactElement {
-  return <div>ChangeUsername</div>
+  return <div>ChangeUsername</div>;
 }
 
-export default ChangeUsername
+export default ChangeUsername;

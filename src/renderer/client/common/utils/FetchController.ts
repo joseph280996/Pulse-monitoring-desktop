@@ -1,32 +1,32 @@
 type RequestResultType = {
-  data?: any
-  error?: Error
-}
+  data?: any;
+  error?: Error;
+};
 
 interface IFetchController {
-  get(route: string, params?: any): Promise<RequestResultType>
-  post(route: string, params?: any): Promise<RequestResultType>
+  get(route: string, params?: any): Promise<RequestResultType>;
+  post(route: string, params?: any): Promise<RequestResultType>;
 }
 
 class FetchController implements IFetchController {
-  private link!: string
+  private link!: string;
 
   get url(): string {
-    return this.link
+    return this.link;
   }
 
   set url(link: string) {
-    this.link = link
+    this.link = link;
   }
 
-  private controller: AbortController = new AbortController()
+  private controller: AbortController = new AbortController();
 
   private get abortController(): AbortController {
-    return this.controller
+    return this.controller;
   }
 
   private set abortController(abortController: AbortController) {
-    this.controller = abortController
+    this.controller = abortController;
   }
 
   private options: RequestInit = {
@@ -35,22 +35,22 @@ class FetchController implements IFetchController {
       Accept: 'application/json',
       'Content-Type': 'application/json;charset=UTF-8',
     },
-  }
+  };
 
   private get requestOptions(): RequestInit {
-    return this.options
+    return this.options;
   }
 
   private set requestOptions(options: RequestInit) {
     this.options = {
       ...this.options,
       ...options,
-    }
+    };
   }
 
   constructor(url: string, options?: RequestInit) {
-    this.url = url
-    if (options) this.requestOptions = options
+    this.url = url;
+    if (options) this.requestOptions = options;
   }
 
   async get(route: string, params?: any): Promise<RequestResultType> {
@@ -58,35 +58,35 @@ class FetchController implements IFetchController {
       ...this.requestOptions,
       method: 'GET',
       body: params ? JSON.stringify(params) : null,
-    }
+    };
     try {
       const response = await (
         await fetch(`${this.url}${route}`, options)
-      ).json()
-      return { data: response }
+      ).json();
+      return { data: response };
     } catch (error) {
-      return { error }
+      return { error };
     }
   }
 
   async post(route: string, params?: any): Promise<RequestResultType> {
-    this.abortController = new AbortController()
+    this.abortController = new AbortController();
     const options = {
       ...this.requestOptions,
       signal: this.abortController.signal,
       method: 'POST',
       body: params ? JSON.stringify(params) : null,
-    }
+    };
     try {
       const response = await (
         await fetch(`${this.url}${route}`, options)
-      ).json()
-      setTimeout(() => this.abortController.abort(), 4000)
-      return { data: response }
+      ).json();
+      setTimeout(() => this.abortController.abort(), 4000);
+      return { data: response };
     } catch (error) {
-      return error
+      return error;
     }
   }
 }
 
-export default FetchController
+export default FetchController;

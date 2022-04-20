@@ -1,11 +1,11 @@
-import { faStop } from '@fortawesome/free-solid-svg-icons'
-import classNames from 'classnames'
-import React from 'react'
-import StyledButton, { IButtonWithIconProps } from '../StyledButton'
-import './StopButton.scss'
+import { faStop } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
+import React from 'react';
+import StyledButton, { IButtonWithIconProps } from '../StyledButton';
+import './StopButton.scss';
 
 interface IStopButtonProps extends IButtonWithIconProps {
-  onStop: React.MouseEventHandler
+  onStop: React.MouseEventHandler;
 }
 const StopButton = ({
   className,
@@ -23,7 +23,7 @@ const StopButton = ({
       iconClassName={iconClassName}
       buttonTextClassName={buttonTextClassName}
     />
-  )
-}
+  );
+};
 
-export default StopButton
+export default StopButton;

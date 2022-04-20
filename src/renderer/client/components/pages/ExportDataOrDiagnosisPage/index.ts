@@ -1,1 +1,1 @@
-export { default } from './ExportDataOrDiagnosisPage'
+export { default } from './ExportDataOrDiagnosisPage';

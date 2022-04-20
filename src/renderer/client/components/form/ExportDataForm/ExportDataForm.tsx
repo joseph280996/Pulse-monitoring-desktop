@@ -1,13 +1,13 @@
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
-import * as React from 'react'
-import classNames from 'classnames'
-import DatePicker from 'react-datepicker'
-import { Link } from 'react-router-dom'
-import StyledButton from '../../Button'
-import ConfirmExportButton from '../../Button/ConfirmExportButton'
-import Overlay from '../../Overlay'
-import { ExportDataFormComponentPropsType } from './ExportDataComponentTypes'
-import styles from './ExportDataForm.scss'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import * as React from 'react';
+import classNames from 'classnames';
+import DatePicker from 'react-datepicker';
+import { Link } from 'react-router-dom';
+import StyledButton from '../../Button';
+import ConfirmExportButton from '../../Button/ConfirmExportButton';
+import Overlay from '../../Overlay';
+import { ExportDataFormComponentPropsType } from './ExportDataComponentTypes';
+import styles from './ExportDataForm.scss';
 
 const ExportDataFormComponent = ({
   handleSubmit,
@@ -63,7 +63,7 @@ const ExportDataFormComponent = ({
                 >
                   <span
                     className={classNames(
-                      'react-datepicker__navigation-icon react-datepicker__navigation-icon--previous',
+                      'react-datepicker__navigation-icon react-datepicker__navigation-icon--previous'
                     )}
                   >
                     {'<'}
@@ -86,14 +86,14 @@ const ExportDataFormComponent = ({
                 >
                   <span
                     className={classNames(
-                      'react-datepicker__navigation-icon react-datepicker__navigation-icon--next',
+                      'react-datepicker__navigation-icon react-datepicker__navigation-icon--next'
                     )}
                   >
                     {'>'}
                   </span>
                 </button>
               </div>
-            )
+            );
           }}
           selectsRange
           selected={startDate}
@@ -102,8 +102,8 @@ const ExportDataFormComponent = ({
         <ConfirmExportButton type="submit" />
       </form>
     </div>
-  )
-}
+  );
+};
 
-ExportDataFormComponent.defaultProps = {}
-export default ExportDataFormComponent
+ExportDataFormComponent.defaultProps = {};
+export default ExportDataFormComponent;

@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import StyledButton from '../../Button'
-import styles from './NotFound.scss'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import StyledButton from '../../Button';
+import styles from './NotFound.scss';
 
 function NotFoundPage(): React.ReactNode {
   return (
@@ -21,7 +21,7 @@ function NotFoundPage(): React.ReactNode {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default NotFoundPage
+export default NotFoundPage;

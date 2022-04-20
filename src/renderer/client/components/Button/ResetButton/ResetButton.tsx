@@ -1,11 +1,11 @@
-import { faRedoAlt } from '@fortawesome/free-solid-svg-icons'
-import * as React from 'react'
-import StyledButton from '../StyledButton'
-import styles from './ResetButton.scss'
+import { faRedoAlt } from '@fortawesome/free-solid-svg-icons';
+import * as React from 'react';
+import StyledButton from '../StyledButton';
+import styles from './ResetButton.scss';
 
 type ResetButtonProps = {
-  onReset: React.MouseEventHandler
-}
+  onReset: React.MouseEventHandler;
+};
 
 const ResetButton = ({ onReset }: ResetButtonProps): React.ReactElement => {
   return (
@@ -15,7 +15,7 @@ const ResetButton = ({ onReset }: ResetButtonProps): React.ReactElement => {
       onClick={onReset}
       icon={faRedoAlt}
     />
-  )
-}
+  );
+};
 
-export default ResetButton
+export default ResetButton;

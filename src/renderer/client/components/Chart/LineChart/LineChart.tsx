@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {
   XYPlot,
   XYPlotProps,
@@ -6,7 +6,7 @@ import {
   LineSeries,
   Highlight,
   HighlightArea,
-} from 'react-vis'
+} from 'react-vis';
 
 function LineChart({
   width,
@@ -15,8 +15,9 @@ function LineChart({
   getY,
   data,
 }: XYPlotProps & LineSeriesProps): React.ReactElement {
-  const [lastDrawFrame, setLastDrawFrame] =
-    React.useState<HighlightArea | null | undefined>()
+  const [lastDrawFrame, setLastDrawFrame] = React.useState<
+    HighlightArea | null | undefined
+  >();
   return (
     <XYPlot
       width={width}
@@ -33,7 +34,7 @@ function LineChart({
       />
       <Highlight
         onBrushEnd={(area) => {
-          setLastDrawFrame(area)
+          setLastDrawFrame(area);
         }}
         onDrag={(area) => {
           setLastDrawFrame((prevDrawFrame) => {
@@ -50,12 +51,12 @@ function LineChart({
               right:
                 (prevDrawFrame?.right || 0) +
                 ((area?.right || 0) - (area?.left || 0)),
-            }
-          })
+            };
+          });
         }}
       />
     </XYPlot>
-  )
+  );
 }
 
-export default LineChart
+export default LineChart;

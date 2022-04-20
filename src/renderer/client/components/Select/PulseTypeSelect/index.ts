@@ -1,1 +1,1 @@
-export { default } from './PulseTypeSelect'
+export { default } from './PulseTypeSelect';

@@ -1,18 +1,18 @@
-import classNames from 'classnames'
-import * as React from 'react'
-import usePulseTypes from '../../../common/utils/hooks/usePulseTypes'
-import LoadingSpinner from '../../LoadingSpinner'
-import Option from '../../Option'
-import Select from '../Select'
-import styles from './PulseTypeSelect.scss'
+import classNames from 'classnames';
+import * as React from 'react';
+import usePulseTypes from '../../../common/utils/hooks/usePulseTypes';
+import LoadingSpinner from '../../LoadingSpinner';
+import Option from '../../Option';
+import Select from '../Select';
+import styles from './PulseTypeSelect.scss';
 
 type PulseTypeSelectProps = {
-  onBlur: React.FocusEventHandler
-  onChange: React.ChangeEventHandler<HTMLSelectElement>
-  className?: string
-  value: number | string
-  name?: string
-}
+  onBlur: React.FocusEventHandler;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  className?: string;
+  value: number | string;
+  name?: string;
+};
 
 function PulseTypeSelect({
   className,
@@ -21,9 +21,9 @@ function PulseTypeSelect({
   name,
   onBlur,
 }: PulseTypeSelectProps): React.ReactElement {
-  const { pulseTypes, error } = usePulseTypes()
+  const { pulseTypes, error } = usePulseTypes();
   if (error) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
   return (
     <div className={classNames(styles.PulseTypeSelect, className)}>
@@ -33,16 +33,16 @@ function PulseTypeSelect({
             <Option value={pulseType.id} key={pulseType.id}>
               {pulseType.name}
             </Option>
-          )
+          );
         })}
       </Select>
     </div>
-  )
+  );
 }
 
 PulseTypeSelect.defaultProps = {
   className: '',
   name: null,
-}
+};
 
-export default PulseTypeSelect
+export default PulseTypeSelect;

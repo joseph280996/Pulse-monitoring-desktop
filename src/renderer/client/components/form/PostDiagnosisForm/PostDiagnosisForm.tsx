@@ -1,11 +1,11 @@
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
-import React, { ReactElement } from 'react'
-import StyledButton from '../../Button'
-import LineChart from '../../Chart/LineChart'
-import { PulseTypeSelect } from '../../Select'
-import { TextFieldWithKeyboard } from '../../TextField'
-import styles from './PostDiagnosisForm.scss'
-import { IPostDiagnosisProps } from './PostDiagnosisFormTypes'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import React, { ReactElement } from 'react';
+import StyledButton from '../../Button';
+import LineChart from '../../Chart/LineChart';
+import { PulseTypeSelect } from '../../Select';
+import { TextFieldWithKeyboard } from '../../TextField';
+import styles from './PostDiagnosisForm.scss';
+import { IPostDiagnosisProps } from './PostDiagnosisFormTypes';
 
 function PostDiagnosisFormComponent({
   data,
@@ -28,7 +28,7 @@ function PostDiagnosisFormComponent({
         type="text"
         placeholder="Patient Name"
         onChange={(input) => {
-          setFieldValue('patientName', input)
+          setFieldValue('patientName', input);
         }}
         error={errors.patientName}
         name="patientName"
@@ -41,7 +41,7 @@ function PostDiagnosisFormComponent({
         <PulseTypeSelect
           name="pulseTypeID"
           onBlur={() => {
-            setFieldTouched('pulseTypeID', true)
+            setFieldTouched('pulseTypeID', true);
           }}
           onChange={(event) => setFieldValue('pulseTypeID', event.target.value)}
           value={values.pulseTypeID}
@@ -57,7 +57,7 @@ function PostDiagnosisFormComponent({
         </div>
       </div>
     </form>
-  )
+  );
 }
 
-export default PostDiagnosisFormComponent
+export default PostDiagnosisFormComponent;

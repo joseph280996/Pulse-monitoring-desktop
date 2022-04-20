@@ -1,19 +1,19 @@
-import classNames from 'classnames'
-import * as React from 'react'
-import usePulsePosition from '../../../common/utils/hooks/usePulsePositions'
-import Option from '../../Option'
-import Select from '../Select'
-import styles from './PulsePositionSelect.scss'
+import classNames from 'classnames';
+import * as React from 'react';
+import usePulsePosition from '../../../common/utils/hooks/usePulsePositions';
+import Option from '../../Option';
+import Select from '../Select';
+import styles from './PulsePositionSelect.scss';
 
 type PulsePositionProps = {
-  className?: string
-  name?: string
-  value: any
-  onPositionChange: React.ChangeEventHandler
-  onBlur?: React.ChangeEventHandler
-  required?: boolean
-  label?: string
-}
+  className?: string;
+  name?: string;
+  value: any;
+  onPositionChange: React.ChangeEventHandler;
+  onBlur?: React.ChangeEventHandler;
+  required?: boolean;
+  label?: string;
+};
 
 const PulsePositionSelect = ({
   className,
@@ -21,7 +21,7 @@ const PulsePositionSelect = ({
   label,
   ...selectProps
 }: PulsePositionProps): React.ReactElement => {
-  const { pulsePositions } = usePulsePosition()
+  const { pulsePositions } = usePulsePosition();
   return (
     <div className={classNames(styles.PulsePositionSelect, className)}>
       {label && (
@@ -44,8 +44,8 @@ const PulsePositionSelect = ({
         ))}
       </Select>
     </div>
-  )
-}
+  );
+};
 
 PulsePositionSelect.defaultProps = {
   className: null,
@@ -53,6 +53,6 @@ PulsePositionSelect.defaultProps = {
   required: false,
   onBlur: null,
   label: null,
-}
+};
 
-export default PulsePositionSelect
+export default PulsePositionSelect;
