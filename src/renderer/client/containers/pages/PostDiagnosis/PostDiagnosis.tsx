@@ -1,12 +1,12 @@
 import moment from 'moment';
-import * as React from 'react';
+import { ReactElement } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { ReceivedDatum } from '../../../common/utils/hooks/useWebSocket';
 import useWindowDimensions from '../../../common/utils/hooks/useWindowDimensions';
 import PostDiagnosisFormContainer from '../../form/PostDiagnosisForm/PostDiagnosisForm';
 import { PostDiagnosisLocationState } from './PostDiagnosisTypes';
 
-function PostDiagnosis(): React.ReactElement {
+function PostDiagnosis(): ReactElement {
   const location = useLocation();
   const { width, height } = useWindowDimensions(20);
   const locationState: PostDiagnosisLocationState =

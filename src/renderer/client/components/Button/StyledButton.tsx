@@ -1,10 +1,9 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
-import * as React from 'react';
-import { CSSProperties, MouseEventHandler, PropsWithChildren } from 'react';
+import { FC, CSSProperties, MouseEventHandler, ReactElement } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
-import styles from './StyledButton.scss';
+import './StyledButton.scss';
 
 const ICON_POSSIBLE_POSITION = {
   START: 'start',
@@ -31,7 +30,7 @@ export interface IButtonWithIconProps extends IButtonProps {
   iconStyle?: CSSProperties;
 }
 
-const StyledButton = ({
+const StyledButton: FC<IButtonWithIconProps> = ({
   icon,
   iconPosition = ICON_POSSIBLE_POSITION.START,
   iconClassName,
@@ -47,13 +46,13 @@ const StyledButton = ({
   type,
   primary,
   isSubmitting,
-}: PropsWithChildren<IButtonWithIconProps>): React.ReactElement => {
+}): ReactElement => {
   return (
     <div
       className={classnames(
-        styles['Button-container'],
+        'Button-container',
         {
-          [styles['Button-iconOnly']]: !children && !text,
+          'Button-iconOnly': !children && !text,
         },
         wrapperClassName
       )}
@@ -64,7 +63,7 @@ const StyledButton = ({
         disabled={disabled}
         className={classnames(
           {
-            [styles['Button-primary']]: primary,
+            'Button-primary': primary,
           },
           className
         )}
@@ -98,19 +97,19 @@ const StyledButton = ({
 
 StyledButton.defaultProps = {
   type: 'button',
-  text: null,
+  text: undefined,
   disabled: false,
-  className: null,
-  wrapperClassName: null,
-  isSubmitting: null,
-  primary: null,
-  icon: null,
-  iconPosition: null,
-  iconClassName: null,
-  iconWrapperClassName: null,
-  buttonTextClassName: null,
-  onClick: null,
-  iconStyle: null,
+  className: undefined,
+  wrapperClassName: undefined,
+  isSubmitting: undefined,
+  primary: undefined,
+  icon: undefined,
+  iconPosition: undefined,
+  iconClassName: undefined,
+  iconWrapperClassName: undefined,
+  buttonTextClassName: undefined,
+  onClick: undefined,
+  iconStyle: undefined,
 };
 
 export default StyledButton;

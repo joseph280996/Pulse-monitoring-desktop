@@ -1,10 +1,10 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import { ReactElement } from 'react';
 import { Form } from 'react-bootstrap';
 import Button from '../../Button';
 import Message from '../../Message';
 import { TextFieldWithKeyboard } from '../../TextField';
-import styles from './SignInForm.scss';
+import './SignInForm.scss';
 import { ISignInFormProps } from './SignInFormTypes';
 
 function SignInFormComponent({
@@ -18,21 +18,17 @@ function SignInFormComponent({
   isValid,
   fields,
   setFieldValue,
-}: ISignInFormProps): React.ReactElement {
+}: ISignInFormProps): ReactElement {
   return (
-    <div className={classNames(styles['Form-container'], styles.SignInForm)}>
-      <Form className={styles.Form} onSubmit={handleSubmit}>
-        <div className={styles['SignInForm-fieldsWrapper']}>
-          <div className={styles['Form-title']}>
-            <h1 className={styles['SignInForm-header']}>Welcome</h1>
-            <h3 className={styles['SignInForm-subtitle']}>
-              Sign In To Get Started
-            </h3>
+    <div className={classNames('Form-container', 'SignInForm')}>
+      <Form className="Form" onSubmit={handleSubmit}>
+        <div className="SignInForm-fieldsWrapper">
+          <div className="Form-title">
+            <h1 className="SignInForm-header">Welcome</h1>
+            <h3 className="SignInForm-subtitle">Sign In To Get Started</h3>
           </div>
-          {status && (
-            <Message className={styles['SignInForm-error']} error={status} />
-          )}
-          <div className={styles['Form-fields']}>
+          {status && <Message className="SignInForm-error" error={status} />}
+          <div className="Form-fields">
             {fields.map(
               ({
                 name,
@@ -47,7 +43,7 @@ function SignInFormComponent({
                   onChange={(input) => {
                     setFieldValue(name, input);
                   }}
-                  className={styles['SignInForm-field']}
+                  className="SignInForm-field"
                   onBlur={handleBlur}
                   {...passThroughProps}
                 />
@@ -59,7 +55,7 @@ function SignInFormComponent({
           <Button
             type="submit"
             isSubmitting={isSubmitting}
-            className={styles['SignInForm-signInButton']}
+            className="SignInForm-signInButton"
             text="Sign In"
             disabled={!dirty || isSubmitting || (!isValid && Boolean(errors))}
           />

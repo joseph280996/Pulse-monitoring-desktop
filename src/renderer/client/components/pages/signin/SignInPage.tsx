@@ -1,11 +1,11 @@
-import * as React from 'react';
+import { ReactElement } from 'react';
 import SignIn from '../../../containers/form/SignInForm/SignInForm';
-import styles from './SignInPage.scss';
+import './SignInPage.scss';
 
-const SignInPage = (): React.ReactElement => {
+const SignInPage = (): ReactElement => {
   return (
-    <div className={styles.SignIn}>
-      <div className={styles['SignIn-container']}>
+    <div className="SignIn">
+      <div className="SignIn-container">
         <SignIn />
       </div>
     </div>

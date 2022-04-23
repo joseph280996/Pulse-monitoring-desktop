@@ -8,10 +8,10 @@ type FormikValuesType = {
 export interface IDiagnosisFormProps extends ILineChartProps {
   isStarted: boolean;
   isFinished: boolean;
-  onStart: React.MouseEventHandler;
-  onReset: React.MouseEventHandler;
-  onRecord: React.MouseEventHandler;
-  onStop: React.MouseEventHandler;
+  onStart: MouseEventHandler;
+  onReset: MouseEventHandler;
+  onRecord: MouseEventHandler;
+  onStop: MouseEventHandler;
   recordedStartIndex: number | undefined;
   recordedEndIndex: number | undefined;
 }

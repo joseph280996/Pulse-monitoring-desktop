@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { ReactElement, ImgHTMLAttributes } from 'react';
 
-interface IImg<T> extends React.ImgHTMLAttributes<T> {
+interface IImg<T> extends ImgHTMLAttributes<T> {
   useBasePath: boolean;
 }
 
@@ -16,7 +16,7 @@ function Img({
   src,
   alt,
   useBasePath,
-}: IImg<ImgPropTypes>): React.ReactElement {
+}: IImg<ImgPropTypes>): ReactElement {
   const basePath = useBasePath ? './assets/images' : '';
   return <img className={className} src={`${basePath}${src}`} alt={alt} />;
 }

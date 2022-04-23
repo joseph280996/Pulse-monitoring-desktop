@@ -1,11 +1,11 @@
 import { faStop } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
-import React from 'react';
+import { ReactElement, MouseEventHandler } from 'react';
 import StyledButton, { IButtonWithIconProps } from '../StyledButton';
 import './StopButton.scss';
 
 interface IStopButtonProps extends IButtonWithIconProps {
-  onStop: React.MouseEventHandler;
+  onStop: MouseEventHandler;
 }
 const StopButton = ({
   className,
@@ -13,7 +13,7 @@ const StopButton = ({
   buttonTextClassName,
   onStop,
   disabled,
-}: IStopButtonProps): React.ReactElement => {
+}: IStopButtonProps): ReactElement => {
   return (
     <StyledButton
       disabled={disabled}

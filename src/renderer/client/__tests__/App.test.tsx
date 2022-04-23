@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import * as React from 'react';
+import { ReactElement } from 'react';
 import '@testing-library/jest-dom';
 import App from '../App';
 

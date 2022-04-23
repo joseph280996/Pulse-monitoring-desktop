@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactElement, useState, SetStateAction } from 'react';
 import { Spinner } from 'react-bootstrap';
 import useWebSocket, {
   ReceivedDatum,
@@ -7,17 +7,15 @@ import useWindowDimensions from '../../../common/utils/hooks/useWindowDimensions
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import DiagnosisPageComponent from '../../../components/pages/DiagnosisPage/DiagnosisPage';
 
-function DiagnosisPageContainer(): React.ReactElement {
-  const [isStarted, setIsStarted] = React.useState<boolean>(false);
-  const [isFinished, setIsFinished] = React.useState<boolean>(false);
-  const [recordedStartIndex, setRecordedIndex] = React.useState<
-    number | undefined
-  >();
-  const [recordedEndIndex, setEndIndex] = React.useState<number | undefined>();
+function DiagnosisPageContainer(): ReactElement {
+  const [isStarted, setIsStarted] = useState<boolean>(false);
+  const [isFinished, setIsFinished] = useState<boolean>(false);
+  const [recordedStartIndex, setRecordedIndex] = useState<number | undefined>();
+  const [recordedEndIndex, setEndIndex] = useState<number | undefined>();
 
   const { height, width } = useWindowDimensions(20);
   const { error, data, readyState, wsClient } = useWebSocket(
-    (newData: ReceivedDatum[]): React.SetStateAction<ReceivedDatum[]> =>
+    (newData: ReceivedDatum[]): SetStateAction<ReceivedDatum[]> =>
       (prevData: ReceivedDatum[]): ReceivedDatum[] => {
         return [...prevData, ...newData];
       }

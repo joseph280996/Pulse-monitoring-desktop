@@ -1,3 +1,3 @@
 export type FormikHandleSubmitType = (
-  e?: React.FormEvent<HTMLFormElement> | undefined
+  e?: FormEvent<HTMLFormElement> | undefined
 ) => void;

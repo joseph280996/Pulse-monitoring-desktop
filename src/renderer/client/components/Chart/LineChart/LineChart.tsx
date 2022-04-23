@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactElement, useState } from 'react';
 import {
   XYPlot,
   XYPlotProps,
@@ -14,8 +14,8 @@ function LineChart({
   getX,
   getY,
   data,
-}: XYPlotProps & LineSeriesProps): React.ReactElement {
-  const [lastDrawFrame, setLastDrawFrame] = React.useState<
+}: XYPlotProps & LineSeriesProps): ReactElement {
+  const [lastDrawFrame, setLastDrawFrame] = useState<
     HighlightArea | null | undefined
   >();
   return (

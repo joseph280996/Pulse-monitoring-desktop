@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { ReactElement } from 'react';
 
-function ChangeUsername(): React.ReactElement {
+function ChangeUsername(): ReactElement {
   return <div>ChangeUsername</div>;
 }
 

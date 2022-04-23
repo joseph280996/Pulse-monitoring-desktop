@@ -1,9 +1,14 @@
+import {
+  MouseEventHandler,
+  ChangeEventHandler,
+  FocusEventHandler,
+} from 'react';
 import { IField } from '../types';
 
 export interface ITextFieldProps extends IField {
-  onClick?: React.MouseEventHandler;
-  onChange?: React.ChangeEventHandler;
-  onBlur?: React.FocusEventHandler;
+  onClick?: MouseEventHandler;
+  onChange?: ChangeEventHandler;
+  onBlur?: FocusEventHandler;
   placeholder?: string;
   label?: string;
 }

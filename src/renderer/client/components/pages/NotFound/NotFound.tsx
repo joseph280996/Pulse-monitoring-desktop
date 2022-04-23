@@ -1,19 +1,19 @@
-import * as React from 'react';
+import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import StyledButton from '../../Button';
-import styles from './NotFound.scss';
+import './NotFound.scss';
 
-function NotFoundPage(): React.ReactNode {
+function NotFoundPage(): ReactElement {
   return (
-    <div className={styles.NotFound}>
-      <div className={styles['NotFound-container']}>
-        <h2 className={styles['NotFound-title']}>404! NOT FOUND</h2>
+    <div className="NotFound">
+      <div className="NotFound-container">
+        <h2 className="NotFound-title">404! NOT FOUND</h2>
         <div>
           <p>
             The page that you are trying to connect is either in development or
             cannot be found
           </p>
-          <div className={styles['NotFound-buttonContainer']}>
+          <div className="NotFound-buttonContainer">
             <Link to="/">
               <StyledButton type="button">Go back to our homepage</StyledButton>
             </Link>

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import * as React from 'react';
-import styles from './TextField.scss';
+import { ReactElement } from 'react';
+import './TextField.scss';
 import { ITextFieldProps } from './TextFieldTypes';
 
 function TextField({
@@ -16,17 +16,17 @@ function TextField({
   disabled = false,
   required = false,
   className,
-}: ITextFieldProps): React.ReactElement {
+}: ITextFieldProps): ReactElement {
   return (
-    <div className={classNames(styles[`TextField-container`], className)}>
+    <div className={classNames('TextField-container', className)}>
       {label && (
         <label className="TextField-label" htmlFor={name}>
           {`${label}:`}
         </label>
       )}
       <input
-        className={classNames(styles['TextField-input'], {
-          [styles[`TextField-input--error`]]: !!error,
+        className={classNames('TextField-input', {
+          'TextField-input--error': !!error,
         })}
         required={required}
         name={name}
@@ -38,7 +38,7 @@ function TextField({
         placeholder={placeholder}
         disabled={disabled}
       />
-      {error && <div className={styles['TextField-error']}>{error}</div>}
+      {error && <div className="TextField-error">{error}</div>}
     </div>
   );
 }

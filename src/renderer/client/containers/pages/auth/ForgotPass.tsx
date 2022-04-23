@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { ReactElement } from 'react';
 
-function ForgotPass(): React.ReactElement {
+function ForgotPass(): ReactElement {
   return <div>ForgotPass</div>;
 }
 

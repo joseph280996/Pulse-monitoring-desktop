@@ -1,10 +1,10 @@
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import StyledButton from '../../Button';
 import LineChart from '../../Chart/LineChart';
 import { PulseTypeSelect } from '../../Select';
 import { TextFieldWithKeyboard } from '../../TextField';
-import styles from './PostDiagnosisForm.scss';
+import './PostDiagnosisForm.scss';
 import { IPostDiagnosisProps } from './PostDiagnosisFormTypes';
 
 function PostDiagnosisFormComponent({
@@ -24,7 +24,7 @@ function PostDiagnosisFormComponent({
     <form onSubmit={handleSubmit}>
       {status && <div>{status}</div>}
       <TextFieldWithKeyboard
-        className={styles['PostDiagnosis-field']}
+        className="PostDiagnosis-field"
         type="text"
         placeholder="Patient Name"
         onChange={(input) => {
@@ -37,7 +37,7 @@ function PostDiagnosisFormComponent({
         required
       />
       <LineChart data={data} width={width} height={height} />
-      <div className={styles['PostDiagnosis-buttonContainer']}>
+      <div className="PostDiagnosis-buttonContainer">
         <PulseTypeSelect
           name="pulseTypeID"
           onBlur={() => {
@@ -46,12 +46,12 @@ function PostDiagnosisFormComponent({
           onChange={(event) => setFieldValue('pulseTypeID', event.target.value)}
           value={values.pulseTypeID}
         />
-        <div className={styles['PostDiagnosis-buttonWrapper']}>
+        <div className="PostDiagnosis-buttonWrapper">
           <StyledButton
-            wrapperClassName={styles['PostDiagnosis-button']}
+            wrapperClassName="PostDiagnosis-button"
             type="submit"
             icon={faCheckCircle}
-            className={styles['PostDiagnosis-buttonIcon']}
+            className="PostDiagnosis-buttonIcon"
             isSubmitting={isSubmitting}
           />
         </div>

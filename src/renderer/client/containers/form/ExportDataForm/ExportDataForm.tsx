@@ -1,4 +1,3 @@
-import * as React from 'react';
 import moment from 'moment';
 import { useFormik } from 'formik';
 import { pick } from 'lodash';

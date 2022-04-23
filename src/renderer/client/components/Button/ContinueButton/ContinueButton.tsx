@@ -1,15 +1,13 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import * as React from 'react';
+import { ReactElement } from 'react';
 import StyledButton, { IButtonProps } from '../StyledButton';
-import styles from './ContinueButton.scss';
+import './ContinueButton.scss';
 
-const ContinueButton = ({
-  type = 'button',
-}: IButtonProps): React.ReactElement => {
+const ContinueButton = ({ type = 'button' }: IButtonProps): ReactElement => {
   return (
     <StyledButton
-      wrapperClassName={styles['ContinueButton-wrapper']}
-      className={styles.ContinueButton}
+      wrapperClassName="ContinueButton-wrapper"
+      className="ContinueButton"
       icon={faArrowRight}
       type={type}
     />

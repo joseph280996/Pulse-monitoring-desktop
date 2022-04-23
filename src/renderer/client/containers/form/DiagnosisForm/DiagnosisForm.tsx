@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import moment from 'moment';
-import * as React from 'react';
+import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReceivedDatum } from '../../../common/utils/hooks/useWebSocket';
 import DiagnosisFormComponent from '../../../components/form/DiagnosisForm/DiagnosisForm';
@@ -15,7 +15,7 @@ function DiagnosisForm({
   recordedStartIndex,
   recordedEndIndex,
   ...passThroughProps
-}: IDiagnosisFormContainerProps): React.ReactElement {
+}: IDiagnosisFormContainerProps): ReactElement {
   const navigate = useNavigate();
   const formikProps = useFormik<FormikValuesType>({
     initialValues: {

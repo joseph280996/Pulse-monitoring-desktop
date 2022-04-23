@@ -1,6 +1,6 @@
 import { useFormik } from 'formik';
 import { pick } from 'lodash';
-import * as React from 'react';
+import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { object } from 'yup';
 import tcmAPIRequestController from '../../../common/tcmAPI';
@@ -14,7 +14,7 @@ const PostDiagnosisFormContainer = ({
   initialValues,
   data,
   ...passThroughProps
-}: IPostDiagnosisFormContainerProp): React.ReactElement => {
+}: IPostDiagnosisFormContainerProp): ReactElement => {
   const navigate = useNavigate();
 
   const formik = useFormik({

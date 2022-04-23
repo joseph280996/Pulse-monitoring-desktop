@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import { PropsWithChildren, ReactElement } from 'react';
 
 type SelectProps = {
   id?: any;
   name?: string;
   className?: string;
   value: any;
-  onChange: React.ChangeEventHandler;
-  onBlur?: React.FocusEventHandler;
+  onChange: ChangeEventHandler;
+  onBlur?: FocusEventHandler;
 };
 
 function Select({
@@ -18,7 +18,7 @@ function Select({
   onChange,
   onBlur,
   id,
-}: React.PropsWithChildren<SelectProps>): React.ReactElement {
+}: PropsWithChildren<SelectProps>): ReactElement {
   return (
     <select
       id={id}

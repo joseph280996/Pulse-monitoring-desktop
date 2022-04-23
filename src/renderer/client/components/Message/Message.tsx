@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactElement } from 'react';
 import { Alert } from 'react-bootstrap';
 
 export type MessageProps = {
@@ -13,7 +13,7 @@ function Message({
   message,
   error,
   variant = 'primary',
-}: MessageProps): React.ReactElement {
+}: MessageProps): ReactElement {
   return (
     <Alert className={className} variant={error ? 'danger' : variant}>
       {message || error}

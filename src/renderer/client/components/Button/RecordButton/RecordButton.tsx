@@ -1,11 +1,11 @@
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
-import React from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import StyledButton, { IButtonWithIconProps } from '../StyledButton';
-import styles from './RecordButton.scss';
+import './RecordButton.scss';
 
 interface IRecordButtonProps extends IButtonWithIconProps {
-  onRecord: React.MouseEventHandler;
+  onRecord: MouseEventHandler;
 }
 
 const RecordButton = ({
@@ -14,11 +14,11 @@ const RecordButton = ({
   iconClassName,
   buttonTextClassName,
   className,
-}: IRecordButtonProps): React.ReactElement => {
+}: IRecordButtonProps): ReactElement => {
   return (
     <StyledButton
       iconClassName={iconClassName}
-      className={classNames(styles.RecordButton, className)}
+      className={classNames('RecordButton', className)}
       buttonTextClassName={buttonTextClassName}
       disabled={disabled}
       onClick={onRecord}

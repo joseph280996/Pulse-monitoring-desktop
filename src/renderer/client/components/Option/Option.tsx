@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactElement, OptionHTMLAttributes } from 'react';
 import './Option.scss';
 
 type OptionPropsType = {
@@ -9,7 +9,7 @@ const Option = ({
   className,
   value,
   children,
-}: React.OptionHTMLAttributes<OptionPropsType>): React.ReactElement => {
+}: OptionHTMLAttributes<OptionPropsType>): ReactElement => {
   return (
     <option className={`Option ${className}`} value={value}>
       {children}

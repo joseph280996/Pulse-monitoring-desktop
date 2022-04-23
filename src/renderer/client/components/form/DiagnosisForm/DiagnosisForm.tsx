@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { FormikProps } from 'formik';
 import { takeRight } from 'lodash';
-import * as React from 'react';
+import { ReactElement } from 'react';
 import { Form } from 'react-bootstrap';
 import { LineSeriesPoint } from 'react-vis';
 import DiagnosisFormValuesType, {
@@ -17,7 +17,7 @@ import {
 import LineChart from '../../Chart/LineChart/LineChart';
 import Overlay from '../../Overlay';
 import { PulsePositionSelect } from '../../Select';
-import styles from './DiagnosisForm.scss';
+import './DiagnosisForm.scss';
 
 interface IDiagnosisFormComponentProps
   extends IDiagnosisFormProps,
@@ -40,12 +40,12 @@ function DiagnosisForm({
   values,
   dirty,
   touched,
-}: IDiagnosisFormComponentProps): React.ReactElement {
+}: IDiagnosisFormComponentProps): ReactElement {
   return (
-    <Form className={styles.Form} onSubmit={handleSubmit}>
+    <Form className="Form" onSubmit={handleSubmit}>
       {isFinished && (
         <Overlay>
-          <div className={styles['DiagnosisForm-continueOrResetContainer']}>
+          <div className="DiagnosisForm-continueOrResetContainer">
             <ResetButton onReset={onReset} />
             <ContinueButton type="submit" />
           </div>
@@ -58,11 +58,11 @@ function DiagnosisForm({
           height={height - 100}
         />
       </div>
-      <div className={styles[`DiagnosisForm-toolbarContainer`]}>
-        <div className={styles[`DiagnosisForm-pulseSelectWrapper`]}>
+      <div className="DiagnosisForm-toolbarContainer">
+        <div className="DiagnosisForm-pulseSelectWrapper">
           <PulsePositionSelect
             label="Pulse Position"
-            className={styles[`DiagnosisForm-pulseSelect`]}
+            className="DiagnosisForm-pulseSelect"
             value={values.pulsePositionID}
             name="pulsePositionID"
             onPositionChange={handleChange}
@@ -72,21 +72,21 @@ function DiagnosisForm({
         </div>
         {!isStarted ? (
           <StartButton
-            className={styles[`DiagnosisForm-button`]}
+            className="DiagnosisForm-button"
             onStart={onStart}
             disabled={!dirty || !touched}
           />
         ) : recordedStartIndex ? (
           <StopButton
-            className={styles[`DiagnosisForm-button`]}
+            className="DiagnosisForm-button"
             iconClassName="Icon Icon-stop"
-            buttonTextClassName={styles[`DiagnosisForm-buttonTextStop`]}
+            buttonTextClassName="DiagnosisForm-buttonTextStop"
             onStop={onStop}
             disabled={!dirty || !touched}
           />
         ) : (
           <RecordButton
-            className={styles[`DiagnosisForm-button`]}
+            className="DiagnosisForm-button"
             iconClassName="Icon Icon-recording"
             onRecord={onRecord}
             disabled={!dirty || !touched}

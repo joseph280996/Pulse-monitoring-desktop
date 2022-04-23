@@ -1,14 +1,14 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import { ReactElement, FocusEventHandler, ChangeEventHandler } from 'react';
 import usePulseTypes from '../../../common/utils/hooks/usePulseTypes';
 import LoadingSpinner from '../../LoadingSpinner';
 import Option from '../../Option';
 import Select from '../Select';
-import styles from './PulseTypeSelect.scss';
+import './PulseTypeSelect.scss';
 
 type PulseTypeSelectProps = {
-  onBlur: React.FocusEventHandler;
-  onChange: React.ChangeEventHandler<HTMLSelectElement>;
+  onBlur: FocusEventHandler;
+  onChange: ChangeEventHandler<HTMLSelectElement>;
   className?: string;
   value: number | string;
   name?: string;
@@ -20,13 +20,13 @@ function PulseTypeSelect({
   value,
   name,
   onBlur,
-}: PulseTypeSelectProps): React.ReactElement {
+}: PulseTypeSelectProps): ReactElement {
   const { pulseTypes, error } = usePulseTypes();
   if (error) {
     return <LoadingSpinner />;
   }
   return (
-    <div className={classNames(styles.PulseTypeSelect, className)}>
+    <div className={classNames('PulseTypeSelect', className)}>
       <Select name={name} value={value} onBlur={onBlur} onChange={onChange}>
         {(pulseTypes || []).map((pulseType) => {
           return (

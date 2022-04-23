@@ -1,8 +1,8 @@
 import { dropRight } from 'lodash';
-import React, { useState, MutableRefObject, useMemo } from 'react';
+import { ReactElement, useState, MutableRefObject, useMemo } from 'react';
 import Keyboard from 'react-simple-keyboard';
 import KeyboardInternational from 'simple-keyboard-layouts';
-import styles from './VirtualKeyboard.scss';
+import './VirtualKeyboard.scss';
 
 export type VirtualKeyboardChangeEventHandlerType = (input: string) => void;
 
@@ -18,7 +18,7 @@ const VirtualKeyboard = ({
   keyboardRef,
   onEnterOverride,
   enterDisplayOverride,
-}: IVirtualKeyboardProps): React.ReactElement => {
+}: IVirtualKeyboardProps): ReactElement => {
   const [layoutName, setLayoutName] = useState<string>('default');
   const [keyboardLanguage, setKeyboardLanguage] = useState<string>('english');
 
@@ -57,7 +57,7 @@ const VirtualKeyboard = ({
   );
 
   return (
-    <div className={styles.VirtualKeyboard}>
+    <div className="VirtualKeyboard">
       <Keyboard
         keyboardRef={(r: any) => {
           // eslint-disable-next-line no-param-reassign

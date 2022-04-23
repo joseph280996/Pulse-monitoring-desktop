@@ -1,5 +1,4 @@
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
-import * as React from 'react';
 import classNames from 'classnames';
 import DatePicker from 'react-datepicker';
 import { Link } from 'react-router-dom';
@@ -7,7 +6,7 @@ import StyledButton from '../../Button';
 import ConfirmExportButton from '../../Button/ConfirmExportButton';
 import Overlay from '../../Overlay';
 import { ExportDataFormComponentPropsType } from './ExportDataComponentTypes';
-import styles from './ExportDataForm.scss';
+import './ExportDataForm.scss';
 
 const ExportDataFormComponent = ({
   handleSubmit,
@@ -17,18 +16,16 @@ const ExportDataFormComponent = ({
   status,
 }: ExportDataFormComponentPropsType) => {
   return (
-    <div className={styles['ExportDataForm-wrapper']}>
-      <form onSubmit={handleSubmit} className={styles.ExportDataForm}>
-        <h1 className={styles['ExportDataForm-label']}>
-          Date Range For Export
-        </h1>
+    <div className="ExportDataForm-wrapper">
+      <form onSubmit={handleSubmit} className="ExportDataForm">
+        <h1 className="ExportDataForm-label">Date Range For Export</h1>
         {status && (
           <Overlay>
-            <div className={styles['ExportDataForm-exportSuccessMessage']}>
+            <div className="ExportDataForm-exportSuccessMessage">
               <p>Successfully exported data!</p>
               <Link to="/export">
                 <StyledButton
-                  className={styles['ExportDataForm-closeIcon']}
+                  className="ExportDataForm-closeIcon"
                   icon={faWindowClose}
                 />
               </Link>
@@ -36,12 +33,12 @@ const ExportDataFormComponent = ({
           </Overlay>
         )}
         <DatePicker
-          weekDayClassName={() => styles['ExportDataForm-datePickerWeekday']}
+          weekDayClassName={() => 'ExportDataForm-datePickerWeekday'}
           showPopperArrow={false}
           startDate={startDate}
           endDate={endDate}
-          dayClassName={() => styles['ExportDataForm-datePickerDay']}
-          calendarClassName={styles['ExportDataForm-datePickerCalendar']}
+          dayClassName={() => 'ExportDataForm-datePickerDay'}
+          calendarClassName="ExportDataForm-datePickerCalendar"
           renderCustomHeader={({
             monthDate,
             customHeaderCount,
@@ -69,7 +66,7 @@ const ExportDataFormComponent = ({
                     {'<'}
                   </span>
                 </button>
-                <span className={styles['ExportDataForm-datePickerHeader']}>
+                <span className="ExportDataForm-datePickerHeader">
                   {monthDate.toLocaleString('en-US', {
                     month: 'long',
                     year: 'numeric',

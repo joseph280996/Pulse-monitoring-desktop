@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import { ReactElement } from 'react';
 import { Spinner } from 'react-bootstrap';
 import './LoadingSpinner.scss';
 
@@ -13,7 +13,7 @@ const LoadingSpinner = ({
   className,
   wrapperClassName,
   message,
-}: LoadingSpinnerPropsType): React.ReactElement => {
+}: LoadingSpinnerPropsType): ReactElement => {
   return (
     <div className={classNames('Loading-container', wrapperClassName)}>
       <Spinner

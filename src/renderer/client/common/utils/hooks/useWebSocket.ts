@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { SetStateAction, useState, useEffect } from 'react';
 import WebSocketController from '../WebSocketController';
 
 let wsClient: WebSocketController | null = null;
@@ -17,25 +17,25 @@ export type ReceivedDatum = {
 
 type UseWebsocketParamsType = (
   newData: ReceivedDatum[]
-) => React.SetStateAction<ReceivedDatum[]>;
+) => SetStateAction<ReceivedDatum[]>;
 
 type UseWebSocketType = (
   param: UseWebsocketParamsType
 ) => UseWebsocketReturnType;
 
 /**
- * @param {React.Dispatch<any>} setDataFunc - function to define how data is being saved.
+ * @param {import('react').Dispatch<any>} setDataFunc - function to define how data is being saved.
  * @returns {UseWebsocketReturnType}
  */
 const useWebSocket: UseWebSocketType = (
   setDataFunc
 ): UseWebsocketReturnType => {
-  const [data, setData] = React.useState<ReceivedDatum[]>([]);
-  const [error, setError] = React.useState<ErrorEvent | null>(null);
-  const [readyState, setReadyState] = React.useState<number | undefined>(
+  const [data, setData] = useState<ReceivedDatum[]>([]);
+  const [error, setError] = useState<ErrorEvent | null>(null);
+  const [readyState, setReadyState] = useState<number | undefined>(
     WebSocket.CLOSED
   );
-  React.useEffect(() => {
+  useEffect(() => {
     if (!wsClient || wsClient.ws().readyState === WebSocket.CLOSED) {
       wsClient = new WebSocketController({
         onOpen: () => {
@@ -53,7 +53,7 @@ const useWebSocket: UseWebSocketType = (
       wsClient?.ws().close();
     };
   }, []);
-  React.useEffect(() => {
+  useEffect(() => {
     if (wsClient) {
       wsClient.ws().onmessage = (message: MessageEvent) => {
         console.log(message);

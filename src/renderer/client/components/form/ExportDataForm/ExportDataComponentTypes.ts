@@ -3,7 +3,7 @@ import { FormikHandleSubmitType } from '../../../common/types';
 
 export type DatePickerOnChangeType = (
   date: Date | [Date | null, Date | null] | /* for selectsRange */ null,
-  event: React.SyntheticEvent<any> | undefined
+  event: SyntheticEvent<any> | undefined
 ) => void;
 
 export interface ExportDataFormComponentPropsType

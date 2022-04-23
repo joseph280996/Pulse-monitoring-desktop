@@ -11,5 +11,5 @@ export type PostDiagnosisFormProps = {
 export interface IPostDiagnosisProps
   extends ILineChartProps,
     FormikProps<PostDiagnosisFormProps> {
-  onClick?: React.MouseEventHandler;
+  onClick?: MouseEventHandler;
 }
