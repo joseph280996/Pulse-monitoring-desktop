@@ -11,7 +11,7 @@ const PrivateRouteWrapper = ({
     auth: { isSignedIn },
   } = useAuthState();
   if (!isSignedIn) {
-    return <Navigate to="/auth" />;
+    return <Navigate to="/auth/signin" />;
   }
   return <Element />;
 };

@@ -28,6 +28,7 @@ const AuthContext = createContext<AuthContextValues>({
     password: '',
     isSignedIn: false,
   },
+  setAuth: () => {},
 });
 
 export const AuthProvider: FC = ({ children }): ReactElement => {

@@ -9,7 +9,7 @@ type IDiagnoseButtonProps = IButtonWithIconProps;
 
 function DiagnoseButton({ className }: IDiagnoseButtonProps): ReactElement {
   return (
-    <Link to="/" className="DiagnoseButton-link">
+    <Link to="/diagnosis" className="DiagnoseButton-link">
       <StyledButton
         icon={faStethoscope}
         wrapperClassName="DiagnoseButton"

@@ -37,6 +37,7 @@ function SignInFormContainer(): ReactElement {
             ...prevAuth,
             isSignedIn: value.isSignedIn,
           }));
+          localStorage.setItem('isSignedIn', `${1}`);
         }
       } catch (error: unknown) {
         setStatus((error as Error).message);
@@ -48,7 +49,7 @@ function SignInFormContainer(): ReactElement {
       }, {})
     ),
   });
-  if (auth.isSignedIn) return <Navigate to="/export" replace />;
+  if (auth.isSignedIn) return <Navigate to="/" replace />;
   return (
     <SignInFormComponent
       {...restFormikProps}
