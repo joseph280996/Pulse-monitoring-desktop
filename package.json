@@ -162,6 +162,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@types/react-vis": "^1.11.11",
     "@types/terser-webpack-plugin": "^5.0.4",
+    "@types/uuid": "^8.3.4",
     "@types/webpack-bundle-analyzer": "^4.4.1",
     "@types/webpack-env": "^1.16.3",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
@@ -240,6 +241,7 @@
     "react-simple-keyboard": "^3.4.108",
     "react-vis": "^1.11.7",
     "simple-keyboard-layouts": "^3.1.92",
+    "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
   "devEngines": {

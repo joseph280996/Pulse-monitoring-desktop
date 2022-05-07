@@ -34,7 +34,7 @@ function DiagnosisForm({
   onStop,
   onReset,
   handleSubmit,
-  recordedStartIndex,
+  recordedStartTime,
   handleChange,
   handleBlur,
   values,
@@ -76,7 +76,7 @@ function DiagnosisForm({
             onStart={onStart}
             disabled={!dirty || !touched}
           />
-        ) : recordedStartIndex ? (
+        ) : recordedStartTime ? (
           <StopButton
             className="DiagnosisForm-button"
             iconClassName="Icon Icon-stop"

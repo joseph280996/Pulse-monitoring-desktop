@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ReceivedDatum } from '../../../common/utils/hooks/useWebSocket';
+import { ReceivedDatum } from '../../../common/utils/hooks/useSensorData';
 import DiagnosisFormComponent from '../../../components/form/DiagnosisForm/DiagnosisForm';
 import FormikValuesType, { IDiagnosisFormProps } from './DiagnosisFormTypes';
 
@@ -12,7 +12,7 @@ export interface IDiagnosisFormContainerProps
 }
 function DiagnosisForm({
   data,
-  recordedStartIndex,
+  recordedStartTime,
   recordedEndIndex,
   ...passThroughProps
 }: IDiagnosisFormContainerProps): ReactElement {
@@ -22,10 +22,8 @@ function DiagnosisForm({
       pulsePositionID: 0,
     },
     onSubmit: (values: FormikValuesType) => {
-      const recordedData = data.slice(recordedStartIndex, recordedEndIndex);
       navigate('/postdiagnosis', {
         state: {
-          recordedData,
           handPositionID: values.pulsePositionID,
         },
       });
@@ -38,7 +36,7 @@ function DiagnosisForm({
         y: datum.data,
       }))}
       recordedEndIndex={recordedEndIndex}
-      recordedStartIndex={recordedStartIndex}
+      recordedStartTime={recordedStartTime}
       {...formikProps}
       {...passThroughProps}
     />

@@ -1,4 +1,4 @@
-import FetchController from './utils/FetchController';
+import FetchController from './utils/controller/FetchController';
 
 const tcmAPIRequestController = new FetchController(
   process.env.NODE_ENV === 'development'

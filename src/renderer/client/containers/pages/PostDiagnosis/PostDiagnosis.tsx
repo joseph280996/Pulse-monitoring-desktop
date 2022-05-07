@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { ReactElement } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { ReceivedDatum } from '../../../common/utils/hooks/useWebSocket';
+import { ReceivedDatum } from '../../../common/utils/hooks/useSensorData';
 import useWindowDimensions from '../../../common/utils/hooks/useWindowDimensions';
 import PostDiagnosisFormContainer from '../../form/PostDiagnosisForm/PostDiagnosisForm';
 import { PostDiagnosisLocationState } from './PostDiagnosisTypes';

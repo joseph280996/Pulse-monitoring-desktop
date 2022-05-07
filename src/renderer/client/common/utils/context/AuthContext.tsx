@@ -6,11 +6,11 @@ import {
   ReactElement,
   FC,
 } from 'react';
+import { ObjectWithStringIndexing } from '../../types';
 
-export interface IBasicAuthType {
+export interface IBasicAuthType extends ObjectWithStringIndexing {
   username: string;
   password: string;
-  [key: string]: any;
 }
 export interface IAuthType extends IBasicAuthType {
   confirmPass?: string;
