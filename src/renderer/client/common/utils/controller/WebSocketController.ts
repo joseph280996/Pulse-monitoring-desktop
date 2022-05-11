@@ -1,34 +1,56 @@
-import { v4 } from 'uuid';
-import { ObjectWithStringIndexing } from '../../types';
-import WebSocketFactory, {
-  WebSocketControllerConstructorParamsType,
-} from '../factory/WebSocketFactory';
+import WebSocketMessageHandlerFactory from '../factory/WebSocketMessageHandlerFactory';
+import { OnRecordedDataWSMessageConfigType } from '../onRecordedDataWSMessage';
 
-type WSInstanceStoreType = ObjectWithStringIndexing;
+export type WebSocketControllerConstructorParamsType = {
+  getOnOpenFn: (wsClient: WebSocketController) => null | (() => void);
+  getOnErrorFn: (
+    wsClient: WebSocketController
+  ) => null | ((error: Event) => void);
+  onMessageHandlerFactoryProps: OnRecordedDataWSMessageConfigType;
+};
 
 class WebSocketController {
-  private static wsInstanceStore: WSInstanceStoreType = {};
+  private wsClient: WebSocket;
 
-  static CreateWebSocketConnection(
-    factoryProps: WebSocketControllerConstructorParamsType
-  ): string {
-    const wsInstance = new WebSocketFactory(factoryProps);
-    const uuid = v4();
-    this.wsInstanceStore[uuid] = wsInstance;
-    return uuid;
+  get status(): number {
+    return this.wsClient.readyState;
   }
 
-  static GetWebSocketConnection(uuid?: string): null | WebSocketFactory {
-    if (!uuid) {
-      return null;
-    }
-    return this.wsInstanceStore[uuid];
-  }
-
-  static Dispose(): void {
-    Object.values(this.wsInstanceStore).forEach((wsInstance) =>
-      wsInstance.ws().close()
+  constructor({
+    getOnOpenFn,
+    getOnErrorFn,
+    onMessageHandlerFactoryProps,
+  }: WebSocketControllerConstructorParamsType) {
+    this.wsClient = new WebSocket(
+      process.env.NODE_ENV === 'development'
+        ? 'ws://localhost:8000'
+        : 'ws://192.168.50.185:8000'
     );
+    this.wsClient.onopen = getOnOpenFn(this);
+    this.wsClient.onerror = getOnErrorFn(this);
+    this.wsClient.onmessage = WebSocketController.getOnMessageHandler(
+      onMessageHandlerFactoryProps
+    );
+  }
+
+  private static getOnMessageHandler(
+    onMessageHandlerFactoryExtraProps: OnRecordedDataWSMessageConfigType
+  ) {
+    return (message: MessageEvent) => {
+      const parsedMessage = JSON.parse(message.data);
+      const handler = WebSocketMessageHandlerFactory.getHandler(
+        parsedMessage.type
+      );
+      handler(parsedMessage, onMessageHandlerFactoryExtraProps);
+    };
+  }
+
+  sendMessage(message: string) {
+    this.wsClient.send(message);
+  }
+
+  closeConnection() {
+    this.wsClient.close();
   }
 }
 

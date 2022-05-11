@@ -1,39 +1,38 @@
-import { useEffect, SetStateAction, useState } from 'react';
-import WebSocketController from '../controller/WebSocketController';
-
-export type ReceivedDatum = {
-  timeStamp: number;
-  data: number;
-};
+import { SetStateAction, useState } from 'react';
+import { ReceivedDatum } from '../../types';
+import useWebSocket from './useWebSocket';
 
 type UseWebsocketParamsType = (
-  newData: ReceivedDatum[]
+  existingData: ReceivedDatum[]
 ) => SetStateAction<ReceivedDatum[]>;
 
 type UseSensorDataType = (
   setDataFn: UseWebsocketParamsType,
   controllerUUID?: string
-) => ReceivedDatum[];
+) => UseSensorDataReturnType;
 
-const useSensorData: UseSensorDataType = (
-  setDataFn,
-  controllerUUID
-): ReceivedDatum[] => {
+type UseSensorDataReturnType = {
+  data: ReceivedDatum[];
+  wsControllerUUID?: string;
+  error?: ErrorEvent;
+  readyState?: number;
+  recordID?: number;
+};
+
+const useSensorData: UseSensorDataType = (setDataFn) => {
   const [data, setData] = useState<ReceivedDatum[]>([]);
-  useEffect(() => {
-    const connection =
-      WebSocketController.GetWebSocketConnection(controllerUUID);
-    if (connection) {
-      connection.ws().onmessage = (message: MessageEvent) => {
-        if (/recordedData/i.test(message.data)) {
-          const recordedData = JSON.parse(
-            message.data.replace(/recordedData/i, '')
-          )?.recordedData;
-          setData(setDataFn(recordedData));
-        }
-      };
-    }
-  }, [controllerUUID, setDataFn]);
-  return data;
+  const [recordID, setRecordID] = useState<number>();
+  const { error, readyState, controllerUUID } = useWebSocket({
+    setData,
+    setDataFn,
+    setRecordID,
+  });
+  return {
+    data,
+    recordID,
+    wsControllerUUID: controllerUUID,
+    error,
+    readyState,
+  };
 };
 export default useSensorData;

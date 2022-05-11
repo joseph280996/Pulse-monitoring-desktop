@@ -3,6 +3,7 @@ import { ILineChartProps } from '../../../components/Chart/LineChart/LineChartTy
 
 type FormikValuesType = {
   pulsePositionID: number;
+  recordID: number;
 };
 
 export interface IDiagnosisFormProps extends ILineChartProps {
@@ -12,8 +13,9 @@ export interface IDiagnosisFormProps extends ILineChartProps {
   onReset: MouseEventHandler;
   onRecord: MouseEventHandler;
   onStop: MouseEventHandler;
-  recordedStartTime: number | undefined;
-  recordedEndIndex: number | undefined;
+  recordedStartTime?: number;
+  recordedEndIndex?: number;
+  recordID?: number;
 }
 
 export default FormikValuesType;

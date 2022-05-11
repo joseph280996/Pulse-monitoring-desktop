@@ -1,45 +1,53 @@
 import { useState, useEffect } from 'react';
+import WebSocketFactory from '../factory/WebSocketControllerFactory';
 import WebSocketController from '../controller/WebSocketController';
-import WebSocketFactory from '../factory/WebSocketFactory';
+import { OnRecordedDataWSMessageConfigType } from '../onRecordedDataWSMessage';
+import { OnRecordIDWsMessageConfigType } from '../onRecordIDWsMessage';
 
 type UseWebsocketReturnType = {
-  error: ErrorEvent | null;
-  readyState: number | undefined;
-  controllerUUID: string | undefined;
+  error?: ErrorEvent;
+  readyState?: number;
+  controllerUUID?: string;
 };
+
+type UseWebSocketType = (
+  messageHandlerFactoryProps: OnRecordedDataWSMessageConfigType &
+    OnRecordIDWsMessageConfigType
+) => UseWebsocketReturnType;
 
 /**
  * @param {import('react').Dispatch<any>} setDataFunc - function to define how data is being saved.
  * @returns {UseWebsocketReturnType}
  */
-const useWebSocket = (): UseWebsocketReturnType => {
+const useWebSocket: UseWebSocketType = (messageHandlerFactoryProps) => {
   const [controllerUUID, setControllerUUID] = useState<string | undefined>();
-  const [error, setError] = useState<ErrorEvent | null>(null);
+  const [error, setError] = useState<ErrorEvent | undefined>();
   const [readyState, setReadyState] = useState<number | undefined>(
     WebSocket.CLOSED
   );
+
   useEffect(() => {
-    const connection =
-      WebSocketController.GetWebSocketConnection(controllerUUID);
-    if (connection?.ws().readyState === WebSocket.CLOSED) {
-      const newControllerUUID = WebSocketController.CreateWebSocketConnection({
-        getOnOpenFn: (wsClient: WebSocketFactory) => () => {
-          wsClient?.ws().send('getSensorData');
-          setReadyState(wsClient?.ws().readyState);
+    const connection = WebSocketFactory.getWebSocketConnection(controllerUUID);
+    if (connection?.status === WebSocket.CLOSED) {
+      const newControllerUUID = WebSocketFactory.createWebSocketConnection({
+        getOnOpenFn: (wsClient: WebSocketController) => () => {
+          wsClient?.sendMessage('getSensorData');
+          setReadyState(wsClient?.status);
         },
         getOnErrorFn:
-          (wsClient: WebSocketFactory) =>
+          (wsClient: WebSocketController) =>
           (err: Event): void => {
             setError(err as ErrorEvent);
-            wsClient?.ws().close();
+            wsClient?.closeConnection();
           },
+        onMessageHandlerFactoryProps: messageHandlerFactoryProps,
       });
       setControllerUUID(newControllerUUID);
     }
     return () => {
-      WebSocketController.Dispose();
+      WebSocketFactory.dispose();
     };
-  }, [controllerUUID]);
+  }, [controllerUUID, messageHandlerFactoryProps]);
 
   return { error, readyState, controllerUUID };
 };

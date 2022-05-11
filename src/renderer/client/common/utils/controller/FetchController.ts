@@ -65,7 +65,8 @@ class FetchController implements IFetchController {
       ).json();
       return { data: response };
     } catch (error) {
-      return { error };
+      const castedError = error as Error;
+      return { error: castedError };
     }
   }
 
@@ -84,7 +85,8 @@ class FetchController implements IFetchController {
       setTimeout(() => this.abortController.abort(), 4000);
       return { data: response };
     } catch (error) {
-      return error;
+      const castedError = error as Error;
+      return { error: castedError };
     }
   }
 }

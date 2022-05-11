@@ -1,10 +1,8 @@
 import { ReactElement, useState, SetStateAction, useCallback } from 'react';
 import { Spinner } from 'react-bootstrap';
-import WebSocketController from 'renderer/client/common/utils/controller/WebSocketController';
-import useSensorData, {
-  ReceivedDatum,
-} from 'renderer/client/common/utils/hooks/useSensorData';
-import useWebSocket from '../../../common/utils/hooks/useWebSocket';
+import { ReceivedDatum } from 'renderer/client/common/types';
+import WebSocketController from 'renderer/client/common/utils/factory/WebSocketControllerFactory';
+import useSensorData from 'renderer/client/common/utils/hooks/useSensorData';
 import useWindowDimensions from '../../../common/utils/hooks/useWindowDimensions';
 import LoadingSpinner from '../../../components/LoadingSpinner';
 import DiagnosisPageComponent from '../../../components/pages/DiagnosisPage/DiagnosisPage';
@@ -29,26 +27,21 @@ function DiagnosisPageContainer(): ReactElement {
 
   const { height, width } = useWindowDimensions(20);
 
-  const {
-    error,
-    readyState,
-    controllerUUID: wsControllerUUID,
-  } = useWebSocket();
-
-  const data = useSensorData(setDataFn, wsControllerUUID);
+  const { data, wsControllerUUID, error, readyState, recordID } =
+    useSensorData(setDataFn);
 
   const connection =
-    WebSocketController.GetWebSocketConnection(wsControllerUUID);
+    WebSocketController.getWebSocketConnection(wsControllerUUID);
 
   const onStart = useCallback(() => {
     setIsStarted(true);
-    connection?.ws().send('start');
+    connection?.sendMessage('start');
   }, [connection]);
 
   const onReset = useCallback(() => {
     setRecordedStartTime(undefined);
     setEndIndex(undefined);
-    connection?.ws().send('start');
+    connection?.sendMessage('start');
     setIsFinished(false);
   }, [connection]);
 
@@ -57,13 +50,11 @@ function DiagnosisPageContainer(): ReactElement {
   }, [data]);
 
   const onStopHandler = useCallback(() => {
-    connection
-      ?.ws()
-      .send(
-        `stop {"startTime": ${recordedEndIndex}, "endTime":${
-          data[data.length - 1].timeStamp
-        }}`
-      );
+    connection?.sendMessage(
+      `stop {"startTime": ${
+        recordedEndIndex ? data[recordedEndIndex].timeStamp : 0
+      }, "endTime":${data[data.length - 1].timeStamp}}`
+    );
     setIsFinished(true);
     setEndIndex(data.length);
   }, [connection, data, recordedEndIndex]);
@@ -86,6 +77,7 @@ function DiagnosisPageContainer(): ReactElement {
       onReset={onReset}
       recordedStartTime={recordedStartTime}
       recordedEndIndex={recordedEndIndex}
+      recordID={recordID}
     />
   );
 }
