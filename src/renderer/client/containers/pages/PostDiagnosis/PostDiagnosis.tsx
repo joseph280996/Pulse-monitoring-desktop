@@ -1,7 +1,8 @@
-import moment from 'moment';
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { ReceivedDatum } from '../../../common/utils/hooks/useSensorData';
+import useRecord from 'renderer/client/common/utils/hooks/useRecord';
+import recordDataToLineChartDataMapper from 'renderer/client/common/utils/mapper/recordDataToLineChartDataMapper';
+import LoadingSpinner from 'renderer/client/components/LoadingSpinner';
 import useWindowDimensions from '../../../common/utils/hooks/useWindowDimensions';
 import PostDiagnosisFormContainer from '../../form/PostDiagnosisForm/PostDiagnosisForm';
 import { PostDiagnosisLocationState } from './PostDiagnosisTypes';
@@ -11,22 +12,28 @@ function PostDiagnosis(): ReactElement {
   const { width, height } = useWindowDimensions(20);
   const locationState: PostDiagnosisLocationState =
     location?.state as PostDiagnosisLocationState;
-  const recordedData = locationState.recordedData?.map(
-    (datum: ReceivedDatum) => ({
-      x: moment.utc(datum.timeStamp).valueOf(),
-      y: datum.data,
-    })
+  const { recordID } = location.state as PostDiagnosisLocationState;
+  const { record, isLoading: isRecordLoading } = useRecord(recordID);
+
+  const recordedDataToDisplay = useMemo(
+    () => recordDataToLineChartDataMapper(record?.data),
+    [record?.data]
   );
-  if (!locationState || !locationState.recordedData)
+
+  if (!locationState || !locationState.recordID) {
     return <Navigate to="/" replace />;
+  }
+  if (isRecordLoading || !record || !record.data) {
+    return <LoadingSpinner />;
+  }
   return (
     <div className="PostDiagnosis">
       <PostDiagnosisFormContainer
         width={width}
         height={height - 135}
-        data={recordedData}
+        data={recordedDataToDisplay}
         initialValues={{
-          data: locationState.recordedData,
+          data: recordedDataToDisplay,
           pulseTypeID: 1,
           patientName: '',
           handPositionID: Number(locationState.handPositionID),

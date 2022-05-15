@@ -1,14 +1,13 @@
 import moment from 'moment';
 import { useFormik } from 'formik';
-import { pick } from 'lodash';
 import { object } from 'yup';
+import piezoelectricService from 'renderer/client/common/utils/services/piezoelectricService';
 import ExportDataFormComponent from '../../../components/form/ExportDataForm/ExportDataForm';
 import { DatePickerOnChangeType } from '../../../components/form/ExportDataForm/ExportDataComponentTypes';
 import {
   DatePickerSelectedRangeType,
   ExportDataFormValuesType,
 } from './ExportDataFormTypes';
-import tcmAPIRequestController from '../../../common/tcmAPI';
 import fields from './exportDataFields';
 
 const ExportDataForm = () => {
@@ -19,10 +18,8 @@ const ExportDataForm = () => {
         endDate: null,
       },
       onSubmit: async (formValues, { setStatus: setStatusOnSubmit }) => {
-        const response = await tcmAPIRequestController.post('/data', {
-          ...pick(formValues, ['startDate', 'endDate']),
-        });
-        if (response.data.status === 200) {
+        const statusCode = await piezoelectricService.postAsync(formValues);
+        if (statusCode === 200) {
           setStatusOnSubmit('Exported');
         }
       },

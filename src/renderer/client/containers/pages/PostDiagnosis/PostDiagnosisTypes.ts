@@ -1,6 +1,4 @@
-import { ReceivedDatum } from '../../../common/utils/hooks/useSensorData';
-
 export type PostDiagnosisLocationState = {
-  recordedData: ReceivedDatum[];
+  recordID: number;
   handPositionID: number;
 };
