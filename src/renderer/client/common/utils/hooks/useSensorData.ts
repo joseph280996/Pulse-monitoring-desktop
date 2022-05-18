@@ -1,28 +1,28 @@
 import { SetStateAction, useState } from 'react';
-import { ReceivedDatum } from '../../types';
+import { ReceivedDatum, WSMessageType } from '../../types';
+import WebSocketController from '../controller/WebSocketController';
 import useWebSocket from './useWebSocket';
 
 type UseWebsocketParamsType = (
-  existingData: ReceivedDatum[]
+  existingData: WSMessageType
 ) => SetStateAction<ReceivedDatum[]>;
 
 type UseSensorDataType = (
-  setDataFn: UseWebsocketParamsType,
-  controllerUUID?: string
+  setDataFn: UseWebsocketParamsType
 ) => UseSensorDataReturnType;
 
 type UseSensorDataReturnType = {
   data: ReceivedDatum[];
-  wsControllerUUID?: string;
   error?: ErrorEvent;
   readyState?: number;
   recordID?: number;
+  wsController: WebSocketController | null;
 };
 
 const useSensorData: UseSensorDataType = (setDataFn) => {
   const [data, setData] = useState<ReceivedDatum[]>([]);
   const [recordID, setRecordID] = useState<number>();
-  const { error, readyState, controllerUUID } = useWebSocket({
+  const { error, readyState, wsController } = useWebSocket({
     setData,
     setDataFn,
     setRecordID,
@@ -30,7 +30,7 @@ const useSensorData: UseSensorDataType = (setDataFn) => {
   return {
     data,
     recordID,
-    wsControllerUUID: controllerUUID,
+    wsController,
     error,
     readyState,
   };

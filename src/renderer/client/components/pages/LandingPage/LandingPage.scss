@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
   &-exportDataButton {
     margin-right: pxToRem(20);
   }

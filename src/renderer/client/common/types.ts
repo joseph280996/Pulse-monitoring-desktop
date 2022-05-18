@@ -34,3 +34,8 @@ export type RecordType = {
   data: ReceivedDatum[];
   patientID?: number;
 };
+
+export type WSMessageType = {
+  type: string;
+  recordedData: ReceivedDatum[];
+};

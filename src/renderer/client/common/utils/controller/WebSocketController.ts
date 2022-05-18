@@ -1,12 +1,10 @@
+import { WSMessageType } from '../../types';
 import WebSocketMessageHandlerFactory from '../factory/WebSocketMessageHandlerFactory';
 import { OnRecordedDataWSMessageConfigType } from '../onRecordedDataWSMessage';
 
 export type WebSocketControllerConstructorParamsType = {
-  getOnOpenFn: (wsClient: WebSocketController) => null | (() => void);
-  getOnErrorFn: (
-    wsClient: WebSocketController
-  ) => null | ((error: Event) => void);
-  onMessageHandlerFactoryProps: OnRecordedDataWSMessageConfigType;
+  onOpen: () => void;
+  onError: (error: Event) => void;
 };
 
 class WebSocketController {
@@ -16,28 +14,25 @@ class WebSocketController {
     return this.wsClient.readyState;
   }
 
-  constructor({
-    getOnOpenFn,
-    getOnErrorFn,
-    onMessageHandlerFactoryProps,
-  }: WebSocketControllerConstructorParamsType) {
+  constructor({ onOpen, onError }: WebSocketControllerConstructorParamsType) {
     this.wsClient = new WebSocket(
       process.env.NODE_ENV === 'development'
         ? 'ws://localhost:8000'
         : 'ws://192.168.50.185:8000'
     );
-    this.wsClient.onopen = getOnOpenFn(this);
-    this.wsClient.onerror = getOnErrorFn(this);
-    this.wsClient.onmessage = WebSocketController.getOnMessageHandler(
-      onMessageHandlerFactoryProps
-    );
+    this.wsClient.onopen = onOpen;
+    this.wsClient.onerror = onError;
+    this.wsClient.onclose = (event: CloseEvent) => {
+      console.log('Websocket is closing!!!');
+      console.table({ reason: event.reason, code: event.code });
+    };
   }
 
   private static getOnMessageHandler(
     onMessageHandlerFactoryExtraProps: OnRecordedDataWSMessageConfigType
   ) {
     return (message: MessageEvent) => {
-      const parsedMessage = JSON.parse(message.data);
+      const parsedMessage: WSMessageType = JSON.parse(message.data);
       const handler = WebSocketMessageHandlerFactory.getHandler(
         parsedMessage.type
       );
@@ -45,8 +40,18 @@ class WebSocketController {
     };
   }
 
+  setMessageHandler(
+    onMessageHandlerFactoryProps: OnRecordedDataWSMessageConfigType
+  ) {
+    this.wsClient.onmessage = WebSocketController.getOnMessageHandler(
+      onMessageHandlerFactoryProps
+    );
+  }
+
   sendMessage(message: string) {
-    this.wsClient.send(message);
+    if (this.wsClient.readyState !== WebSocket.CLOSED) {
+      this.wsClient.send(message);
+    }
   }
 
   closeConnection() {

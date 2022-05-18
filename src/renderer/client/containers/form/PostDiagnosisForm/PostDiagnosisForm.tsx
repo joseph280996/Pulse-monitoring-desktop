@@ -1,9 +1,8 @@
 import { useFormik } from 'formik';
-import { pick } from 'lodash';
 import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { object } from 'yup';
-import tcmAPIRequestController from '../../../common/tcmAPI';
+import piezoelectricService from 'renderer/client/common/utils/services/piezoelectricService';
 import PostDiagnosisFormComponent, {
   PostDiagnosisFormProps,
 } from '../../../components/form/PostDiagnosisForm';
@@ -20,10 +19,7 @@ const PostDiagnosisFormContainer = ({
   const formik = useFormik({
     initialValues,
     onSubmit: async (values: PostDiagnosisFormProps) => {
-      await tcmAPIRequestController.post('/record', {
-        ...pick(values, ['pulseTypeID', 'handPositionID', 'patientName']),
-        data: JSON.stringify(data),
-      });
+      await piezoelectricService.postAsync(values);
       navigate('/finish');
     },
     validationSchema: object().shape(

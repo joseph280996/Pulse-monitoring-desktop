@@ -1,12 +1,12 @@
 import { pick } from 'lodash';
-import { ExportDataFormValuesType } from 'renderer/client/containers/form/ExportDataForm/ExportDataFormTypes';
+import { PostDiagnosisFormProps } from 'renderer/client/components/form/PostDiagnosisForm';
 import { RecordType } from '../../types';
 import FetchController from '../controller/FetchController';
 import { IGetService, IPostService } from './IService';
 
 class PiezoelectricSensorRecordService
   implements
-    IPostService<ExportDataFormValuesType, number>,
+    IPostService<PostDiagnosisFormProps, number>,
     IGetService<number, RecordType>
 {
   private service: FetchController;
@@ -19,21 +19,20 @@ class PiezoelectricSensorRecordService
     );
   }
 
-  async postAsync(
-    exportDataFormValues: ExportDataFormValuesType
-  ): Promise<number> {
-    const response = await this.service.post('/data', {
-      ...pick(exportDataFormValues, ['startDate', 'endDate']),
-    });
-    return response.data.status;
-  }
-
   async getAsync(recordID: number): Promise<RecordType> {
     const { data, error } = await this.service.get(`/record/${recordID}`);
     if (error) {
       throw new Error(`Cannot get Record for recordID [${recordID}]`);
     }
     return data;
+  }
+
+  async postAsync(values: PostDiagnosisFormProps): Promise<number> {
+    const response = await this.service.post('/record', {
+      ...pick(values, ['pulseTypeID', 'handPositionID', 'patientName']),
+      data: JSON.stringify(values.data),
+    });
+    return response.data.status;
   }
 }
 
