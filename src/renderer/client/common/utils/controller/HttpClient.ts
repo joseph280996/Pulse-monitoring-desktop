@@ -3,12 +3,12 @@ type RequestResultType = {
   error?: Error;
 };
 
-interface IFetchController {
+interface IHttpClient {
   get(route: string, params?: any): Promise<RequestResultType>;
   post(route: string, params?: any): Promise<RequestResultType>;
 }
 
-class FetchController implements IFetchController {
+class HttpClient implements IHttpClient {
   private link!: string;
 
   get url(): string {
@@ -91,4 +91,4 @@ class FetchController implements IFetchController {
   }
 }
 
-export default FetchController;
+export default HttpClient;

@@ -27,7 +27,7 @@ const useWebSocket: UseWebSocketType = (
     if (!wsController || wsController.status === WebSocket.CLOSED) {
       wsController = new WebSocketController({
         onOpen: () => {
-          wsController?.sendMessage('getSensorData');
+          // wsController?.sendMessage('getSensorData');
           setReadyState(wsController?.status);
           console.log('WebSocket connection established');
         },

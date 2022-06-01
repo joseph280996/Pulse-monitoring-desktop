@@ -1,7 +1,7 @@
 import { pick } from 'lodash';
 import { PostDiagnosisFormProps } from 'renderer/client/components/form/PostDiagnosisForm';
 import { RecordType } from '../../types';
-import FetchController from '../controller/FetchController';
+import HttpClient from '../controller/HttpClient';
 import { IGetService, IPostService } from './IService';
 
 class PiezoelectricSensorRecordService
@@ -9,10 +9,10 @@ class PiezoelectricSensorRecordService
     IPostService<PostDiagnosisFormProps, number>,
     IGetService<number, RecordType>
 {
-  private service: FetchController;
+  private service: HttpClient;
 
   constructor() {
-    this.service = new FetchController(
+    this.service = new HttpClient(
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:8000'
         : 'http://192.168.50.185:8000'

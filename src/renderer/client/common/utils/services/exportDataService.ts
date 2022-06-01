@@ -1,15 +1,15 @@
 import { pick } from 'lodash';
 import { ExportDataFormValuesType } from 'renderer/client/containers/form/ExportDataForm/ExportDataFormTypes';
-import FetchController from '../controller/FetchController';
+import HttpClient from '../controller/HttpClient';
 import { IPostService } from './IService';
 
 class ExportDataService
   implements IPostService<ExportDataFormValuesType, number>
 {
-  private service: FetchController;
+  private service: HttpClient;
 
   constructor() {
-    this.service = new FetchController(
+    this.service = new HttpClient(
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:8000'
         : 'http://192.168.50.185:8000'

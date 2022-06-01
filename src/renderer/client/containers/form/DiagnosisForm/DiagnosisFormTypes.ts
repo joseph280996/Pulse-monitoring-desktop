@@ -13,8 +13,7 @@ export interface IDiagnosisFormProps extends ILineChartProps {
   onReset: MouseEventHandler;
   onRecord: MouseEventHandler;
   onStop: MouseEventHandler;
-  recordedStartTime?: number;
-  recordedEndIndex?: number;
+  recordedStartTime?: string;
   recordID?: number;
 }
 

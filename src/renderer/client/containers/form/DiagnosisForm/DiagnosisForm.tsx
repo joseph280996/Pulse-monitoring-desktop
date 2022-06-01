@@ -12,8 +12,6 @@ export interface IDiagnosisFormContainerProps
 }
 function DiagnosisForm({
   data,
-  recordedStartTime,
-  recordedEndIndex,
   recordID,
   ...passThroughProps
 }: IDiagnosisFormContainerProps): ReactElement {
@@ -38,8 +36,6 @@ function DiagnosisForm({
         x: moment.utc(datum.timeStamp).valueOf(),
         y: datum.data,
       }))}
-      recordedEndIndex={recordedEndIndex}
-      recordedStartTime={recordedStartTime}
       {...formikProps}
       {...passThroughProps}
     />

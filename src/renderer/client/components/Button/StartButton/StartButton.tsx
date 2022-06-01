@@ -1,6 +1,6 @@
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
-import { ReactElement } from 'react';
+import { MouseEventHandler, ReactElement } from 'react';
 import StyledButton, { IButtonWithIconProps } from '../StyledButton';
 import './StartButton.scss';
 

@@ -20,9 +20,8 @@ function DiagnosisPageContainer(): ReactElement {
   const [isStarted, setIsStarted] = useState<boolean>(false);
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [recordedStartTime, setRecordedStartTime] = useState<
-    number | undefined
+    string | undefined
   >();
-  const [recordedEndIndex, setEndIndex] = useState<number | undefined>();
 
   const { height, width } = useWindowDimensions(20);
 
@@ -36,7 +35,6 @@ function DiagnosisPageContainer(): ReactElement {
 
   const onReset = useCallback(() => {
     setRecordedStartTime(undefined);
-    setEndIndex(undefined);
     wsController?.sendMessage('start');
     setIsFinished(false);
   }, [wsController]);
@@ -48,13 +46,12 @@ function DiagnosisPageContainer(): ReactElement {
   const onStopHandler = useCallback(() => {
     wsController?.sendMessage(
       `stop ${JSON.stringify({
-        startTime: recordedEndIndex ? data[recordedEndIndex].timeStamp : 0,
+        startTime: recordedStartTime,
         endTime: data[data.length - 1].timeStamp,
       })}`
     );
     setIsFinished(true);
-    setEndIndex(data.length);
-  }, [wsController, data, recordedEndIndex]);
+  }, [wsController, recordedStartTime, data]);
 
   if (!readyState || readyState === WebSocket.CONNECTING)
     return <Spinner animation="border" role="status" />;
@@ -73,7 +70,6 @@ function DiagnosisPageContainer(): ReactElement {
       onStop={onStopHandler}
       onReset={onReset}
       recordedStartTime={recordedStartTime}
-      recordedEndIndex={recordedEndIndex}
       recordID={recordID}
     />
   );

@@ -1,12 +1,12 @@
 import { PulsePositionType } from '../../types';
-import FetchController from '../controller/FetchController';
+import HttpClient from '../controller/HttpClient';
 import { IGetService } from './IService';
 
 class PulsePositionService implements IGetService<never, PulsePositionType[]> {
-  private service: FetchController;
+  private service: HttpClient;
 
   constructor() {
-    this.service = new FetchController(
+    this.service = new HttpClient(
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:8000'
         : 'http://192.168.50.185:8000'

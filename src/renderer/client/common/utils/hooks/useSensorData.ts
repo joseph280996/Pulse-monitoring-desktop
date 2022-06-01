@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import { ReceivedDatum, WSMessageType } from '../../types';
 import WebSocketController from '../controller/WebSocketController';
 import useWebSocket from './useWebSocket';
@@ -27,6 +27,7 @@ const useSensorData: UseSensorDataType = (setDataFn) => {
     setDataFn,
     setRecordID,
   });
+
   return {
     data,
     recordID,

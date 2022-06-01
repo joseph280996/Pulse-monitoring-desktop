@@ -9,7 +9,7 @@ export interface ObjectWithStringIndexing {
 }
 
 export type ReceivedDatum = {
-  timeStamp: number;
+  timeStamp: string;
   data: number;
 };
 
