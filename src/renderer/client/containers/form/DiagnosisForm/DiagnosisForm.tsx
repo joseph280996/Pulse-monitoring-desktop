@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import moment from 'moment';
 import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ReceivedDatum } from 'renderer/client/common/types';
+import { ReceivedDatum } from 'renderer/client/types';
 import DiagnosisFormComponent from '../../../components/form/DiagnosisForm/DiagnosisForm';
 import FormikValuesType, { IDiagnosisFormProps } from './DiagnosisFormTypes';
 

@@ -1,6 +1,6 @@
 import { ReactElement, useState, SetStateAction, useCallback } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { ReceivedDatum, WSMessageType } from 'renderer/client/common/types';
+import { ReceivedDatum, WSMessageType } from 'renderer/client/types';
 import useSensorData from 'renderer/client/utils/hooks/useSensorData';
 import useWindowDimensions from '../../utils/hooks/useWindowDimensions';
 import LoadingSpinner from '../../components/LoadingSpinner';

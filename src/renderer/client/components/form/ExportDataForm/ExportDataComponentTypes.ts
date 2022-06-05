@@ -1,5 +1,5 @@
 import { ExportDataFormValuesType } from '../../../containers/form/ExportDataForm/ExportDataFormTypes';
-import { FormikHandleSubmitType } from '../../../common/types';
+import { FormikHandleSubmitType } from '../../../types';
 
 export type DatePickerOnChangeType = (
   date: Date | [Date | null, Date | null] | /* for selectsRange */ null,

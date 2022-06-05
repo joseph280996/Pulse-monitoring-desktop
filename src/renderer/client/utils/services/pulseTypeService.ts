@@ -1,4 +1,4 @@
-import { PulseType } from '../../common/types';
+import { PulseType } from '../../types';
 import HttpClient from '../controller/HttpClient';
 import { IGetService } from './IService';
 

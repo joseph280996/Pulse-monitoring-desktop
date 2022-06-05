@@ -1,6 +1,6 @@
 import { pick } from 'lodash';
 import { PostDiagnosisFormProps } from 'renderer/client/components/form/PostDiagnosisForm';
-import { RecordType } from '../../common/types';
+import { RecordType } from '../../types';
 import HttpClient from '../controller/HttpClient';
 import { IGetService, IPostService } from './IService';
 

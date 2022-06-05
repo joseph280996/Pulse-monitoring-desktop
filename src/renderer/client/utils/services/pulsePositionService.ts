@@ -1,4 +1,4 @@
-import { PulsePositionType } from '../../common/types';
+import { PulsePositionType } from '../../types';
 import HttpClient from '../controller/HttpClient';
 import { IGetService } from './IService';
 

@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { RecordType } from '../../common/types';
+import { RecordType } from '../../types';
 import piezoelectricService from '../services/piezoelectricService';
 
 type UseRecordReturnType = {

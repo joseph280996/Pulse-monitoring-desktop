@@ -1,5 +1,5 @@
 import { SetStateAction, useEffect, useState } from 'react';
-import { ReceivedDatum, WSMessageType } from '../../common/types';
+import { ReceivedDatum, WSMessageType } from '../../types';
 import WebSocketController from '../controller/WebSocketController';
 import useWebSocket from './useWebSocket';
 
