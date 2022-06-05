@@ -20,7 +20,7 @@ function DiagnosisPageContainer(): ReactElement {
   const [isStarted, setIsStarted] = useState<boolean>(false);
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const [recordedStartTime, setRecordedStartTime] = useState<
-    string | undefined
+    number | undefined
   >();
 
   const { height, width } = useWindowDimensions(20);
