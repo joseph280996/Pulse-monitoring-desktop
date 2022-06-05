@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuthState from '../../common/utils/hooks/useAuthState';
-import FinishComponent from '../../components/pages/Finish';
+import useAuthState from '../common/utils/hooks/useAuthState';
+import FinishComponent from '../components/pages/Finish';
 
 const Finish: FC = () => {
   const { setAuth } = useAuthState();

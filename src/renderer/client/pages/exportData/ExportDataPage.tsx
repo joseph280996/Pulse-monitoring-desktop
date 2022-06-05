@@ -1,4 +1,4 @@
-import ExportDataForm from '../../form/ExportDataForm';
+import ExportDataForm from '../../containers/form/ExportDataForm';
 
 const ExportDataPage = () => {
   return <ExportDataForm />;

@@ -6,15 +6,15 @@ import {
   Outlet,
 } from 'react-router-dom';
 import ContextWrapper from './components/ContextWrapper';
-import Diagnosis from './containers/pages/Diagnosis';
-import Finish from './containers/pages/Finish';
-import PostDiagnosis from './containers/pages/PostDiagnosis';
-import ExportDataPage from './containers/pages/ExportData';
+import Diagnosis from './pages/diagnosis';
+import Finish from './pages/Finish';
+import PostDiagnosis from './pages/postDiagnosis';
+import ExportDataPage from './pages/exportData';
 import NotFoundPage from './components/pages/NotFound';
 import LandingPage from './components/pages/LandingPage';
 import './App.global.scss';
 import PrivateRouteWrapper from './components/Route/PrivateRouteWrapper';
-import AuthRoutes from './containers/pages/auth/AuthRoutes';
+import AuthRoutes from './pages/auth/AuthRoutes';
 
 function BasePage(): ReactElement {
   return (
