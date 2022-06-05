@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { ILineChartProps } from '../../../components/Chart/LineChart/LineChartTypes';
+import { ILineChartProps } from '../../components/Chart/LineChart/LineChartTypes';
 
 type FormikValuesType = {
   pulsePositionID: number;

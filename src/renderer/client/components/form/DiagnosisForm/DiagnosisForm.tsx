@@ -6,7 +6,7 @@ import { Form } from 'react-bootstrap';
 import { LineSeriesPoint } from 'react-vis';
 import DiagnosisFormValuesType, {
   IDiagnosisFormProps,
-} from '../../../containers/form/DiagnosisForm/DiagnosisFormTypes';
+} from '../../../forms/DiagnosisForm/DiagnosisFormTypes';
 import {
   ContinueButton,
   RecordButton,

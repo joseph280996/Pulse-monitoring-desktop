@@ -5,7 +5,7 @@ import { object } from 'yup';
 import piezoelectricService from 'renderer/client/utils/services/piezoelectricService';
 import PostDiagnosisFormComponent, {
   PostDiagnosisFormProps,
-} from '../../../components/form/PostDiagnosisForm';
+} from '../../components/form/PostDiagnosisForm';
 import { IPostDiagnosisFormContainerProp } from './PostDiagnosisFormTypes';
 import fields from './postDiagnosisFields';
 

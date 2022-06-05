@@ -1,5 +1,5 @@
 import { pick } from 'lodash';
-import { ExportDataFormValuesType } from 'renderer/client/containers/form/ExportDataForm/ExportDataFormTypes';
+import { ExportDataFormValuesType } from 'renderer/client/forms/ExportDataForm/ExportDataFormTypes';
 import HttpClient from '../controller/HttpClient';
 import { IPostService } from './IService';
 

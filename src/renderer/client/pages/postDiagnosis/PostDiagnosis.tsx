@@ -4,7 +4,7 @@ import useRecord from 'renderer/client/utils/hooks/useRecord';
 import useWindowDimensions from 'renderer/client/utils/hooks/useWindowDimensions';
 import recordDataToLineChartDataMapper from 'renderer/client/utils/mapper/recordDataToLineChartDataMapper';
 import LoadingSpinner from 'renderer/client/components/LoadingSpinner';
-import PostDiagnosisFormContainer from 'renderer/client/containers/form/PostDiagnosisForm';
+import PostDiagnosisFormContainer from 'renderer/client/forms/PostDiagnosisForm';
 import { PostDiagnosisLocationState } from './PostDiagnosisTypes';
 
 function PostDiagnosis(): ReactElement {

@@ -1,4 +1,4 @@
-import { ExportDataFormValuesType } from '../../../containers/form/ExportDataForm/ExportDataFormTypes';
+import { ExportDataFormValuesType } from '../../../forms/ExportDataForm/ExportDataFormTypes';
 import { FormikHandleSubmitType } from '../../../types';
 
 export type DatePickerOnChangeType = (

@@ -1,6 +1,6 @@
 import { string } from 'yup';
-import { FieldConfig } from '../../../components/types';
-import { TextFieldWithKeyboard } from '../../../components/TextField';
+import { FieldConfig } from '../../components/types';
+import { TextFieldWithKeyboard } from '../../components/TextField';
 
 const signInFields: FieldConfig[] = [
   {
