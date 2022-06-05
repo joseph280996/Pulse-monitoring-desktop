@@ -1,4 +1,4 @@
-import { ReceivedDatum, IWsMessageType } from '../../types';
+import { ReceivedDatum, IWsMessageType } from '../../common/types';
 
 type RecordedDataWsMessageConstructorType = {
   type: string;

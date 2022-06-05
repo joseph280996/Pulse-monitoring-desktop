@@ -1,4 +1,4 @@
-import { WSMessageType } from '../../types';
+import { WSMessageType } from '../../common/types';
 import WebSocketMessageHandlerFactory from '../factory/WebSocketMessageHandlerFactory';
 import { OnRecordedDataWSMessageConfigType } from '../onRecordedDataWSMessage';
 

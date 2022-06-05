@@ -1,8 +1,8 @@
-import { PulseType } from '../../types';
+import { PulsePositionType } from '../../common/types';
 import HttpClient from '../controller/HttpClient';
 import { IGetService } from './IService';
 
-class PulseTypeService implements IGetService<never, PulseType[]> {
+class PulsePositionService implements IGetService<never, PulsePositionType[]> {
   private service: HttpClient;
 
   constructor() {
@@ -13,8 +13,10 @@ class PulseTypeService implements IGetService<never, PulseType[]> {
     );
   }
 
-  async getAsync(): Promise<PulseType[]> {
-    const { data, error: requestError } = await this.service.get('/pulse-type');
+  async getAsync(): Promise<PulsePositionType[]> {
+    const { data, error: requestError } = await this.service.get(
+      '/hand-position'
+    );
     if (requestError) {
       throw new Error(
         `Encounter Error requesting API - Message ${requestError.message}`
@@ -24,4 +26,4 @@ class PulseTypeService implements IGetService<never, PulseType[]> {
   }
 }
 
-export default new PulseTypeService();
+export default new PulsePositionService();

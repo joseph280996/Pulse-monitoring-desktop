@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuthState from '../common/utils/hooks/useAuthState';
+import useAuthState from '../utils/hooks/useAuthState';
 import FinishComponent from '../components/pages/Finish';
 
 const Finish: FC = () => {

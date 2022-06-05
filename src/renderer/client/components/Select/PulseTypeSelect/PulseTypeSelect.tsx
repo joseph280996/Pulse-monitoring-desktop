@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ReactElement, FocusEventHandler, ChangeEventHandler } from 'react';
-import usePulseTypes from '../../../common/utils/hooks/usePulseTypes';
+import usePulseTypes from '../../../utils/hooks/usePulseTypes';
 import LoadingSpinner from '../../LoadingSpinner';
 import Option from '../../Option';
 import Select from '../Select';

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { PulseType } from '../../types';
+import { PulseType } from '../../common/types';
 import pulseTypeService from '../services/pulseTypeService';
 
 type UsePulseType = {

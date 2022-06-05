@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ReactElement, ChangeEventHandler } from 'react';
-import usePulsePosition from '../../../common/utils/hooks/usePulsePositions';
+import usePulsePosition from '../../../utils/hooks/usePulsePositions';
 import Option from '../../Option';
 import Select from '../Select';
 import './PulsePositionSelect.scss';

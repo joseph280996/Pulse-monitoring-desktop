@@ -6,7 +6,7 @@ import {
   ReactElement,
   FC,
 } from 'react';
-import { ObjectWithStringIndexing } from '../../types';
+import { ObjectWithStringIndexing } from '../../common/types';
 
 export interface IBasicAuthType extends ObjectWithStringIndexing {
   username: string;

@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
 import { FormikProps } from 'formik';
-import { ReceivedDatum } from '../../../common/utils/hooks/useSensorData';
+import { ReceivedDatum } from '../../../utils/hooks/useSensorData';
 import { ILineChartProps } from '../../Chart/LineChart/LineChartTypes';
 
 export type PostDiagnosisFormProps = {

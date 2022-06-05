@@ -1,4 +1,4 @@
-import { ReceivedDatum } from '../../types';
+import { ReceivedDatum } from '../../common/types';
 
 export default (recordData?: ReceivedDatum[]) => {
   return (recordData || []).map((datum) => ({
