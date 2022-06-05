@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import StyledButton from '../../Button';
-import './NotFound.scss';
+import StyledButton from '../../components/Button';
+import './404.scss';
 
 function NotFoundPage(): ReactElement {
   return (

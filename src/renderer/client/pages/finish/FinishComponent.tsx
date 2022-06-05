@@ -1,6 +1,6 @@
 import { ReactElement, MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
-import StyledButton from '../../Button';
+import StyledButton from '../../components/Button';
 import './Finish.scss';
 
 type FinishPropType = {

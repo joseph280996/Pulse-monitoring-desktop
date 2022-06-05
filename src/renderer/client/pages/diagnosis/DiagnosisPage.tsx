@@ -4,7 +4,7 @@ import { ReceivedDatum, WSMessageType } from 'renderer/client/types';
 import useSensorData from 'renderer/client/utils/hooks/useSensorData';
 import useWindowDimensions from '../../utils/hooks/useWindowDimensions';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import DiagnosisPageComponent from '../../components/pages/DiagnosisPage/DiagnosisPage';
+import DiagnosisPageComponent from './DiagnosisPageCompnent';
 
 const setDataFn =
   (newData: WSMessageType): SetStateAction<ReceivedDatum[]> =>

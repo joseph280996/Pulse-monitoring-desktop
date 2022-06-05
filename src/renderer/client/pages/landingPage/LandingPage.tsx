@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import DiagnoseButton from '../../Button/DiagnoseButton';
-import ExportDataButton from '../../Button/ExportDataButton';
+import DiagnoseButton from '../../components/Button/DiagnoseButton';
+import ExportDataButton from '../../components/Button/ExportDataButton';
 import './LandingPage.scss';
 
 const LandingPage = (): ReactElement => {
