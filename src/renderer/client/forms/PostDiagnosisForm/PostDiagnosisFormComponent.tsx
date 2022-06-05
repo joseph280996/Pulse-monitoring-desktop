@@ -1,9 +1,9 @@
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { ReactElement } from 'react';
-import StyledButton from '../../Button';
-import LineChart from '../../Chart/LineChart';
-import { PulseTypeSelect } from '../../Select';
-import { TextFieldWithKeyboard } from '../../TextField';
+import StyledButton from 'renderer/client/components/Button';
+import LineChart from 'renderer/client/components/Chart/LineChart';
+import { PulseTypeSelect } from 'renderer/client/components/Select';
+import { TextFieldWithKeyboard } from 'renderer/client/components/TextField';
 import './PostDiagnosisForm.scss';
 import { IPostDiagnosisProps } from './PostDiagnosisFormTypes';
 

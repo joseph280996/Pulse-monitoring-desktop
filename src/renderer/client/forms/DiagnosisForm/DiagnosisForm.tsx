@@ -3,7 +3,7 @@ import moment from 'moment';
 import { ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReceivedDatum } from 'renderer/client/types';
-import DiagnosisFormComponent from '../../components/form/DiagnosisForm/DiagnosisForm';
+import DiagnosisFormComponent from './DiagnosisFormComponent';
 import FormikValuesType, { IDiagnosisFormProps } from './DiagnosisFormTypes';
 
 export interface IDiagnosisFormContainerProps

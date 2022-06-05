@@ -4,20 +4,20 @@ import { takeRight } from 'lodash';
 import { ReactElement } from 'react';
 import { Form } from 'react-bootstrap';
 import { LineSeriesPoint } from 'react-vis';
-import DiagnosisFormValuesType, {
-  IDiagnosisFormProps,
-} from '../../../forms/DiagnosisForm/DiagnosisFormTypes';
 import {
   ContinueButton,
   RecordButton,
   ResetButton,
   StartButton,
   StopButton,
-} from '../../Button';
-import LineChart from '../../Chart/LineChart/LineChart';
-import Overlay from '../../Overlay';
-import { PulsePositionSelect } from '../../Select';
+} from 'renderer/client/components/Button';
+import LineChart from 'renderer/client/components/Chart/LineChart';
+import Overlay from 'renderer/client/components/Overlay';
+import { PulsePositionSelect } from 'renderer/client/components/Select';
 import './DiagnosisForm.scss';
+import DiagnosisFormValuesType, {
+  IDiagnosisFormProps,
+} from './DiagnosisFormTypes';
 
 interface IDiagnosisFormComponentProps
   extends IDiagnosisFormProps,

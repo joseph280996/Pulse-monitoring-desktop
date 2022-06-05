@@ -3,13 +3,13 @@ import { useFormik } from 'formik';
 import { object } from 'yup';
 import piezoelectricService from 'renderer/client/utils/services/piezoelectricService';
 import ExportDataService from 'renderer/client/utils/services/exportDataService';
-import ExportDataFormComponent from '../../components/form/ExportDataForm/ExportDataForm';
-import { DatePickerOnChangeType } from '../../components/form/ExportDataForm/ExportDataComponentTypes';
+import ExportDataFormComponent from './ExportDataFormComponent';
 import {
+  DatePickerOnChangeType,
   DatePickerSelectedRangeType,
   ExportDataFormValuesType,
 } from './ExportDataFormTypes';
-import fields from './exportDataFields';
+import fields from './exportDataFieldsValidation';
 
 const ExportDataForm = () => {
   const { setFieldValue, values, handleSubmit, status } =

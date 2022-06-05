@@ -2,10 +2,10 @@ import { useFormik } from 'formik';
 import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 import { object } from 'yup';
-import SignInFormComponent from 'renderer/client/components/form/SignInForm/SignInForm';
 import { IBasicAuthType } from '../../utils/context/AuthContext';
 import useAuthState from '../../utils/hooks/useAuthState';
-import fields from './signInFields';
+import fields from './signInFieldsValidation';
+import SignInFormComponent from './SignInFormComponent';
 import { FakeAuthResolveType } from './SignInTypes';
 
 function SignInFormContainer(): ReactElement {

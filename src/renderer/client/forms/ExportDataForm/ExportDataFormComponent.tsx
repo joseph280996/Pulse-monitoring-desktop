@@ -2,11 +2,11 @@ import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 import DatePicker from 'react-datepicker';
 import { Link } from 'react-router-dom';
-import StyledButton from '../../Button';
-import ConfirmExportButton from '../../Button/ConfirmExportButton';
-import Overlay from '../../Overlay';
-import { ExportDataFormComponentPropsType } from './ExportDataComponentTypes';
+import StyledButton from '../../components/Button';
+import ConfirmExportButton from '../../components/Button/ConfirmExportButton';
+import Overlay from '../../components/Overlay';
 import './ExportDataForm.scss';
+import { ExportDataFormComponentPropsType } from './ExportDataFormTypes';
 
 const ExportDataFormComponent = ({
   handleSubmit,

@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { ReactElement } from 'react';
 import { Form } from 'react-bootstrap';
-import Button from '../../Button';
-import Message from '../../Message';
-import { TextFieldWithKeyboard } from '../../TextField';
+import Button from 'renderer/client/components/Button';
+import Message from 'renderer/client/components/Message';
+import { TextFieldWithKeyboard } from 'renderer/client/components/TextField';
 import './SignInForm.scss';
-import { ISignInFormProps } from './SignInFormTypes';
+import { ISignInFormProps } from './SignInTypes';
 
 function SignInFormComponent({
   handleSubmit,
