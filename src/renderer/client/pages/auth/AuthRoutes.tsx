@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import useAuthState from 'renderer/client/utils/hooks/useAuthState';
-import SignInPage from '../../components/pages/signin';
+import SignInPage from './signin';
 import ChangeUsername from './ChangeUsername';
 import ForgotPass from './ForgotPass';
 
