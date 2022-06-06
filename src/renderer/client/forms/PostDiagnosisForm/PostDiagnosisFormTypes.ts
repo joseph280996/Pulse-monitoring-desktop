@@ -3,6 +3,7 @@ import { MouseEventHandler } from 'react';
 import { ILineChartProps } from '../../components/Chart/LineChart';
 
 export type PostDiagnosisFormProps = {
+  recordID: number;
   pulseTypeID: number;
   patientName: string;
   handPositionID: number;

@@ -2,7 +2,6 @@ import HttpClient from '../controller/HttpClient';
 import { ECG_POST_TYPE } from '../variables';
 
 type EcgStopPostParamType = {
-  status: string;
   recordID?: number;
 };
 
@@ -14,7 +13,7 @@ class EcgPostHandlerFactory {
 
     if (requestType === ECG_POST_TYPE.STOP) {
       return (params: EcgStopPostParamType) =>
-        httpClient.post('/record/stop', params);
+        httpClient.post('/record/stop', { ...params, status: requestType });
     }
 
     throw new Error('Unsupported handler type');

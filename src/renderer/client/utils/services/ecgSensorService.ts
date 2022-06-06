@@ -9,7 +9,6 @@ type EcgSensorServiceResponseType = {
 
 type EcgPostParamType = {
   type: 'start' | 'stop';
-  status: string;
   recordID?: number;
 };
 
@@ -43,4 +42,4 @@ class EcgSensorService
   }
 }
 
-export default EcgSensorService;
+export default new EcgSensorService();

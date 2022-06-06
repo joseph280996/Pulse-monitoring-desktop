@@ -2,6 +2,8 @@ import { ReactElement, useState, SetStateAction, useCallback } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { ReceivedDatum, WSMessageType } from 'renderer/client/types';
 import useSensorData from 'renderer/client/utils/hooks/useSensorData';
+import ecgSensorService from 'renderer/client/utils/services/ecgSensorService';
+import { ECG_POST_TYPE } from 'renderer/client/utils/variables';
 import useWindowDimensions from '../../utils/hooks/useWindowDimensions';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import DiagnosisPageComponent from './DiagnosisPageCompnent';
@@ -31,6 +33,7 @@ function DiagnosisPageContainer(): ReactElement {
   const onStart = useCallback(() => {
     setIsStarted(true);
     wsController?.sendMessage('start');
+    ecgSensorService.postAsync({ type: ECG_POST_TYPE.START });
   }, [wsController]);
 
   const onReset = useCallback(() => {
@@ -50,6 +53,7 @@ function DiagnosisPageContainer(): ReactElement {
         endTime: data[data.length - 1].timeStamp,
       })}`
     );
+    ecgSensorService.postAsync({ type: ECG_POST_TYPE.STOP });
     setIsFinished(true);
   }, [wsController, recordedStartTime, data]);
 

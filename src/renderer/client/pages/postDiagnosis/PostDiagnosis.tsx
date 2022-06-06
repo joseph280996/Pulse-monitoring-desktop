@@ -33,6 +33,7 @@ function PostDiagnosis(): ReactElement {
         height={height - 135}
         data={recordedDataToDisplay}
         initialValues={{
+          recordID,
           pulseTypeID: 1,
           patientName: '',
           handPositionID: Number(locationState.handPositionID),
