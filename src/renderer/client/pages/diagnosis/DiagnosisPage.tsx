@@ -46,16 +46,20 @@ function DiagnosisPageContainer(): ReactElement {
     setRecordedStartTime(data[data.length - 1].timeStamp);
   }, [data]);
 
-  const onStopHandler = useCallback(() => {
-    wsController?.sendMessage(
-      `stop ${JSON.stringify({
-        startTime: recordedStartTime,
-        endTime: data[data.length - 1].timeStamp,
-      })}`
-    );
-    ecgSensorService.postAsync({ type: ECG_POST_TYPE.STOP });
-    setIsFinished(true);
-  }, [wsController, recordedStartTime, data]);
+  const onStopHandler = useCallback(
+    (handPositionID) => () => {
+      wsController?.sendMessage(
+        `stop ${JSON.stringify({
+          startTime: recordedStartTime,
+          endTime: data[data.length - 1].timeStamp,
+          handPositionID,
+        })}`
+      );
+      ecgSensorService.postAsync({ type: ECG_POST_TYPE.STOP });
+      setIsFinished(true);
+    },
+    [wsController, recordedStartTime, data]
+  );
 
   if (!readyState || readyState === WebSocket.CONNECTING)
     return <Spinner animation="border" role="status" />;

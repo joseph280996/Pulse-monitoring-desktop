@@ -41,7 +41,6 @@ function DiagnosisForm({
   dirty,
   touched,
 }: IDiagnosisFormComponentProps): ReactElement {
-  console.log(data);
   return (
     <Form className="Form" onSubmit={handleSubmit}>
       {isFinished && (
@@ -82,7 +81,7 @@ function DiagnosisForm({
             className="DiagnosisForm-button"
             iconClassName="Icon Icon-stop"
             buttonTextClassName="DiagnosisForm-buttonTextStop"
-            onStop={onStop}
+            onStop={onStop(values.pulsePositionID)}
             disabled={!dirty || !touched}
           />
         ) : (

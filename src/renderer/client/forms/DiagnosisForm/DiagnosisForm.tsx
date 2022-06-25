@@ -10,6 +10,7 @@ export interface IDiagnosisFormContainerProps
   extends Omit<IDiagnosisFormProps, 'data'> {
   data: ReceivedDatum[];
 }
+
 function DiagnosisForm({
   data,
   recordID,
@@ -19,7 +20,7 @@ function DiagnosisForm({
   const formikProps = useFormik<FormikValuesType>({
     initialValues: {
       pulsePositionID: 0,
-      recordID: 0,
+      recordID: recordID ?? 0,
     },
     onSubmit: (values: FormikValuesType) => {
       navigate('/postdiagnosis', {
