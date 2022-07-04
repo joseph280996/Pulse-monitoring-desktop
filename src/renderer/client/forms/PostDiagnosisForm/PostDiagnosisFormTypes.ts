@@ -6,7 +6,6 @@ export type PostDiagnosisFormProps = {
   recordID: number;
   pulseTypeID: number;
   patientName: string;
-  handPositionID: number;
 };
 export interface IPostDiagnosisProps
   extends ILineChartProps,

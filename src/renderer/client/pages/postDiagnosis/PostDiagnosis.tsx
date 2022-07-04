@@ -36,7 +36,6 @@ function PostDiagnosis(): ReactElement {
           recordID,
           pulseTypeID: 1,
           patientName: '',
-          handPositionID: Number(locationState.handPositionID),
         }}
       />
     </div>

@@ -25,7 +25,6 @@ function DiagnosisForm({
     onSubmit: (values: FormikValuesType) => {
       navigate('/postdiagnosis', {
         state: {
-          handPositionID: values.pulsePositionID,
           recordID: values.recordID,
         },
       });

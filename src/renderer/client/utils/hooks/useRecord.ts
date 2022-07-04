@@ -7,7 +7,7 @@ type UseRecordReturnType = {
   isLoading: boolean;
 };
 
-type UseRecordType = (recordID: number) => UseRecordReturnType;
+type UseRecordType = (recordID?: number) => UseRecordReturnType;
 
 const useRecord: UseRecordType = (recordID) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -21,7 +21,9 @@ const useRecord: UseRecordType = (recordID) => {
   }, []);
 
   useEffect(() => {
-    getRecord(recordID);
+    if (recordID) {
+      getRecord(recordID);
+    }
   }, [getRecord, recordID]);
   return { record, isLoading };
 };
