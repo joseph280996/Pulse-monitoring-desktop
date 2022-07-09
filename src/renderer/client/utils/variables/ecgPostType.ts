@@ -1,13 +1,11 @@
-type StartType = 'start';
-type StopType = 'stop';
 type EcgPostType = {
-  START: StartType;
-  STOP: StopType;
+  START: number;
+  STOP: number;
 };
 
 const ECG_POST_TYPE: EcgPostType = {
-  START: 'start',
-  STOP: 'stop',
+  START: 1,
+  STOP: 2,
 };
 
 export default ECG_POST_TYPE;

@@ -8,8 +8,7 @@ type EcgSensorServiceResponseType = {
 };
 
 type EcgPostParamType = {
-  type: 'start' | 'stop';
-  recordID?: number;
+  operation_type_id: number;
 };
 
 class EcgSensorService
@@ -20,7 +19,7 @@ class EcgSensorService
   constructor() {
     this.service = new HttpClient(
       process.env.NODE_ENV === 'development'
-        ? 'http://localhost:8000'
+        ? 'http://localhost:8080'
         : 'http://192.168.50.185:8080'
     );
   }
@@ -29,7 +28,7 @@ class EcgSensorService
     ecgParam: EcgPostParamType
   ): Promise<EcgSensorServiceResponseType> {
     const handler = EcgPostHandlerFactory.getEcgPostHandler(
-      ecgParam?.type,
+      ecgParam?.operation_type_id,
       this.service
     );
     const { data, error } = await handler(ecgParam);

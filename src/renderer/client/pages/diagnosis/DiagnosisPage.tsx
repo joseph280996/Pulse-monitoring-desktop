@@ -33,7 +33,7 @@ function DiagnosisPageContainer(): ReactElement {
   const onStart = useCallback(() => {
     setIsStarted(true);
     wsController?.sendMessage('start');
-    ecgSensorService.postAsync({ type: ECG_POST_TYPE.START });
+    ecgSensorService.postAsync({ operation_type_id: ECG_POST_TYPE.START });
   }, [wsController]);
 
   const onReset = useCallback(() => {
@@ -55,7 +55,7 @@ function DiagnosisPageContainer(): ReactElement {
           handPositionID,
         })}`
       );
-      ecgSensorService.postAsync({ type: ECG_POST_TYPE.STOP });
+      ecgSensorService.postAsync({ operation_type_id: ECG_POST_TYPE.STOP });
       setIsFinished(true);
     },
     [wsController, recordedStartTime, data]
